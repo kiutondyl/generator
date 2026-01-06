@@ -25,24 +25,9 @@
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
-      background-attachment: fixed;
-      transition: background 0.5s;
-    }
-
-    /* === ТЕМЫ === */
-    .theme-night-tokyo {
       background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
       color: #e0d6ff;
-    }
-
-    .theme-cyber-temple {
-      background: linear-gradient(135deg, #0a0c1a, #0c0a2a, #1a0a2a);
-      color: #d6e0ff;
-    }
-
-    .theme-light {
-      background: linear-gradient(135deg, #f0f0ff, #e0e6ff, #f0f0ff);
-      color: #333333;
+      transition: background 0.5s;
     }
 
     /* Фоновые элементы */
@@ -67,44 +52,12 @@
       animation: fall 15s linear infinite;
     }
 
-    .kanji-float {
-      position: absolute;
-      top: -50px;
-      font-size: 32px;
-      color: rgba(185, 103, 255, 0.4);
-      user-select: none;
-      pointer-events: none;
-      z-index: 0;
-      animation: fall 20s linear infinite;
-    }
-
     @keyframes fall {
       from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
       to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
-    .tokyo-skyline {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
-      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120"><path fill="%23000" d="M0,120 L0,80 L50,80 L50,60 L100,60 L100,90 L150,90 L150,50 L200,50 L200,70 L250,70 L250,100 L300,100 L300,60 L350,60 L350,80 L400,80 L400,50 L450,50 L450,90 L500,90 L500,70 L550,70 L550,100 L600,100 L600,60 L650,60 L650,85 L700,85 L700,55 L750,55 L750,95 L800,95 L800,65 L850,65 L850,80 L900,80 L900,70 L950,70 L950,90 L1000,90 L1000,120 Z"/></svg>') no-repeat center bottom;
-      background-size: cover;
-      z-index: 1;
-    }
-
-    .cyber-temple-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(ellipse at center, rgba(185, 103, 255, 0.1) 0%, transparent 70%);
-      z-index: 0;
-    }
-
-    /* Основной контент */
+    /* Основной контент — плавающая рамка */
     .container {
       max-width: 600px;
       margin: 40px auto;
@@ -116,18 +69,6 @@
       border: 1px solid rgba(140, 80, 200, 0.4);
       box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
       backdrop-filter: blur(10px);
-    }
-
-    .theme-light .container {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(140, 80, 200, 0.3);
-      color: #333333;
-    }
-
-    .theme-cyber-temple .container {
-      background: rgba(10, 12, 30, 0.85);
-      border: 1px solid rgba(100, 200, 255, 0.4);
-      box-shadow: 0 0 30px rgba(100, 150, 255, 0.3);
     }
 
     /* Заголовки */
@@ -143,28 +84,11 @@
       margin-bottom: 10px;
     }
 
-    .theme-light h1 {
-      background: linear-gradient(90deg, #b967ff, #6a0dad);
-    }
-
-    .theme-cyber-temple h1 {
-      background: linear-gradient(90deg, #00f7ff, #7a8aff, #00f7ff);
-      text-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
-    }
-
     .subtitle {
       text-align: center;
       font-size: 14px;
       color: #b967ff;
       margin-bottom: 20px;
-    }
-
-    .theme-cyber-temple .subtitle {
-      color: #00f7ff;
-    }
-
-    .theme-light .subtitle {
-      color: #6a0dad;
     }
 
     /* Блоки фич — как на скриншоте */
@@ -182,53 +106,12 @@
       border: 1px solid rgba(140, 80, 200, 0.3);
       text-align: center;
       transition: all 0.3s;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.5s forwards;
-    }
-
-    .feature:nth-child(1) { animation-delay: 0.1s; }
-    .feature:nth-child(2) { animation-delay: 0.2s; }
-    .feature:nth-child(3) { animation-delay: 0.3s; }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .theme-light .feature {
-      background: rgba(200, 200, 255, 0.3);
-      border: 1px solid rgba(140, 80, 200, 0.2);
-    }
-
-    .theme-cyber-temple .feature {
-      background: rgba(10, 20, 40, 0.6);
-      border: 1px solid rgba(100, 200, 255, 0.3);
-    }
-
-    .feature:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
-    }
-
-    .theme-cyber-temple .feature:hover {
-      box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
     }
 
     .feature-icon {
       font-size: 28px;
       margin-bottom: 8px;
       color: #b967ff;
-    }
-
-    .theme-cyber-temple .feature-icon {
-      color: #00f7ff;
     }
 
     .feature-title {
@@ -242,18 +125,10 @@
       line-height: 1.4;
     }
 
-    .theme-light .feature-text {
-      color: #555555;
-    }
-
-    .theme-cyber-temple .feature-text {
-      color: #a0d0ff;
-    }
-
-    /* Кнопки вкладок — теперь они скрывают/показывают блоки */
+    /* Кнопки вкладок — в одной строке, слева и справа */
     .tabs {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 10px;
       margin: 20px 0;
     }
@@ -269,19 +144,8 @@
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
-      width: 100%;
-      max-width: 150px;
+      width: 48%;
       text-align: center;
-    }
-
-    .theme-light .tab-btn {
-      border-color: #6a0dad;
-      color: #555555;
-    }
-
-    .theme-cyber-temple .tab-btn {
-      border-color: #00f7ff;
-      color: #d0f0ff;
     }
 
     .tab-btn::before {
@@ -294,10 +158,6 @@
       background: linear-gradient(90deg, transparent, #ff57e0, transparent);
     }
 
-    .theme-cyber-temple .tab-btn::before {
-      background: linear-gradient(90deg, transparent, #00f7ff, transparent);
-    }
-
     .tab-btn:hover::before {
       left: 0;
     }
@@ -308,15 +168,7 @@
       border-color: transparent;
     }
 
-    .theme-light .tab-btn.active {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-    }
-
-    .theme-cyber-temple .tab-btn.active {
-      background: linear-gradient(90deg, #00f7ff, #00aaff);
-    }
-
-    /* Генераторы — скрыты по умолчанию */
+    /* Генератор — скрыт по умолчанию */
     .generator-block {
       display: none;
       margin-top: 20px;
@@ -347,26 +199,9 @@
       box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
     }
 
-    .theme-light .output {
-      background: rgba(240, 240, 255, 0.8);
-      border-color: #a0a0d0;
-      color: #333333;
-    }
-
-    .theme-cyber-temple .output {
-      background: rgba(10, 20, 40, 0.7);
-      border: 1px solid #00aaff;
-      color: #d0f0ff;
-    }
-
     .output:focus {
       box-shadow: 0 0 20px rgba(185, 103, 255, 0.4);
       border-color: #b967ff;
-    }
-
-    .theme-cyber-temple .output:focus {
-      box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
-      border-color: #00f7ff;
     }
 
     .btn {
@@ -387,22 +222,9 @@
       box-shadow: 0 5px 15px rgba(185, 103, 255, 0.25);
     }
 
-    .theme-light .btn {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-    }
-
-    .theme-cyber-temple .btn {
-      background: linear-gradient(90deg, #00f7ff, #00aaff);
-      box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
-    }
-
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(185, 103, 255, 0.5);
-    }
-
-    .theme-cyber-temple .btn:hover {
-      box-shadow: 0 8px 25px rgba(0, 247, 255, 0.5);
     }
 
     .btn::after {
@@ -434,10 +256,6 @@
       box-shadow: 0 0 15px rgba(185, 103, 255, 0.4);
     }
 
-    .theme-cyber-temple .notification {
-      background: linear-gradient(90deg, #00aaff, #00f7ff);
-    }
-
     .notification.show {
       opacity: 1;
       transform: translateY(0);
@@ -451,53 +269,6 @@
       font-size: 12px;
       text-align: center;
       color: #b967ff;
-    }
-
-    .theme-light .disclaimer {
-      background: rgba(200, 200, 255, 0.4);
-      color: #555555;
-    }
-
-    .theme-cyber-temple .disclaimer {
-      background: rgba(10, 20, 40, 0.6);
-      color: #00f7ff;
-    }
-
-    /* Кнопка переключения темы */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(185, 103, 255, 0.3);
-      border: 1px solid #b967ff;
-      color: #e0d6ff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background: rgba(185, 103, 255, 0.5);
-      transform: rotate(30deg);
-    }
-
-    .theme-cyber-temple .theme-toggle {
-      background: rgba(0, 247, 255, 0.3);
-      border-color: #00f7ff;
-      color: #d0f0ff;
-    }
-
-    .theme-light .theme-toggle {
-      background: rgba(106, 13, 173, 0.3);
-      border-color: #6a0dad;
-      color: #555555;
     }
 
     /* Мобильная версия */
@@ -530,64 +301,20 @@
       .tab-btn {
         padding: 8px 12px;
         font-size: 14px;
+        width: 100%;
       }
 
       .btn {
         font-size: 14px;
         padding: 10px;
       }
-
-      .theme-toggle {
-        top: 10px;
-        right: 10px;
-        width: 36px;
-        height: 36px;
-      }
-
-      /* На мобильных — фон не скрывается, но затемняется */
-      .container {
-        background: rgba(20, 10, 40, 0.9);
-      }
-
-      .theme-light .container {
-        background: rgba(255, 255, 255, 0.95);
-      }
-
-      .theme-cyber-temple .container {
-        background: rgba(10, 12, 30, 0.9);
-      }
-
-      .background-elements {
-        filter: brightness(0.7);
-      }
-
-      .tokyo-skyline {
-        height: 80px;
-      }
-    }
-
-    /* Для ПК — фон всегда виден */
-    @media (min-width: 601px) {
-      .container {
-        margin: 60px auto;
-        padding: 40px;
-      }
-
-      .background-elements {
-        display: block;
-      }
     }
   </style>
 </head>
-<body class="theme-night-tokyo">
-
-  <!-- Кнопка переключения тем -->
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+<body>
 
   <!-- Фоновые элементы -->
   <div class="background-elements">
-    <div class="tokyo-skyline"></div>
-    <div class="cyber-temple-bg" style="display: none;"></div>
     <script>
       function createSakuraPetals() {
         setInterval(() => {
@@ -602,21 +329,7 @@
           setTimeout(() => petal.remove(), 20000);
         }, 1000);
       }
-
-      function createKanjiFloats() {
-        setInterval(() => {
-          if (Math.random() > 0.85) return;
-          const kanji = document.createElement('div');
-          kanji.className = 'kanji-float';
-          const chars = ['龍', '武', '道', '忍', '禅', '空', '夢', '心', '光', '影'];
-          kanji.innerText = chars[Math.floor(Math.random() * chars.length)];
-          kanji.style.left = Math.random() * 100 + 'vw';
-          kanji.style.fontSize = (24 + Math.random() * 16) + 'px';
-          kanji.style.opacity = 0.2 + Math.random() * 0.3;
-          document.body.appendChild(kanji);
-          setTimeout(() => kanji.remove(), 25000);
-        }, 1500);
-      }
+      createSakuraPetals();
     </script>
   </div>
 
@@ -649,12 +362,12 @@
     </div>
 
     <div class="tabs">
-      <button class="tab-btn active" data-tab="password">🔑 Пароли</button>
+      <button class="tab-btn" data-tab="password">🔑 Пароли</button>
       <button class="tab-btn" data-tab="username">🎮 Ники</button>
     </div>
 
     <!-- Блок генератора паролей -->
-    <div id="password-generator" class="generator-block active">
+    <div id="password-generator" class="generator-block">
       <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
       <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
     </div>
@@ -677,39 +390,6 @@
   </audio>
 
   <script>
-    // === Переключение тем ===
-    let currentTheme = 'night-tokyo';
-
-    function toggleTheme() {
-      const body = document.body;
-      const themeToggle = document.querySelector('.theme-toggle');
-      const subtitle = document.querySelector('.subtitle');
-
-      if (currentTheme === 'night-tokyo') {
-        body.className = 'theme-cyber-temple';
-        themeToggle.innerHTML = '⛩️';
-        currentTheme = 'cyber-temple';
-        subtitle.textContent = '— Храм Кибердзюдо';
-        // Показать кибер-фон
-        document.querySelector('.cyber-temple-bg').style.display = 'block';
-        createKanjiFloats();
-      } else if (currentTheme === 'cyber-temple') {
-        body.className = 'theme-light';
-        themeToggle.innerHTML = '☀️';
-        currentTheme = 'light';
-        subtitle.textContent = '— Светлый стиль';
-        // Скрыть кибер-фон
-        document.querySelector('.cyber-temple-bg').style.display = 'none';
-      } else {
-        body.className = 'theme-night-tokyo';
-        themeToggle.innerHTML = '🌙';
-        currentTheme = 'night-tokyo';
-        subtitle.textContent = '— Ночной Токио';
-        // Скрыть кибер-фон
-        document.querySelector('.cyber-temple-bg').style.display = 'none';
-      }
-    }
-
     // === Логика переключения вкладок ===
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -827,9 +507,6 @@
         });
       });
     });
-
-    // === Запуск фоновых элементов ===
-    createSakuraPetals();
   </script>
 </body>
 </html>
