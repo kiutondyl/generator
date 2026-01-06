@@ -30,7 +30,17 @@
       background-attachment: fixed;
     }
 
-    /* Падающие лепестки */
+    /* Фоновые элементы */
+    .background-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
     .sakura-petal {
       position: absolute;
       top: -50px;
@@ -47,13 +57,25 @@
       to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
+    .tokyo-skyline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120"><path fill="%23000" d="M0,120 L0,80 L50,80 L50,60 L100,60 L100,90 L150,90 L150,50 L200,50 L200,70 L250,70 L250,100 L300,100 L300,60 L350,60 L350,80 L400,80 L400,50 L450,50 L450,90 L500,90 L500,70 L550,70 L550,100 L600,100 L600,60 L650,60 L650,85 L700,85 L700,55 L750,55 L750,95 L800,95 L800,65 L850,65 L850,80 L900,80 L900,70 L950,70 L950,90 L1000,90 L1000,120 Z"/></svg>') no-repeat center bottom;
+      background-size: cover;
+      z-index: 1;
+    }
+
+    /* Контент-блок */
     .container {
       max-width: 600px;
       margin: 40px auto;
       padding: 30px;
       position: relative;
       z-index: 10;
-      background: rgba(20, 10, 40, 0.7);
+      background: rgba(20, 10, 40, 0.8);
       border-radius: 16px;
       border: 1px solid rgba(140, 80, 200, 0.4);
       box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
@@ -235,34 +257,98 @@
       color: #b967ff;
     }
 
+    /* Мобильная версия */
     @media (max-width: 600px) {
-      .container { padding: 20px; margin: 30px 15px; }
-      h1 { font-size: 20px; }
-      .output { font-size: 16px; }
-      .feature-title { font-size: 16px; }
+      .container {
+        margin: 10px 10px;
+        padding: 20px;
+        width: calc(100% - 20px);
+        max-width: 100%;
+        border-radius: 12px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .feature-title {
+        font-size: 16px;
+      }
+
+      .output {
+        font-size: 16px;
+      }
+
+      .tabs {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .tab-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    /* Для ПК — фон всегда виден */
+    @media (min-width: 601px) {
+      .container {
+        margin: 60px auto;
+        padding: 40px;
+      }
+
+      .background-elements {
+        display: block;
+      }
+    }
+
+    /* Для мобильных — фон затемнён, контент в центре */
+    @media (max-width: 600px) {
+      body {
+        background: #0a051a;
+      }
+
+      .background-elements {
+        display: none;
+      }
+
+      .container {
+        margin: 20px 10px;
+        padding: 20px;
+        width: calc(100% - 20px);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Падающие лепестки -->
-  <script>
-    function createSakuraPetals() {
-      setInterval(() => {
-        if (Math.random() > 0.8) return;
-        const petal = document.createElement('div');
-        petal.className = 'sakura-petal';
-        petal.innerText = '🌸';
-        petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.fontSize = (16 + Math.random() * 16) + 'px';
-        petal.style.opacity = 0.3 + Math.random() * 0.4;
-        document.body.appendChild(petal);
-        setTimeout(() => petal.remove(), 20000);
-      }, 1000);
-    }
-    createSakuraPetals();
-  </script>
+  <!-- Фоновые элементы (видны только на ПК) -->
+  <div class="background-elements">
+    <div class="tokyo-skyline"></div>
+    <script>
+      function createSakuraPetals() {
+        setInterval(() => {
+          if (Math.random() > 0.8) return;
+          const petal = document.createElement('div');
+          petal.className = 'sakura-petal';
+          petal.innerText = '🌸';
+          petal.style.left = Math.random() * 100 + 'vw';
+          petal.style.fontSize = (16 + Math.random() * 16) + 'px';
+          petal.style.opacity = 0.3 + Math.random() * 0.4;
+          document.body.appendChild(petal);
+          setTimeout(() => petal.remove(), 20000);
+        }, 1000);
+      }
+      createSakuraPetals();
+    </script>
+  </div>
 
+  <!-- Основной контент -->
   <div class="container">
     <h1>Генератор ников и паролей — Ночной Токио</h1>
     <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
