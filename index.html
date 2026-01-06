@@ -182,6 +182,24 @@
       border: 1px solid rgba(140, 80, 200, 0.3);
       text-align: center;
       transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards;
+    }
+
+    .feature:nth-child(1) { animation-delay: 0.1s; }
+    .feature:nth-child(2) { animation-delay: 0.2s; }
+    .feature:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .theme-light .feature {
@@ -232,6 +250,7 @@
       color: #a0d0ff;
     }
 
+    /* Кнопки вкладок — теперь они скрывают/показывают блоки */
     .tabs {
       display: flex;
       justify-content: center;
@@ -250,6 +269,9 @@
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
+      width: 100%;
+      max-width: 150px;
+      text-align: center;
     }
 
     .theme-light .tab-btn {
@@ -292,6 +314,21 @@
 
     .theme-cyber-temple .tab-btn.active {
       background: linear-gradient(90deg, #00f7ff, #00aaff);
+    }
+
+    /* Генераторы — скрыты по умолчанию */
+    .generator-block {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(30, 15, 50, 0.6);
+      border-radius: 12px;
+      border: 1px solid #6a3a9a;
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
+    }
+
+    .generator-block.active {
+      display: block;
     }
 
     .output {
@@ -616,18 +653,20 @@
       <button class="tab-btn" data-tab="username">🎮 Ники</button>
     </div>
 
-    <div id="password-tab" class="tab-content active">
+    <!-- Блок генератора паролей -->
+    <div id="password-generator" class="generator-block active">
       <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
       <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
     </div>
 
-    <div id="username-tab" class="tab-content">
+    <!-- Блок генератора ников -->
+    <div id="username-generator" class="generator-block">
       <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
       <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
     </div>
 
     <div class="disclaimer">
-      Комбинации для входа — конфиденциальная информация. Проект не хранит и не отправляет ваши данные.
+      Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
     </div>
   </div>
 
@@ -675,9 +714,14 @@
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         btn.classList.add('active');
-        document.getElementById(btn.dataset.tab + '-tab').classList.add('active');
+
+        // Скрываем все генераторы
+        document.querySelectorAll('.generator-block').forEach(block => block.classList.remove('active'));
+
+        // Показываем нужный
+        const tab = btn.dataset.tab;
+        document.getElementById(tab + '-generator').classList.add('active');
       });
     });
 
