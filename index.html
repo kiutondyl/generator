@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
-  <!-- SEO (без автора) -->
+  <!-- SEO -->
   <meta name="description" content="Генератор безопасных паролей и крутых ников для подростков. Создай уникальный ник в стиле аниме или надёжный пароль за 1 клик. Работает в браузере — без регистрации и отправки данных.">
   <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио">
   
@@ -22,7 +22,7 @@
     }
 
     body {
-      background: linear-gradient(to bottom, #0a051a, #0d0824, #100b30);
+      background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
       color: #e0d6ff;
       min-height: 100vh;
       overflow-x: hidden;
@@ -30,127 +30,94 @@
       background-attachment: fixed;
     }
 
-    /* Силуэты зданий (Ночной Токио) */
-    .tokyo-skyline {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120"><path fill="%23000" d="M0,120 L0,80 L50,80 L50,60 L100,60 L100,90 L150,90 L150,50 L200,50 L200,70 L250,70 L250,100 L300,100 L300,60 L350,60 L350,80 L400,80 L400,50 L450,50 L450,90 L500,90 L500,70 L550,70 L550,100 L600,100 L600,60 L650,60 L650,85 L700,85 L700,55 L750,55 L750,95 L800,95 L800,65 L850,65 L850,80 L900,80 L900,70 L950,70 L950,90 L1000,90 L1000,120 Z"/></svg>') no-repeat center bottom;
-      background-size: cover;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* Неоновые точки */
-    .neon-dot {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      opacity: 0.7;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Лепестки сакуры */
+    /* Падающие лепестки */
     .sakura-petal {
       position: absolute;
       top: -50px;
-      font-size: 22px;
-      color: rgba(255, 182, 220, 0.65);
+      font-size: 24px;
+      color: rgba(255, 180, 255, 0.6);
       user-select: none;
       pointer-events: none;
-      z-index: 2;
-      animation: fall 12s linear infinite;
+      z-index: 0;
+      animation: fall 15s linear infinite;
     }
 
     @keyframes fall {
       from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
-      70% { opacity: 0.7; }
-      to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+      to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
     .container {
-      max-width: 800px;
-      margin: 50px auto;
+      max-width: 600px;
+      margin: 40px auto;
       padding: 30px;
       position: relative;
       z-index: 10;
-      background: rgba(15, 8, 30, 0.6);
+      background: rgba(20, 10, 40, 0.7);
       border-radius: 16px;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(140, 80, 200, 0.3);
-      box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid rgba(140, 80, 200, 0.2);
+      border: 1px solid rgba(140, 80, 200, 0.4);
+      box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+      backdrop-filter: blur(10px);
     }
 
     h1 {
-      font-size: 28px;
-      background: linear-gradient(90deg, #ff57e0, #b967ff, #7a8aff);
+      text-align: center;
+      font-size: 24px;
+      background: linear-gradient(90deg, #ff57e0, #b967ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 15px rgba(185, 103, 255, 0.4);
+      text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
       letter-spacing: 1px;
+      margin-bottom: 10px;
     }
 
     .subtitle {
-      font-size: 16px;
-      color: #b967ff;
-      margin-top: 8px;
-    }
-
-    .intro {
       text-align: center;
-      margin: 25px 0;
-      line-height: 1.6;
-      color: #c0b6ff;
-    }
-
-    .features {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 30px 0;
+      font-size: 14px;
+      color: #b967ff;
+      margin-bottom: 20px;
     }
 
     .feature {
       background: rgba(30, 15, 50, 0.5);
-      padding: 20px;
+      padding: 15px;
+      margin: 15px 0;
       border-radius: 12px;
-      text-align: center;
-      min-width: 180px;
       border: 1px solid rgba(140, 80, 200, 0.3);
+      text-align: center;
     }
 
     .feature-icon {
       font-size: 28px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #b967ff;
+    }
+
+    .feature-title {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .feature-text {
+      font-size: 14px;
+      color: #c0b6ff;
+      line-height: 1.4;
     }
 
     .tabs {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin: 30px 0;
+      gap: 10px;
+      margin: 20px 0;
     }
 
     .tab-btn {
       background: transparent;
       border: 2px solid #b967ff;
       color: #e0d6ff;
-      padding: 10px 20px;
-      border-radius: 30px;
+      padding: 8px 16px;
+      border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
       transition: all 0.3s;
@@ -179,39 +146,20 @@
       border-color: transparent;
     }
 
-    .tab-content {
-      display: none;
-      padding: 25px;
-      border-radius: 12px;
-      background: rgba(20, 10, 40, 0.7);
-      border: 1px solid rgba(140, 80, 200, 0.4);
-      box-shadow: inset 0 0 10px rgba(138, 43, 226, 0.1);
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.5s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .output {
       width: 100%;
-      padding: 15px;
-      margin: 20px 0;
+      padding: 12px;
+      margin: 15px 0;
       background: rgba(30, 15, 50, 0.6);
       border: 1px solid #6a3a9a;
       border-radius: 8px;
       color: #f8f0ff;
-      font-size: 20px;
+      font-size: 18px;
       text-align: center;
       letter-spacing: 1px;
       outline: none;
       transition: all 0.3s;
-      box-shadow: 0 0 12px rgba(138, 43, 226, 0.15);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
     }
 
     .output:focus {
@@ -222,12 +170,12 @@
     .btn {
       display: block;
       width: 100%;
-      padding: 14px;
+      padding: 12px;
       background: linear-gradient(90deg, #ff57e0, #b967ff);
       color: white;
       border: none;
       border-radius: 10px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
       margin-top: 15px;
@@ -238,7 +186,7 @@
     }
 
     .btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(185, 103, 255, 0.5);
     }
 
@@ -263,14 +211,13 @@
       right: 20px;
       background: linear-gradient(90deg, #6a0dad, #b967ff);
       color: white;
-      padding: 12px 20px;
+      padding: 10px 16px;
       border-radius: 8px;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.4s;
       z-index: 100;
       box-shadow: 0 0 15px rgba(185, 103, 255, 0.4);
-      border: 1px solid rgba(200, 150, 255, 0.3);
     }
 
     .notification.show {
@@ -280,62 +227,62 @@
 
     .disclaimer {
       background: rgba(20, 10, 40, 0.5);
-      padding: 15px;
+      padding: 10px;
       border-radius: 8px;
-      margin: 25px 0;
-      font-size: 14px;
+      margin-top: 20px;
+      font-size: 12px;
       text-align: center;
       color: #b967ff;
     }
 
-    footer {
-      text-align: center;
-      padding: 25px 0 10px;
-      margin-top: 30px;
-      color: #887dff;
-      font-size: 14px;
-      border-top: 1px solid rgba(140, 80, 200, 0.2);
-    }
-
     @media (max-width: 600px) {
       .container { padding: 20px; margin: 30px 15px; }
-      h1 { font-size: 22px; }
+      h1 { font-size: 20px; }
       .output { font-size: 16px; }
-      .features { flex-direction: column; }
+      .feature-title { font-size: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="tokyo-skyline"></div>
+  <!-- Падающие лепестки -->
+  <script>
+    function createSakuraPetals() {
+      setInterval(() => {
+        if (Math.random() > 0.8) return;
+        const petal = document.createElement('div');
+        petal.className = 'sakura-petal';
+        petal.innerText = '🌸';
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.fontSize = (16 + Math.random() * 16) + 'px';
+        petal.style.opacity = 0.3 + Math.random() * 0.4;
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 20000);
+      }, 1000);
+    }
+    createSakuraPetals();
+  </script>
 
   <div class="container">
-    <header>
-      <h1>Генератор ников и паролей — Ночной Токио</h1>
-      <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
-    </header>
+    <h1>Генератор ников и паролей — Ночной Токио</h1>
+    <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
 
-    <div class="intro">
-      <p>Безопасные, запоминающиеся пароли и современные ники в стиле аниме и киберпанка.</p>
-      <p>Работает полностью в браузере — <strong>без отправки данных, без регистрации</strong>.</p>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Безопасность</div>
+      <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
     </div>
 
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <h3>Безопасность</h3>
-        <p>Все данные генерируются локально. Никто не видит твои пароли.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">🎮</div>
-        <h3>Крутое имя</h3>
-        <p>Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</p>
-      </div>
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <h3>Мгновенно</h3>
-        <p>Нажал — получил. Без ожидания, без загрузки.</p>
-      </div>
+    <div class="feature">
+      <div class="feature-icon">🎮</div>
+      <div class="feature-title">Крутое имя</div>
+      <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Мгновенно</div>
+      <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
     </div>
 
     <div class="tabs">
@@ -354,7 +301,7 @@
     </div>
 
     <div class="disclaimer">
-      <p>Комбинации для входа — конфиденциальная информация. Проект не хранит и не отправляет ваши данные.</p>
+      Комбинации для входа — конфиденциальная информация. Проект не хранит и не отправляет ваши данные.
     </div>
   </div>
 
@@ -363,10 +310,6 @@
   <audio id="copy-sound" preload="auto">
     <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAA" type="audio/wav">
   </audio>
-
-  <footer>
-    <p>Все данные генерируются и обрабатываются исключительно в вашем браузере.</p>
-  </footer>
 
   <script>
     // === Логика переключения вкладок ===
@@ -379,7 +322,7 @@
       });
     });
 
-    // === Богатые словари ===
+    // === Словари ===
     const WORDS = {
       nature: ['forest', 'ocean', 'river', 'mountain', 'cloud', 'storm', 'dawn', 'dusk', 'sky', 'earth', 'fire', 'ice', 'wind', 'thunder', 'light', 'shadow', 'moon', 'sun', 'star', 'comet', 'nebula', 'galaxy', 'aurora', 'tide', 'valley', 'peak'],
       anime: ['sakura', 'neko', 'yuki', 'hana', 'tsuki', 'kawaii', 'otaku', 'senpai', 'bento', 'ramen', 'mochi', 'wasabi', 'soba', 'matcha', 'zen', 'dojo', 'chibi', 'ninja', 'samurai', 'kami', 'yokai', 'tengu', 'kitsune', 'tanuki', 'aoi', 'ume', 'fuji'],
@@ -456,41 +399,6 @@
         });
       });
     });
-
-    // === Фон: Ночной Токио ===
-    function createNeonDots() {
-      const colors = ['#ff57e0', '#b967ff', '#7a8aff', '#00f7ff'];
-      for (let i = 0; i < 80; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'neon-dot';
-        dot.style.left = Math.random() * 100 + 'vw';
-        dot.style.top = Math.random() * 100 + 'vh';
-        dot.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        dot.style.opacity = 0.3 + Math.random() * 0.5;
-        dot.style.width = (2 + Math.random() * 4) + 'px';
-        dot.style.height = dot.style.width;
-        document.body.appendChild(dot);
-      }
-    }
-
-    function createSakuraPetals() {
-      setInterval(() => {
-        if (Math.random() > 0.85) return;
-        const petal = document.createElement('div');
-        petal.className = 'sakura-petal';
-        petal.innerText = '🌸';
-        petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.animationDuration = (8 + Math.random() * 10) + 's';
-        document.body.appendChild(petal);
-        setTimeout(() => petal.remove(), 20000);
-      }, 1200);
-    }
-
-    // === Запуск ===
-    createNeonDots();
-    createSakuraPetals();
-    generatePassword();
-    generateUsername();
   </script>
 </body>
 </html>
