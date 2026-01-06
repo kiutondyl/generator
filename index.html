@@ -466,6 +466,9 @@
     Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
   </div>
 
+  <!-- Кнопка переключения темы -->
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
   <div id="notification" class="notification">Скопировано!</div>
 
   <audio id="copy-sound" preload="auto">
@@ -479,17 +482,18 @@
     function toggleTheme() {
       const body = document.body;
       const themeToggle = document.querySelector('.theme-toggle');
+      const subtitle = document.querySelector('.subtitle');
 
       if (currentTheme === 'night-tokyo') {
         body.className = 'theme-light';
         themeToggle.innerHTML = '☀️';
         currentTheme = 'light';
-        document.querySelector('.subtitle').textContent = '— Аниме-школа';
+        subtitle.textContent = '— Аниме-школа';
       } else {
         body.className = 'theme-night-tokyo';
         themeToggle.innerHTML = '🌙';
         currentTheme = 'night-tokyo';
-        document.querySelector('.subtitle').textContent = '— Ночной Токио';
+        subtitle.textContent = '— Ночной Токио';
       }
     }
 
