@@ -104,7 +104,7 @@
       z-index: 0;
     }
 
-    /* Контент-блок */
+    /* Основной контент */
     .container {
       max-width: 600px;
       margin: 40px auto;
@@ -167,13 +167,21 @@
       color: #6a0dad;
     }
 
+    /* Блоки фич — как на скриншоте */
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
     .feature {
       background: rgba(30, 15, 50, 0.5);
       padding: 15px;
-      margin: 15px 0;
       border-radius: 12px;
       border: 1px solid rgba(140, 80, 200, 0.3);
       text-align: center;
+      transition: all 0.3s;
     }
 
     .theme-light .feature {
@@ -184,6 +192,15 @@
     .theme-cyber-temple .feature {
       background: rgba(10, 20, 40, 0.6);
       border: 1px solid rgba(100, 200, 255, 0.3);
+    }
+
+    .feature:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+    }
+
+    .theme-cyber-temple .feature:hover {
+      box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
     }
 
     .feature-icon {
@@ -446,16 +463,6 @@
       color: #555555;
     }
 
-    /* Анимация печати */
-    .typing {
-      animation: typing 0.1s steps(40, end);
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
     /* Мобильная версия */
     @media (max-width: 600px) {
       .container {
@@ -500,21 +507,25 @@
         height: 36px;
       }
 
-      /* На мобильных — фон скрыт */
+      /* На мобильных — фон не скрывается, но затемняется */
+      .container {
+        background: rgba(20, 10, 40, 0.9);
+      }
+
+      .theme-light .container {
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      .theme-cyber-temple .container {
+        background: rgba(10, 12, 30, 0.9);
+      }
+
       .background-elements {
-        display: none;
+        filter: brightness(0.7);
       }
 
-      body {
-        background: #0a051a;
-      }
-
-      .theme-light body {
-        background: #f0f0ff;
-      }
-
-      .theme-cyber-temple body {
-        background: #0a0c1a;
+      .tokyo-skyline {
+        height: 80px;
       }
     }
 
@@ -536,7 +547,7 @@
   <!-- Кнопка переключения тем -->
   <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
-  <!-- Фоновые элементы (видны только на ПК) -->
+  <!-- Фоновые элементы -->
   <div class="background-elements">
     <div class="tokyo-skyline"></div>
     <div class="cyber-temple-bg" style="display: none;"></div>
@@ -574,25 +585,30 @@
 
   <!-- Основной контент -->
   <div class="container">
-    <h1>Генератор ников и паролей — Ночной Токио</h1>
-    <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
+    <h1>Генератор ников и паролей</h1>
+    <p class="subtitle">— Ночной Токио</p>
+    <p style="text-align:center; font-size:14px; color:#b967ff; margin:5px 0;">
+      Создай уникальный ник или надёжный пароль за секунду
+    </p>
 
-    <div class="feature">
-      <div class="feature-icon">🔒</div>
-      <div class="feature-title">Безопасность</div>
-      <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
-    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">Безопасность</div>
+        <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
+      </div>
 
-    <div class="feature">
-      <div class="feature-icon">🎮</div>
-      <div class="feature-title">Крутое имя</div>
-      <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
-    </div>
+      <div class="feature">
+        <div class="feature-icon">🎮</div>
+        <div class="feature-title">Крутое имя</div>
+        <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
+      </div>
 
-    <div class="feature">
-      <div class="feature-icon">⚡</div>
-      <div class="feature-title">Мгновенно</div>
-      <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Мгновенно</div>
+        <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
+      </div>
     </div>
 
     <div class="tabs">
@@ -628,28 +644,28 @@
     function toggleTheme() {
       const body = document.body;
       const themeToggle = document.querySelector('.theme-toggle');
+      const subtitle = document.querySelector('.subtitle');
 
       if (currentTheme === 'night-tokyo') {
         body.className = 'theme-cyber-temple';
         themeToggle.innerHTML = '⛩️';
         currentTheme = 'cyber-temple';
-        document.querySelector('h1').textContent = 'Генератор ников и паролей — Храм Кибердзюдо';
+        subtitle.textContent = '— Храм Кибердзюдо';
         // Показать кибер-фон
         document.querySelector('.cyber-temple-bg').style.display = 'block';
-        // Запустить кандзи, если не запущены
         createKanjiFloats();
       } else if (currentTheme === 'cyber-temple') {
         body.className = 'theme-light';
         themeToggle.innerHTML = '☀️';
         currentTheme = 'light';
-        document.querySelector('h1').textContent = 'Генератор ников и паролей — Светлый стиль';
+        subtitle.textContent = '— Светлый стиль';
         // Скрыть кибер-фон
         document.querySelector('.cyber-temple-bg').style.display = 'none';
       } else {
         body.className = 'theme-night-tokyo';
         themeToggle.innerHTML = '🌙';
         currentTheme = 'night-tokyo';
-        document.querySelector('h1').textContent = 'Генератор ников и паролей — Ночной Токио';
+        subtitle.textContent = '— Ночной Токио';
         // Скрыть кибер-фон
         document.querySelector('.cyber-temple-bg').style.display = 'none';
       }
