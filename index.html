@@ -6,7 +6,7 @@
   
   <!-- SEO -->
   <meta name="description" content="Генератор безопасных паролей и крутых ников для подростков. Создай уникальный ник в стиле аниме или надёжный пароль за 1 клик. Работает в браузере — без регистрации и отправки данных.">
-  <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо, аниме школа">
+  <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо, FirewallXiaoKitsune">
   
   <title>Генератор ников и паролей — Ночной Токио</title>
   
@@ -57,6 +57,15 @@
       to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
+    /* Центрированный контент — без блока */
+    .centered {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      position: relative;
+      z-index: 10;
+    }
+
     /* Заголовки */
     h1 {
       text-align: center;
@@ -67,7 +76,7 @@
       color: transparent;
       text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
       letter-spacing: 1px;
-      margin: 40px 0 10px;
+      margin: 0 0 10px;
       animation: pulse 2s ease-in-out infinite;
     }
 
@@ -99,8 +108,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      margin: 20px auto;
-      padding: 0 20px;
+      margin: 20px 0;
     }
 
     .feature {
@@ -154,13 +162,12 @@
       color: #555555;
     }
 
-    /* Кнопки вкладок — в одной строке, слева и справа */
+    /* Кнопки вкладок — фиксированной ширины */
     .tabs {
       display: flex;
       justify-content: space-between;
       gap: 10px;
-      margin: 20px auto;
-      padding: 0 20px;
+      margin: 20px 0;
     }
 
     .tab-btn {
@@ -216,8 +223,7 @@
     /* Генератор — скрыт по умолчанию */
     .generator-block {
       display: none;
-      margin: 20px auto;
-      padding: 0 20px;
+      margin: 20px 0;
     }
 
     .generator-block.active {
@@ -329,8 +335,7 @@
       background: rgba(20, 10, 40, 0.5);
       padding: 10px;
       border-radius: 8px;
-      margin: 20px auto;
-      padding: 0 20px;
+      margin: 20px 0;
       font-size: 12px;
       text-align: center;
       color: #b967ff;
@@ -343,9 +348,15 @@
 
     /* Мобильная версия */
     @media (max-width: 600px) {
+      .centered {
+        margin: 10px 10px;
+        padding: 20px;
+        width: calc(100% - 20px);
+        max-width: 100%;
+      }
+
       h1 {
         font-size: 20px;
-        margin: 20px 0 10px;
       }
 
       .feature-title {
@@ -373,15 +384,7 @@
       }
 
       .features {
-        padding: 0 10px;
-      }
-
-      .generator-block {
-        padding: 0 10px;
-      }
-
-      .disclaimer {
-        padding: 0 10px;
+        gap: 10px;
       }
     }
 
@@ -477,6 +480,75 @@
       background: rgba(106, 13, 173, 0.5);
     }
 
+    /* Кнопка смены языка */
+    .lang-toggle {
+      position: fixed;
+      top: 20px;
+      right: 70px;
+      background: rgba(185, 103, 255, 0.3);
+      border: 1px solid #b967ff;
+      color: #e0d6ff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(185, 103, 255, 0.5);
+      transform: rotate(30deg);
+    }
+
+    .theme-light .lang-toggle {
+      background: rgba(106, 13, 173, 0.3);
+      border-color: #6a0dad;
+      color: #555555;
+    }
+
+    .theme-light .lang-toggle:hover {
+      background: rgba(106, 13, 173, 0.5);
+    }
+
+    /* Иллюстрация */
+    .illustration {
+      width: 150px;
+      height: 150px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><circle cx="75" cy="75" r="60" fill="%2300f7ff" opacity="0.3"/><path d="M75,15 L90,60 L135,60 L105,90 L120,135 L75,120 L30,135 L45,90 L15,60 L60,60 Z" fill="%2300aaff" stroke="%2300f7ff" stroke-width="2"/></svg>') no-repeat center;
+      background-size: cover;
+      margin: 20px auto;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 247, 255, 0.5);
+      box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+    }
+
+    .theme-light .illustration {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><circle cx="75" cy="75" r="60" fill="%236a0dad" opacity="0.3"/><path d="M75,15 L90,60 L135,60 L105,90 L120,135 L75,120 L30,135 L45,90 L15,60 L60,60 Z" fill="%234a0a8a" stroke="%236a0dad" stroke-width="2"/></svg>') no-repeat center;
+      border: 2px solid rgba(106, 13, 173, 0.5);
+      box-shadow: 0 0 20px rgba(106, 13, 173, 0.3);
+    }
+
+    /* Пасхалка */
+    .easter-egg {
+      display: none;
+      text-align: center;
+      font-size: 14px;
+      color: #ff57e0;
+      margin: 20px 0;
+      animation: flash 1s infinite;
+    }
+
+    @keyframes flash {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
     /* Подвал */
     footer {
       text-align: center;
@@ -514,56 +586,73 @@
     </script>
   </div>
 
-  <!-- Основной контент — на фоне -->
-  <h1>Генератор ников и паролей</h1>
-  <p class="subtitle">— Ночной Токио</p>
-  <p style="text-align:center; font-size:14px; color:#b967ff; margin:5px 0;">
-    Создай уникальный ник или надёжный пароль за секунду
-  </p>
+  <!-- Основной контент — на фоне, но центрирован -->
+  <div class="centered">
 
-  <div class="features">
-    <div class="feature">
-      <div class="feature-icon">🔒</div>
-      <div class="feature-title">Безопасность</div>
-      <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
+    <!-- Кнопки смены темы и языка -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
+
+    <h1>Генератор ников и паролей</h1>
+    <p class="subtitle">— Ночной Токио</p>
+    <p style="text-align:center; font-size:14px; color:#b967ff; margin:5px 0;">
+      Создай уникальный ник или надёжный пароль за секунду
+    </p>
+
+    <div class="counter">
+      🔥 Сгенерировано уже <span id="counter">10 000+</span> паролей и ников
     </div>
 
-    <div class="feature">
-      <div class="feature-icon">🎮</div>
-      <div class="feature-title">Крутое имя</div>
-      <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
+    <div class="illustration"></div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">Безопасность</div>
+        <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🎮</div>
+        <div class="feature-title">Крутое имя</div>
+        <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Мгновенно</div>
+        <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
+      </div>
     </div>
 
-    <div class="feature">
-      <div class="feature-icon">⚡</div>
-      <div class="feature-title">Мгновенно</div>
-      <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
+    <div class="tabs">
+      <button class="tab-btn" data-tab="password">🔑 Пароли</button>
+      <button class="tab-btn" data-tab="username">🎮 Ники</button>
     </div>
-  </div>
 
-  <div class="tabs">
-    <button class="tab-btn" data-tab="password">🔑 Пароли</button>
-    <button class="tab-btn" data-tab="username">🎮 Ники</button>
-  </div>
+    <!-- Блок генератора паролей -->
+    <div id="password-generator" class="generator-block">
+      <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
+      <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
+      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
+    </div>
 
-  <!-- Блок генератора паролей -->
-  <div id="password-generator" class="generator-block">
-    <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
-    <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
-  </div>
+    <!-- Блок генератора ников -->
+    <div id="username-generator" class="generator-block">
+      <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
+      <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
+      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
+    </div>
 
-  <!-- Блок генератора ников -->
-  <div id="username-generator" class="generator-block">
-    <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
-    <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
-  </div>
+    <div class="disclaimer">
+      Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
+    </div>
 
-  <div class="disclaimer">
-    Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
-  </div>
+    <div id="easter-egg" class="easter-egg">
+      🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>
+    </div>
 
-  <!-- Кнопка переключения темы -->
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  </div>
 
   <div id="notification" class="notification">Скопировано!</div>
 
@@ -572,10 +661,14 @@
   </audio>
 
   <footer>
-    © 2026 — SakuraChat. Все права защищены.
+    © 2026 — FirewallXiaoKitsune. Все права защищены.
   </footer>
 
   <script>
+    // === Счётчик генераций ===
+    let count = 10000 + Math.floor(Math.random() * 5000);
+    document.getElementById('counter').textContent = count.toLocaleString() + '+';
+
     // === Переключение темы ===
     let currentTheme = 'night-tokyo';
 
@@ -594,6 +687,52 @@
         themeToggle.innerHTML = '🌙';
         currentTheme = 'night-tokyo';
         subtitle.textContent = '— Ночной Токио';
+      }
+    }
+
+    // === Смена языка ===
+    let currentLang = 'ru';
+
+    function toggleLang() {
+      const langToggle = document.querySelector('.lang-toggle');
+      const subtitle = document.querySelector('.subtitle');
+
+      if (currentLang === 'ru') {
+        langToggle.innerHTML = '🇬🇧';
+        currentLang = 'en';
+        document.querySelector('h1').textContent = 'Nickname & Password Generator';
+        subtitle.textContent = '— Night Tokyo';
+        document.querySelector('.counter').innerHTML = '🔥 Already generated <span id="counter">10 000+</span> passwords and nicknames';
+        document.querySelectorAll('.feature-title')[0].textContent = 'Security';
+        document.querySelectorAll('.feature-text')[0].textContent = 'All data is generated locally. No one sees your passwords.';
+        document.querySelectorAll('.feature-title')[1].textContent = 'Cool Name';
+        document.querySelectorAll('.feature-text')[1].textContent = 'Nick for TikTok, Discord, Steam — in anime, hacker, cyberpunk style.';
+        document.querySelectorAll('.feature-title')[2].textContent = 'Instantly';
+        document.querySelectorAll('.feature-text')[2].textContent = 'Click — get. No waiting, no loading.';
+        document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Passwords';
+        document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Nicknames';
+        document.querySelector('#password-generator .btn').textContent = 'Generate secure password';
+        document.querySelector('#username-generator .btn').textContent = 'Invent cool nickname';
+        document.querySelector('.disclaimer').textContent = 'All data is processed exclusively in your browser. The project does not store or send your data.';
+        document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. All rights reserved.';
+      } else {
+        langToggle.innerHTML = '🇷🇺';
+        currentLang = 'ru';
+        document.querySelector('h1').textContent = 'Генератор ников и паролей';
+        subtitle.textContent = '— Ночной Токио';
+        document.querySelector('.counter').innerHTML = '🔥 Сгенерировано уже <span id="counter">10 000+</span> паролей и ников';
+        document.querySelectorAll('.feature-title')[0].textContent = 'Безопасность';
+        document.querySelectorAll('.feature-text')[0].textContent = 'Все данные генерируются локально. Никто не видит твои пароли.';
+        document.querySelectorAll('.feature-title')[1].textContent = 'Крутое имя';
+        document.querySelectorAll('.feature-text')[1].textContent = 'Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.';
+        document.querySelectorAll('.feature-title')[2].textContent = 'Мгновенно';
+        document.querySelectorAll('.feature-text')[2].textContent = 'Нажал — получил. Без ожидания, без загрузки.';
+        document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Пароли';
+        document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Ники';
+        document.querySelector('#password-generator .btn').textContent = 'Сгенерировать надёжный пароль';
+        document.querySelector('#username-generator .btn').textContent = 'Придумать крутой ник';
+        document.querySelector('.disclaimer').textContent = 'Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.';
+        document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. Все права защищены.';
       }
     }
 
@@ -698,6 +837,16 @@
           clearInterval(timer);
         }
       }, 30);
+
+      // Пасхалка — если нажать 5 раз на "Ники"
+      if (currentLang === 'ru') {
+        if (!window.nickClickCount) window.nickClickCount = 0;
+        window.nickClickCount++;
+        if (window.nickClickCount >= 5) {
+          document.getElementById('easter-egg').style.display = 'block';
+          document.getElementById('secret-nick').textContent = '_sakura_neko_' + Math.floor(Math.random() * 1000);
+        }
+      }
     }
 
     // === Копирование ===
@@ -714,6 +863,27 @@
         });
       });
     });
+
+    // === Поделиться ===
+    function shareSite() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Генератор ников и паролей',
+          text: 'Создай уникальный ник или надёжный пароль за секунду!',
+          url: window.location.href
+        });
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          const notif = document.getElementById('notification');
+          notif.textContent = 'Ссылка скопирована!';
+          notif.classList.add('show');
+          setTimeout(() => {
+            notif.classList.remove('show');
+            notif.textContent = 'Скопировано!';
+          }, 2000);
+        });
+      }
+    }
   </script>
 </body>
 </html>
