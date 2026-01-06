@@ -70,11 +70,21 @@
       margin: 40px 0 10px;
     }
 
+    .theme-light h1 {
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+      text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+      color: #333333 !important;
+    }
+
     .subtitle {
       text-align: center;
       font-size: 14px;
       color: #b967ff;
       margin-bottom: 20px;
+    }
+
+    .theme-light .subtitle {
+      color: #6a0dad;
     }
 
     /* Блоки фич — как на скриншоте */
@@ -83,7 +93,6 @@
       flex-direction: column;
       gap: 15px;
       margin: 20px auto;
-      max-width: 600px;
       padding: 0 20px;
     }
 
@@ -96,10 +105,19 @@
       transition: all 0.3s;
     }
 
+    .theme-light .feature {
+      background: rgba(200, 200, 255, 0.3);
+      border: 1px solid rgba(140, 80, 200, 0.2);
+    }
+
     .feature-icon {
       font-size: 28px;
       margin-bottom: 8px;
       color: #b967ff;
+    }
+
+    .theme-light .feature-icon {
+      color: #6a0dad;
     }
 
     .feature-title {
@@ -113,13 +131,16 @@
       line-height: 1.4;
     }
 
+    .theme-light .feature-text {
+      color: #555555;
+    }
+
     /* Кнопки вкладок — в одной строке, слева и справа */
     .tabs {
       display: flex;
       justify-content: space-between;
       gap: 10px;
       margin: 20px auto;
-      max-width: 600px;
       padding: 0 20px;
     }
 
@@ -138,6 +159,11 @@
       text-align: center;
     }
 
+    .theme-light .tab-btn {
+      border-color: #6a0dad;
+      color: #555555;
+    }
+
     .tab-btn::before {
       content: '';
       position: absolute;
@@ -146,6 +172,10 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, #ff57e0, transparent);
+    }
+
+    .theme-light .tab-btn::before {
+      background: linear-gradient(90deg, transparent, #6a0dad, transparent);
     }
 
     .tab-btn:hover::before {
@@ -158,11 +188,16 @@
       border-color: transparent;
     }
 
+    .theme-light .tab-btn.active {
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
     /* Генератор — скрыт по умолчанию */
     .generator-block {
       display: none;
       margin: 20px auto;
-      max-width: 600px;
       padding: 0 20px;
     }
 
@@ -186,9 +221,20 @@
       box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
     }
 
+    .theme-light .output {
+      background: rgba(240, 240, 255, 0.8);
+      border-color: #a0a0d0;
+      color: #333333;
+    }
+
     .output:focus {
       box-shadow: 0 0 20px rgba(185, 103, 255, 0.4);
       border-color: #b967ff;
+    }
+
+    .theme-light .output:focus {
+      box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+      border-color: #6a0dad;
     }
 
     .btn {
@@ -209,9 +255,17 @@
       box-shadow: 0 5px 15px rgba(185, 103, 255, 0.25);
     }
 
+    .theme-light .btn {
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+    }
+
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(185, 103, 255, 0.5);
+    }
+
+    .theme-light .btn:hover {
+      box-shadow: 0 8px 25px rgba(106, 13, 173, 0.5);
     }
 
     .btn::after {
@@ -243,6 +297,10 @@
       box-shadow: 0 0 15px rgba(185, 103, 255, 0.4);
     }
 
+    .theme-light .notification {
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+    }
+
     .notification.show {
       opacity: 1;
       transform: translateY(0);
@@ -253,11 +311,15 @@
       padding: 10px;
       border-radius: 8px;
       margin: 20px auto;
-      max-width: 600px;
       padding: 0 20px;
       font-size: 12px;
       text-align: center;
       color: #b967ff;
+    }
+
+    .theme-light .disclaimer {
+      background: rgba(200, 200, 255, 0.4);
+      color: #555555;
     }
 
     /* Мобильная версия */
@@ -311,8 +373,9 @@
     }
 
     .theme-light h1 {
-      background: linear-gradient(90deg, #b967ff, #6a0dad);
-      text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+      text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+      color: #333333 !important;
     }
 
     .theme-light .subtitle {
@@ -339,8 +402,8 @@
     }
 
     .theme-light .output:focus {
-      box-shadow: 0 0 20px rgba(185, 103, 255, 0.4);
-      border-color: #b967ff;
+      box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+      border-color: #6a0dad;
     }
 
     .theme-light .btn {
@@ -348,7 +411,7 @@
     }
 
     .theme-light .btn:hover {
-      box-shadow: 0 8px 25px rgba(185, 103, 255, 0.5);
+      box-shadow: 0 8px 25px rgba(106, 13, 173, 0.5);
     }
 
     .theme-light .notification {
