@@ -68,6 +68,13 @@
       text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
       letter-spacing: 1px;
       margin: 40px 0 10px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
     }
 
     .theme-light h1 {
@@ -103,6 +110,13 @@
       border: 1px solid rgba(140, 80, 200, 0.3);
       text-align: center;
       transition: all 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .feature:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
     }
 
     .theme-light .feature {
@@ -114,6 +128,11 @@
       font-size: 28px;
       margin-bottom: 8px;
       color: #b967ff;
+      transition: transform 0.3s;
+    }
+
+    .feature:hover .feature-icon {
+      transform: scale(1.1);
     }
 
     .theme-light .feature-icon {
@@ -457,6 +476,20 @@
     .theme-light .theme-toggle:hover {
       background: rgba(106, 13, 173, 0.5);
     }
+
+    /* Подвал */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #887dff;
+      font-size: 12px;
+      border-top: 1px solid rgba(140, 80, 200, 0.2);
+      margin-top: 40px;
+    }
+
+    .theme-light footer {
+      color: #555555;
+    }
   </style>
 </head>
 <body>
@@ -537,6 +570,10 @@
   <audio id="copy-sound" preload="auto">
     <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAA" type="audio/wav">
   </audio>
+
+  <footer>
+    © 2026 — SakuraChat. Все права защищены.
+  </footer>
 
   <script>
     // === Переключение темы ===
