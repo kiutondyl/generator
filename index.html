@@ -6,7 +6,7 @@
   
   <!-- SEO -->
   <meta name="description" content="Генератор безопасных паролей и крутых ников для подростков. Создай уникальный ник в стиле аниме или надёжный пароль за 1 клик. Работает в браузере — без регистрации и отправки данных.">
-  <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо">
+  <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо, аниме школа">
   
   <title>Генератор ников и паролей — Ночной Токио</title>
   
@@ -57,20 +57,6 @@
       to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
-    /* Основной контент — плавающая рамка */
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
-      position: relative;
-      z-index: 10;
-      background: rgba(20, 10, 40, 0.8);
-      border-radius: 16px;
-      border: 1px solid rgba(140, 80, 200, 0.4);
-      box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
-      backdrop-filter: blur(10px);
-    }
-
     /* Заголовки */
     h1 {
       text-align: center;
@@ -81,7 +67,7 @@
       color: transparent;
       text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
       letter-spacing: 1px;
-      margin-bottom: 10px;
+      margin: 40px 0 10px;
     }
 
     .subtitle {
@@ -96,7 +82,9 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      margin: 20px 0;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 0 20px;
     }
 
     .feature {
@@ -130,7 +118,9 @@
       display: flex;
       justify-content: space-between;
       gap: 10px;
-      margin: 20px 0;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 0 20px;
     }
 
     .tab-btn {
@@ -171,12 +161,9 @@
     /* Генератор — скрыт по умолчанию */
     .generator-block {
       display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: rgba(30, 15, 50, 0.6);
-      border-radius: 12px;
-      border: 1px solid #6a3a9a;
-      box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 0 20px;
     }
 
     .generator-block.active {
@@ -265,7 +252,9 @@
       background: rgba(20, 10, 40, 0.5);
       padding: 10px;
       border-radius: 8px;
-      margin-top: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 0 20px;
       font-size: 12px;
       text-align: center;
       color: #b967ff;
@@ -273,16 +262,9 @@
 
     /* Мобильная версия */
     @media (max-width: 600px) {
-      .container {
-        margin: 10px 10px;
-        padding: 20px;
-        width: calc(100% - 20px);
-        max-width: 100%;
-        border-radius: 12px;
-      }
-
       h1 {
         font-size: 20px;
+        margin: 20px 0 10px;
       }
 
       .feature-title {
@@ -308,6 +290,109 @@
         font-size: 14px;
         padding: 10px;
       }
+
+      .features {
+        padding: 0 10px;
+      }
+
+      .generator-block {
+        padding: 0 10px;
+      }
+
+      .disclaimer {
+        padding: 0 10px;
+      }
+    }
+
+    /* Светлая тема — Аниме-школа */
+    .theme-light {
+      background: linear-gradient(135deg, #f0f0ff, #e0e6ff, #f0f0ff);
+      color: #333333;
+    }
+
+    .theme-light h1 {
+      background: linear-gradient(90deg, #b967ff, #6a0dad);
+      text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
+    }
+
+    .theme-light .subtitle {
+      color: #6a0dad;
+    }
+
+    .theme-light .feature {
+      background: rgba(200, 200, 255, 0.3);
+      border: 1px solid rgba(140, 80, 200, 0.2);
+    }
+
+    .theme-light .feature-icon {
+      color: #6a0dad;
+    }
+
+    .theme-light .feature-text {
+      color: #555555;
+    }
+
+    .theme-light .output {
+      background: rgba(240, 240, 255, 0.8);
+      border-color: #a0a0d0;
+      color: #333333;
+    }
+
+    .theme-light .output:focus {
+      box-shadow: 0 0 20px rgba(185, 103, 255, 0.4);
+      border-color: #b967ff;
+    }
+
+    .theme-light .btn {
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+    }
+
+    .theme-light .btn:hover {
+      box-shadow: 0 8px 25px rgba(185, 103, 255, 0.5);
+    }
+
+    .theme-light .notification {
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+    }
+
+    .theme-light .disclaimer {
+      background: rgba(200, 200, 255, 0.4);
+      color: #555555;
+    }
+
+    /* Кнопка переключения темы */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(185, 103, 255, 0.3);
+      border: 1px solid #b967ff;
+      color: #e0d6ff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(185, 103, 255, 0.5);
+      transform: rotate(30deg);
+    }
+
+    .theme-light .theme-toggle {
+      background: rgba(106, 13, 173, 0.3);
+      border-color: #6a0dad;
+      color: #555555;
+    }
+
+    .theme-light .theme-toggle:hover {
+      background: rgba(106, 13, 173, 0.5);
     }
   </style>
 </head>
@@ -333,54 +418,52 @@
     </script>
   </div>
 
-  <!-- Основной контент -->
-  <div class="container">
-    <h1>Генератор ников и паролей</h1>
-    <p class="subtitle">— Ночной Токио</p>
-    <p style="text-align:center; font-size:14px; color:#b967ff; margin:5px 0;">
-      Создай уникальный ник или надёжный пароль за секунду
-    </p>
+  <!-- Основной контент — на фоне -->
+  <h1>Генератор ников и паролей</h1>
+  <p class="subtitle">— Ночной Токио</p>
+  <p style="text-align:center; font-size:14px; color:#b967ff; margin:5px 0;">
+    Создай уникальный ник или надёжный пароль за секунду
+  </p>
 
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <div class="feature-title">Безопасность</div>
-        <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">🎮</div>
-        <div class="feature-title">Крутое имя</div>
-        <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-title">Мгновенно</div>
-        <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
-      </div>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Безопасность</div>
+      <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
     </div>
 
-    <div class="tabs">
-      <button class="tab-btn" data-tab="password">🔑 Пароли</button>
-      <button class="tab-btn" data-tab="username">🎮 Ники</button>
+    <div class="feature">
+      <div class="feature-icon">🎮</div>
+      <div class="feature-title">Крутое имя</div>
+      <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
     </div>
 
-    <!-- Блок генератора паролей -->
-    <div id="password-generator" class="generator-block">
-      <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
-      <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Мгновенно</div>
+      <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
     </div>
+  </div>
 
-    <!-- Блок генератора ников -->
-    <div id="username-generator" class="generator-block">
-      <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
-      <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
-    </div>
+  <div class="tabs">
+    <button class="tab-btn" data-tab="password">🔑 Пароли</button>
+    <button class="tab-btn" data-tab="username">🎮 Ники</button>
+  </div>
 
-    <div class="disclaimer">
-      Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
-    </div>
+  <!-- Блок генератора паролей -->
+  <div id="password-generator" class="generator-block">
+    <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
+    <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
+  </div>
+
+  <!-- Блок генератора ников -->
+  <div id="username-generator" class="generator-block">
+    <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
+    <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
+  </div>
+
+  <div class="disclaimer">
+    Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
   </div>
 
   <div id="notification" class="notification">Скопировано!</div>
@@ -390,6 +473,26 @@
   </audio>
 
   <script>
+    // === Переключение темы ===
+    let currentTheme = 'night-tokyo';
+
+    function toggleTheme() {
+      const body = document.body;
+      const themeToggle = document.querySelector('.theme-toggle');
+
+      if (currentTheme === 'night-tokyo') {
+        body.className = 'theme-light';
+        themeToggle.innerHTML = '☀️';
+        currentTheme = 'light';
+        document.querySelector('.subtitle').textContent = '— Аниме-школа';
+      } else {
+        body.className = 'theme-night-tokyo';
+        themeToggle.innerHTML = '🌙';
+        currentTheme = 'night-tokyo';
+        document.querySelector('.subtitle').textContent = '— Ночной Токио';
+      }
+    }
+
     // === Логика переключения вкладок ===
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
