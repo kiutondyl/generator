@@ -632,13 +632,13 @@
     }
 
     .unique-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #b967ff;
-      padding: 15px;
-      border-radius: 12px;
-      color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #100b30; /* Базовый фон, как в темной теме */
+    padding: 15px;
+    border-radius: 12px;
+    color: #b967ff; /* Базовый цвет текста, как в темной теме */
     }
 
     .theme-light .unique-box {
@@ -1031,9 +1031,9 @@
       color: #555555;
     }
 
-    /* Убираем фиолетовую полосу в шапке светлой темы */
+    /* Убираем фиолетовую полосу в шапке светлой темы - делаем фон прозрачным */
     .theme-light .site-header {
-      background: rgba(20, 10, 40, 0.7);
+      background: transparent;
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(140, 80, 200, 0.2);
     }
