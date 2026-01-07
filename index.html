@@ -99,10 +99,11 @@
 
     <!-- === НОВЫЕ РАЗДЕЛЫ === -->
 
-    <!-- Раздел с иллюстрацией -->
-    <div class="section-illustration">
-      <div class="illustration-content">
-        <h2>✨ Уникальные и безопасные</h2>
+    <!-- Раздел "Уникальные и безопасные" -->
+    <div class="section-unique">
+      <div class="unique-content">
+        <div class="unique-icon">✨</div>
+        <h2>Уникальные и безопасные</h2>
         <p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
       </div>
     </div>
@@ -126,7 +127,7 @@
       </div>
     </div>
 
-    <!-- Раздел "Преимущества" -->
+    <!-- Раздел "Почему выбирают нас?" -->
     <div class="section-benefits">
       <h3>Почему выбирают нас?</h3>
       <div class="benefits">
@@ -608,47 +609,62 @@
 
     /* === НОВЫЕ РАЗДЕЛЫ === */
 
-    /* Раздел с иллюстрацией */
-    .section-illustration {
+    /* Раздел "Уникальные и безопасные" */
+    .section-unique {
       width: 100%;
-      height: 200px;
-      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%230a051a;stop-opacity:1"/><stop offset="100%" style="stop-color:%236a0dad;stop-opacity:1"/></linearGradient></defs><rect width="800" height="200" fill="url(%23grad)"/><path d="M0,150 Q200,50 400,150 T800,150 L800,200 L0,200 Z" fill="rgba(0,247,255,0.1)"/><circle cx="100" cy="80" r="3" fill="%2300f7ff" opacity="0.5"/><circle cx="300" cy="60" r="2" fill="%23b967ff" opacity="0.5"/><circle cx="500" cy="90" r="4" fill="%2300f7ff" opacity="0.5"/><circle cx="700" cy="70" r="2" fill="%23b967ff" opacity="0.5"/></svg>') no-repeat center;
-      background-size: cover;
-      margin: 40px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
+      background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
+      padding: 20px;
       border-radius: 16px;
+      margin: 40px 0;
+      text-align: center;
+      color: #e0d6ff;
       box-shadow: 0 0 30px rgba(106, 13, 173, 0.3);
     }
 
-    .theme-light .section-illustration {
-      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f0f0ff;stop-opacity:1"/><stop offset="100%" style="stop-color:%236a0dad;stop-opacity:1"/></linearGradient></defs><rect width="800" height="200" fill="url(%23grad)"/><path d="M0,150 Q200,50 400,150 T800,150 L800,200 L0,200 Z" fill="rgba(106, 13, 173,0.1)"/><circle cx="100" cy="80" r="3" fill="%236a0dad" opacity="0.5"/><circle cx="300" cy="60" r="2" fill="%23b967ff" opacity="0.5"/><circle cx="500" cy="90" r="4" fill="%236a0dad" opacity="0.5"/><circle cx="700" cy="70" r="2" fill="%23b967ff" opacity="0.5"/></svg>') no-repeat center;
+    .theme-light .section-unique {
+      background: linear-gradient(135deg, #f0f0ff, #e0e6ff, #f0f0ff);
+      color: #333333;
       box-shadow: 0 0 30px rgba(106, 13, 173, 0.2);
     }
 
-    .illustration-content h2 {
+    .unique-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .unique-icon {
       font-size: 24px;
+      color: #b967ff;
+    }
+
+    .theme-light .unique-icon {
+      color: #6a0dad;
+    }
+
+    .unique-content h2 {
+      font-size: 20px;
       background: linear-gradient(90deg, #ff57e0, #b967ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 10px;
+      margin: 0;
     }
 
-    .theme-light .illustration-content h2 {
+    .theme-light .unique-content h2 {
       background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+      color: #333333 !important;
     }
 
-    .illustration-content p {
-      font-size: 16px;
-      color: #e0d6ff;
+    .unique-content p {
+      font-size: 14px;
+      color: #c0b6ff;
+      margin: 0 0 0 10px;
     }
 
-    .theme-light .illustration-content p {
-      color: #333333;
+    .theme-light .unique-content p {
+      color: #555555;
     }
 
     /* Раздел "Как это работает?" */
@@ -706,7 +722,7 @@
       color: #555555;
     }
 
-    /* Раздел "Преимущества" */
+    /* Раздел "Почему выбирают нас?" */
     .section-benefits {
       margin: 40px 0;
       text-align: center;
@@ -876,16 +892,55 @@
         max-width: 250px;
       }
 
-      .section-illustration {
-        height: 150px;
+      .section-unique {
+        padding: 15px;
       }
 
-      .illustration-content h2 {
+      .unique-content {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .unique-icon {
         font-size: 20px;
       }
 
-      .illustration-content p {
+      .unique-content h2 {
+        font-size: 18px;
+      }
+
+      .unique-content p {
+        font-size: 12px;
+        margin: 5px 0 0;
+      }
+
+      .section-how-it-works h3,
+      .section-benefits h3 {
+        font-size: 18px;
+      }
+
+      .step-number {
+        font-size: 20px;
+      }
+
+      .step-text {
+        font-size: 12px;
+      }
+
+      .benefit-title {
         font-size: 14px;
+      }
+
+      .benefit-desc {
+        font-size: 10px;
+      }
+
+      .section-security-tips h3 {
+        font-size: 18px;
+      }
+
+      .section-security-tips li {
+        font-size: 12px;
       }
     }
 
@@ -1023,8 +1078,8 @@
         document.querySelectorAll('.section-security-tips li')[0].textContent = 'Do not use common words in passwords';
         document.querySelectorAll('.section-security-tips li')[1].textContent = 'Change passwords every 3-6 months';
         document.querySelectorAll('.section-security-tips li')[2].textContent = 'Do not use the same passwords for different services';
-        document.querySelector('.illustration-content h2').textContent = '✨ Unique and secure';
-        document.querySelector('.illustration-content p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
+        document.querySelector('.unique-content h2').textContent = 'Unique and secure';
+        document.querySelector('.unique-content p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
       } else {
         langToggle.innerHTML = '🇷🇺';
         currentLang = 'ru';
@@ -1061,8 +1116,8 @@
         document.querySelectorAll('.section-security-tips li')[0].textContent = 'Не используй общие слова в паролях';
         document.querySelectorAll('.section-security-tips li')[1].textContent = 'Меняй пароли каждые 3-6 месяцев';
         document.querySelectorAll('.section-security-tips li')[2].textContent = 'Не используй одинаковые пароли для разных сервисов';
-        document.querySelector('.illustration-content h2').textContent = '✨ Уникальные и безопасные';
-        document.querySelector('.illustration-content p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
+        document.querySelector('.unique-content h2').textContent = 'Уникальные и безопасные';
+        document.querySelector('.unique-content p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
       }
     }
 
