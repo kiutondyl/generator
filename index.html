@@ -1,1261 +1,1057 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
-  <!-- SEO -->
-  <meta name="description" content="Генератор безопасных паролей и крутых ников для подростков. Создай уникальный ник в стиле аниме или надёжный пароль за 1 клик. Работает в браузере — без регистрации и отправки данных.">
-  <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо, FirewallXiaoKitsune">
-  
-  <title>Генератор ников и паролей</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="logo.png">
-
-  <!-- Шрифт -->
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
-  
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- SEO -->
+<meta name="description" content="Генератор безопасных паролей и крутых ников для подростков. Создай уникальный ник в стиле аниме или надёжный пароль за 1 клик. Работает в браузере — без регистрации и отправки данных.">
+<meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо, FirewallXiaoKitsune">
+<title>Генератор ников и паролей</title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="logo.png">
+<!-- Шрифт -->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- ШАПКА САЙТА -->
-  <header class="site-header">
-    <div class="header-content">
-      <h1>Генератор ников и паролей</h1>
-      <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
-    </div>
-    <div class="header-actions">
-      <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
-      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    </div>
-  </header>
-
-  <!-- Фоновые элементы -->
-  <div class="background-elements">
-    <script>
-      function createSakuraPetals() {
-        setInterval(() => {
-          if (Math.random() > 0.8) return;
-          const petal = document.createElement('div');
-          petal.className = 'sakura-petal';
-          petal.innerText = '🌸';
-          petal.style.left = Math.random() * 100 + 'vw';
-          petal.style.fontSize = (16 + Math.random() * 16) + 'px';
-          petal.style.opacity = 0.3 + Math.random() * 0.4;
-          document.body.appendChild(petal);
-          setTimeout(() => petal.remove(), 20000);
-        }, 1000);
-      }
-      createSakuraPetals();
-    </script>
-  </div>
-
-  <!-- Основной контент -->
-  <div class="centered">
-
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <div class="feature-title">Безопасность</div>
-        <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">🎮</div>
-        <div class="feature-title">Крутое имя</div>
-        <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-title">Мгновенно</div>
-        <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
-      </div>
-    </div>
-
-    <div class="tabs">
-      <button class="tab-btn" data-tab="password">🔑 Пароли</button>
-      <button class="tab-btn" data-tab="username">🎮 Ники</button>
-    </div>
-
-    <!-- Блок генератора паролей -->
-    <div id="password-generator" class="generator-block">
-      <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
-      <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
-      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
-    </div>
-
-    <!-- Блок генератора ников -->
-    <div id="username-generator" class="generator-block">
-      <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
-      <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
-      <div id="easter-egg" class="easter-egg">
-        🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>
-      </div>
-      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
-    </div>
-
-    <div class="disclaimer">
-      Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
-    </div>
-
-    <!-- === НОВЫЕ РАЗДЕЛЫ === -->
-
-    <!-- Раздел "Уникальные и безопасные" -->
-    <div class="section-unique">
-      <div class="unique-container">
-        <div class="unique-box">
-          <div class="unique-icon">✨</div>
-          <div class="unique-text">
-            <h2>Уникальные и безопасные</h2>
-            <p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Раздел "Как это работает?" -->
-    <div class="section-how-it-works">
-      <h3>Как это работает?</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <div class="step-text">Выбери тип: пароль или ник</div>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <div class="step-text">Нажми "Сгенерировать"</div>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <div class="step-text">Получи уникальный результат</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Раздел "Почему выбирают нас?" -->
-    <div class="section-benefits">
-      <h3>Почему выбирают нас?</h3>
-      <div class="benefits">
-        <div class="benefit">
-          <div class="benefit-icon">🔒</div>
-          <div class="benefit-title">Безопасность</div>
-          <div class="benefit-desc">Нет серверов — всё в твоём браузере</div>
-        </div>
-        <div class="benefit">
-          <div class="benefit-icon">⚡</div>
-          <div class="benefit-title">Мгновенно</div>
-          <div class="benefit-desc">Генерация за 1 клик</div>
-        </div>
-        <div class="benefit">
-          <div class="benefit-icon">🎮</div>
-          <div class="benefit-title">Стильно</div>
-          <div class="benefit-desc">Аниме, киберпанк, хакер</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Раздел "Советы по безопасности" -->
-    <div class="section-security-tips">
-      <h3>Советы по безопасности</h3>
-      <ul>
-        <li>Не используй общие слова в паролях</li>
-        <li>Меняй пароли каждые 3-6 месяцев</li>
-        <li>Не используй одинаковые пароли для разных сервисов</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div id="notification" class="notification">Скопировано!</div>
-
-  <audio id="copy-sound" preload="auto">
-    <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAA" type="audio/wav">
-  </audio>
-
-  <footer>
-    © 2026 — FirewallXiaoKitsune. Все права защищены.
-  </footer>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
-      color: #e0d6ff;
-      transition: background 0.5s;
-    }
-
-    /* Фоновые элементы */
-    .background-elements {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .sakura-petal {
-      position: absolute;
-      top: -50px;
-      font-size: 24px;
-      color: rgba(255, 180, 255, 0.6);
-      user-select: none;
-      pointer-events: none;
-      z-index: 0;
-      animation: fall 15s linear infinite;
-    }
-
-    @keyframes fall {
-      from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
-      to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
-    }
-
-    /* ШАПКА САЙТА — теперь не прилипает при прокрутке */
-      .site-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 30px;
-      background: rgba(20, 10, 40, 0.7);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(140, 80, 200, 0.2);
-    }
-
-    .header-content {
+<!-- ШАПКА САЙТА -->
+<header class="site-header">
+<div class="header-content">
+<h1>Генератор ников и паролей</h1>
+<p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
+</div>
+<div class="header-actions">
+<button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+</div>
+</header>
+<!-- Фоновые элементы -->
+<div class="background-elements">
+<script>
+function createSakuraPetals() {
+setInterval(() => {
+if (Math.random() > 0.8) return;
+const petal = document.createElement('div');
+petal.className = 'sakura-petal';
+petal.innerText = '🌸';
+petal.style.left = Math.random() * 100 + 'vw';
+petal.style.fontSize = (16 + Math.random() * 16) + 'px';
+petal.style.opacity = 0.3 + Math.random() * 0.4;
+document.body.appendChild(petal);
+setTimeout(() => petal.remove(), 20000);
+}, 1000);
+}
+createSakuraPetals();
+</script>
+</div>
+<!-- Основной контент -->
+<div class="centered">
+<div class="features">
+<div class="feature">
+<div class="feature-icon">🔒</div>
+<div class="feature-title">Безопасность</div>
+<div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
+</div>
+<div class="feature">
+<div class="feature-icon">🎮</div>
+<div class="feature-title">Крутое имя</div>
+<div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
+</div>
+<div class="feature">
+<div class="feature-icon">⚡</div>
+<div class="feature-title">Мгновенно</div>
+<div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
+</div>
+</div>
+<div class="tabs">
+<button class="tab-btn" data-tab="password">🔑 Пароли</button>
+<button class="tab-btn" data-tab="username">🎮 Ники</button>
+</div>
+<!-- Блок генератора паролей -->
+<div id="password-generator" class="generator-block">
+<input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
+<button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
+<button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
+</div>
+<!-- Блок генератора ников -->
+<div id="username-generator" class="generator-block">
+<input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
+<button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
+<div id="easter-egg" class="easter-egg">
+🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>
+</div>
+<button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
+</div>
+<div class="disclaimer">
+Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
+</div>
+<!-- === НОВЫЕ РАЗДЕЛЫ === -->
+<!-- Раздел "Уникальные и безопасные" -->
+<div class="section-unique">
+<div class="unique-container">
+<div class="unique-box">
+<div class="unique-icon">✨</div>
+<div class="unique-text">
+<h2>Уникальные и безопасные</h2>
+<p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Раздел "Как это работает?" -->
+<div class="section-how-it-works">
+<h3>Как это работает?</h3>
+<div class="steps">
+<div class="step">
+<div class="step-number">1</div>
+<div class="step-text">Выбери тип: пароль или ник</div>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<div class="step-text">Нажми "Сгенерировать"</div>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<div class="step-text">Получи уникальный результат</div>
+</div>
+</div>
+</div>
+<!-- Раздел "Почему выбирают нас?" -->
+<div class="section-benefits">
+<h3>Почему выбирают нас?</h3>
+<div class="benefits">
+<div class="benefit">
+<div class="benefit-icon">🔒</div>
+<div class="benefit-title">Безопасность</div>
+<div class="benefit-desc">Нет серверов — всё в твоём браузере</div>
+</div>
+<div class="benefit">
+<div class="benefit-icon">⚡</div>
+<div class="benefit-title">Мгновенно</div>
+<div class="benefit-desc">Генерация за 1 клик</div>
+</div>
+<div class="benefit">
+<div class="benefit-icon">🎮</div>
+<div class="benefit-title">Стильно</div>
+<div class="benefit-desc">Аниме, киберпанк, хакер</div>
+</div>
+</div>
+</div>
+<!-- Раздел "Советы по безопасности" -->
+<div class="section-security-tips">
+<h3>Советы по безопасности</h3>
+<ul>
+<li>Не используй общие слова в паролях</li>
+<li>Меняй пароли каждые 3-6 месяцев</li>
+<li>Не используй одинаковые пароли для разных сервисов</li>
+</ul>
+</div>
+</div>
+<div id="notification" class="notification">Скопировано!</div>
+<audio id="copy-sound" preload="auto">
+<source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAA" type="audio/wav">
+</audio>
+<footer>
+© 2026 — FirewallXiaoKitsune. Все права защищены.
+</footer>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'JetBrains Mono', monospace;
+}
+body {
+min-height: 100vh;
+overflow-x: hidden;
+position: relative;
+background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
+color: #e0d6ff;
+transition: background 0.5s;
+}
+/* Фоновые элементы */
+.background-elements {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+pointer-events: none;
+}
+.sakura-petal {
+position: absolute;
+top: -50px;
+font-size: 24px;
+color: rgba(255, 180, 255, 0.6);
+user-select: none;
+pointer-events: none;
+z-index: 0;
+animation: fall 15s linear infinite;
+}
+@keyframes fall {
+from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+}
+/* ШАПКА САЙТА — полностью прозрачная, без размытого фона */
+.site-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 30px;
+background: transparent;
+border-bottom: none;
+}
+.header-content {
 text-align: center;
-/* Убираем flex: 1, чтобы ширина зависела от контента */
-/* Добавляем отступы по бокам */
 padding: 0 20px;
-/* Ограничиваем максимальную ширину, чтобы линия не тянулась на весь экран */
 max-width: 500px;
-/* Центрируем содержимое внутри этого контейнера */
 margin: 0 auto;
 }
-
-    .header-content h1 {
-      text-align: center;
-      font-size: 20px;
-      color: #b967ff; /* Светло-фиолетовый — как ты просила */
-      letter-spacing: 1px;
-      margin: 0;
-    }
-
-    .theme-light .header-content h1 {
-      color: #6a0dad; /* В светлой теме — тёмно-фиолетовый */
-    }
-
-    .header-content .subtitle {
-      text-align: center;
-      font-size: 12px;
-      color: #b967ff; /* Светло-фиолетовый */
-      margin: 5px 0 0;
-    }
-
-    .theme-light .header-content .subtitle {
-      color: #6a0dad; /* В светлой теме — тёмно-фиолетовый */
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .lang-toggle, .theme-toggle {
-      background: rgba(185, 103, 255, 0.3);
-      border: 1px solid #b967ff;
-      color: #e0d6ff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.3s;
-    }
-
-    .lang-toggle:hover, .theme-toggle:hover {
-      background: rgba(185, 103, 255, 0.5);
-      transform: rotate(30deg);
-    }
-
-    .theme-light .lang-toggle, .theme-light .theme-toggle {
-      background: rgba(106, 13, 173, 0.3);
-      border-color: #6a0dad;
-      color: #555555;
-    }
-
-    .theme-light .lang-toggle:hover, .theme-light .theme-toggle:hover {
-      background: rgba(106, 13, 173, 0.5);
-    }
-
-    /* Центрированный контент */
-    .centered {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
-      position: relative;
-      z-index: 10;
-    }
-
-    /* Блоки фич */
-    .features {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .feature {
-      background: rgba(30, 15, 50, 0.5);
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(140, 80, 200, 0.3);
-      text-align: center;
-      transition: all 0.3s;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .feature:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
-    }
-
-    .theme-light .feature {
-      background: rgba(200, 200, 255, 0.3);
-      border: 1px solid rgba(140, 80, 200, 0.2);
-    }
-
-    .feature-icon {
-      font-size: 28px;
-      margin-bottom: 8px;
-      color: #b967ff;
-      transition: transform 0.3s;
-    }
-
-    .feature:hover .feature-icon {
-      transform: scale(1.1);
-    }
-
-    .theme-light .feature-icon {
-      color: #6a0dad;
-    }
-
-    .feature-title {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .feature-text {
-      font-size: 14px;
-      color: #c0b6ff;
-      line-height: 1.4;
-    }
-
-    .theme-light .feature-text {
-      color: #555555;
-    }
-
-    /* Кнопки вкладок */
-    .tabs {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin: 20px 0;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: 2px solid #b967ff;
-      color: #e0d6ff;
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      width: 48%;
-      text-align: center;
-    }
-
-    .theme-light .tab-btn {
-      border-color: #6a0dad;
-      color: #555555;
-    }
-
-    .tab-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, #ff57e0, transparent);
-    }
-
-    .theme-light .tab-btn::before {
-      background: linear-gradient(90deg, transparent, #6a0dad, transparent);
-    }
-
-    .tab-btn:hover::before {
-      left: 0;
-    }
-
-    .tab-btn.active {
-      background: linear-gradient(90deg, #b967ff, #6a0dad);
-      color: #ffffff;
-      border-color: transparent;
-    }
-
-    .theme-light .tab-btn.active {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-      color: #ffffff;
-      border-color: transparent;
-    }
-
-    /* Генератор — скрыт по умолчанию */
-    .generator-block {
-      display: none;
-      margin: 20px 0;
-    }
-
-    .generator-block.active {
-      display: block;
-    }
-
-    .output {
-      width: 100%;
-      padding: 12px;
-      margin: 15px 0;
-      background: rgba(30, 15, 50, 0.6);
-      border: 1px solid #6a3a9a;
-      border-radius: 8px;
-      color: #f8f0ff;
-      font-size: 18px;
-      text-align: center;
-      letter-spacing: 1px;
-      outline: none;
-      transition: all 0.3s;
-      box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
-    }
-
-    .theme-light .output {
-      background: rgba(240, 240, 255, 0.8);
-      border-color: #a0a0d0;
-      color: #333333;
-    }
-
-    .output:focus {
-      box-shadow: 0 0 20px rgba(185, 103, 255, 0.4);
-      border-color: #b967ff;
-    }
-
-    .theme-light .output:focus {
-      box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
-      border-color: #6a0dad;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(90deg, #ff57e0, #b967ff);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(185, 103, 255, 0.25);
-    }
-
-    .theme-light .btn {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(185, 103, 255, 0.5);
-    }
-
-    .theme-light .btn:hover {
-      box-shadow: 0 8px 25px rgba(106, 13, 173, 0.5);
-    }
-
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-    }
-
-    .btn:hover::after {
-      left: 0;
-    }
-
-    /* Кнопка "Поделиться" */
-    .share-btn {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(90deg, #00f7ff, #00aaff);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 247, 255, 0.25);
-    }
-
-    .theme-light .share-btn {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-    }
-
-    .share-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 247, 255, 0.5);
-    }
-
-    .share-btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-    }
-
-    .share-btn:hover::after {
-      left: 0;
-    }
-
-    .notification {
-      position: fixed;
-      bottom: 30px;
-      right: 20px;
-      background: linear-gradient(90deg, #6a0dad, #b967ff);
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s;
-      z-index: 100;
-      box-shadow: 0 0 15px rgba(185, 103, 255, 0.4);
-    }
-
-    .theme-light .notification {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-    }
-
-    .notification.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .disclaimer {
-      background: rgba(20, 10, 40, 0.5);
-      padding: 10px;
-      border-radius: 8px;
-      margin: 20px 0;
-      font-size: 12px;
-      text-align: center;
-      color: #b967ff;
-    }
-
-    .theme-light .disclaimer {
-      background: rgba(200, 200, 255, 0.4);
-      color: #555555;
-    }
-
-    /* Пасхалка — по центру, скрыта по умолчанию */
-    .easter-egg {
-      display: none;
-      text-align: center;
-      font-size: 14px;
-      color: #ff57e0;
-      margin: 20px 0;
-      animation: flash 1s infinite;
-    }
-
-    @keyframes flash {
-      0% { opacity: 1; }
-      50% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
-
-    /* === НОВЫЕ РАЗДЕЛЫ === */
-
-    /* Раздел "Уникальные и безопасные" */
-    .section-unique {
-      width: 100%;
-      margin: 40px 0;
-      text-align: center;
-    }
-
-    .unique-container {
-      background: rgba(240, 240, 255, 0.8);
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(106, 13, 173, 0.2);
-    }
-
-    .theme-light .unique-container {
-      background: rgba(240, 240, 255, 0.9);
-      box-shadow: 0 0 30px rgba(106, 13, 173, 0.1);
-    }
-
-    .unique-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #100b30; /* Базовый фон, как в темной теме */
-    padding: 15px;
-    border-radius: 12px;
-    color: #b967ff; /* Базовый цвет текста, как в темной теме */
-    }
-
-    .theme-light .unique-box {
-      background: #e0d6ff;
-      color: #333333;
-    }
-
-    .theme-night-tokyo .unique-box {
-      background: #100b30; /* Как основной фон сайта */
-      color: #b967ff; /* Светло-фиолетовый текст */
-    }
-
-    .unique-icon {
-      font-size: 24px;
-      color: white;
-    }
-
-    .theme-light .unique-icon {
-      color: #333333;
-    }
-
-    .theme-night-tokyo .unique-icon {
-      color: #b967ff;
-    }
-
-    .unique-text h2 {
-      font-size: 20px;
-      color: white;
-      margin: 0;
-    }
-
-    .theme-light .unique-text h2 {
-      color: #333333;
-    }
-
-    .theme-night-tokyo .unique-text h2 {
-      color: #b967ff;
-    }
-
-    .unique-text p {
-      font-size: 14px;
-      color: white;
-      margin: 5px 0 0;
-    }
-
-    .theme-light .unique-text p {
-      color: #555555;
-    }
-
-    .theme-night-tokyo .unique-text p {
-      color: #b967ff;
-    }
-
-    /* Раздел "Как это работает?" */
-    .section-how-it-works {
-      margin: 40px 0;
-      text-align: center;
-    }
-
-    .section-how-it-works h3 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #b967ff;
-    }
-
-    .theme-light .section-how-it-works h3 {
-      color: #6a0dad;
-    }
-
-    .steps {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .step {
-      background: rgba(30, 15, 50, 0.5);
-      padding: 15px;
-      border-radius: 12px;
-      width: 150px;
-      border: 1px solid rgba(140, 80, 200, 0.3);
-    }
-
-    .theme-light .step {
-      background: rgba(200, 200, 255, 0.3);
-      border: 1px solid rgba(140, 80, 200, 0.2);
-    }
-
-    .step-number {
-      font-size: 24px;
-      color: #b967ff;
-      margin-bottom: 5px;
-    }
-
-    .theme-light .step-number {
-      color: #6a0dad;
-    }
-
-    .step-text {
-      font-size: 14px;
-      color: #c0b6ff;
-    }
-
-    .theme-light .step-text {
-      color: #555555;
-    }
-
-    /* Раздел "Почему выбирают нас?" */
-    .section-benefits {
-      margin: 40px 0;
-      text-align: center;
-    }
-
-    .section-benefits h3 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #b967ff;
-    }
-
-    .theme-light .section-benefits h3 {
-      color: #6a0dad;
-    }
-
-    .benefits {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .benefit {
-      background: rgba(30, 15, 50, 0.5);
-      padding: 15px;
-      border-radius: 12px;
-      width: 150px;
-      border: 1px solid rgba(140, 80, 200, 0.3);
-    }
-
-    .theme-light .benefit {
-      background: rgba(200, 200, 255, 0.3);
-      border: 1px solid rgba(140, 80, 200, 0.2);
-    }
-
-    .benefit-icon {
-      font-size: 28px;
-      margin-bottom: 8px;
-      color: #b967ff;
-    }
-
-    .theme-light .benefit-icon {
-      color: #6a0dad;
-    }
-
-    .benefit-title {
-      font-size: 16px;
-      margin-bottom: 5px;
-      color: #b967ff;
-    }
-
-    .theme-light .benefit-title {
-      color: #6a0dad;
-    }
-
-    .benefit-desc {
-      font-size: 12px;
-      color: #c0b6ff;
-    }
-
-    .theme-light .benefit-desc {
-      color: #555555;
-    }
-
-    /* Раздел "Советы по безопасности" */
-    .section-security-tips {
-      margin: 40px 0;
-      text-align: center;
-    }
-
-    .section-security-tips h3 {
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: #b967ff;
-    }
-
-    .theme-light .section-security-tips h3 {
-      color: #6a0dad;
-    }
-
-    .section-security-tips ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .section-security-tips li {
-      padding: 8px;
-      margin: 5px 0;
-      background: rgba(30, 15, 50, 0.3);
-      border-radius: 8px;
-      font-size: 14px;
-      color: #c0b6ff;
-    }
-
-    .theme-light .section-security-tips li {
-      background: rgba(200, 200, 255, 0.2);
-      color: #555555;
-    }
-
-    /* Мобильная версия */
-    @media (max-width: 600px) {
-      .site-header {
-        flex-direction: column;
-        padding: 15px;
-      }
-
-      .header-content {
-        margin-bottom: 10px;
-      }
-
-      .header-actions {
-        width: 100%;
-        justify-content: space-around;
-      }
-
-      .centered {
-        margin: 10px 10px;
-        padding: 20px;
-        width: calc(100% - 20px);
-        max-width: 100%;
-      }
-
-      h1 {
-        font-size: 20px;
-      }
-
-      .feature-title {
-        font-size: 16px;
-      }
-
-      .output {
-        font-size: 16px;
-      }
-
-      .tabs {
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .tab-btn {
-        padding: 8px 12px;
-        font-size: 14px;
-        width: 100%;
-      }
-
-      .btn {
-        font-size: 14px;
-        padding: 10px;
-      }
-
-      .share-btn {
-        font-size: 14px;
-        padding: 10px;
-      }
-
-      .features {
-        gap: 10px;
-      }
-
-      .steps, .benefits {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .step, .benefit {
-        width: 100%;
-        max-width: 250px;
-      }
-
-      .section-unique {
-        padding: 15px;
-      }
-
-      .unique-container {
-        padding: 15px;
-      }
-
-      .unique-box {
-        flex-direction: column;
-        gap: 5px;
-        padding: 10px;
-      }
-
-      .unique-icon {
-        font-size: 20px;
-      }
-
-      .unique-text h2 {
-        font-size: 18px;
-      }
-
-      .unique-text p {
-        font-size: 12px;
-        margin: 5px 0 0;
-      }
-
-      .section-how-it-works h3,
-      .section-benefits h3 {
-        font-size: 18px;
-      }
-
-      .step-number {
-        font-size: 20px;
-      }
-
-      .step-text {
-        font-size: 12px;
-      }
-
-      .benefit-title {
-        font-size: 14px;
-      }
-
-      .benefit-desc {
-        font-size: 10px;
-      }
-
-      .section-security-tips h3 {
-        font-size: 18px;
-      }
-
-      .section-security-tips li {
-        font-size: 12px;
-      }
-    }
-
-    /* Светлая тема — Аниме-школа */
-    .theme-light {
-      background: linear-gradient(135deg, #f0f0ff, #e0e6ff, #f0f0ff);
-      color: #333333;
-    }
-
-    .theme-light h1 {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-      text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
-      color: #333333 !important;
-    }
-
-    .theme-light .subtitle {
-      color: #6a0dad;
-    }
-
-    .theme-light .feature {
-      background: rgba(200, 200, 255, 0.3);
-      border: 1px solid rgba(140, 80, 200, 0.2);
-    }
-
-    .theme-light .feature-icon {
-      color: #6a0dad;
-    }
-
-    .theme-light .feature-text {
-      color: #555555;
-    }
-
-    .theme-light .output {
-      background: rgba(240, 240, 255, 0.8);
-      border-color: #a0a0d0;
-      color: #333333;
-    }
-
-    .theme-light .output:focus {
-      box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
-      border-color: #6a0dad;
-    }
-
-    .theme-light .btn {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-    }
-
-    .theme-light .btn:hover {
-      box-shadow: 0 8px 25px rgba(106, 13, 173, 0.5);
-    }
-
-    .theme-light .notification {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-    }
-
-    .theme-light .disclaimer {
-      background: rgba(200, 200, 255, 0.4);
-      color: #555555;
-    }
-
-    /* Убираем фиолетовую полосу в шапке светлой темы - делаем фон прозрачным */
-.theme-light .site-header {
+.header-content .subtitle {
+text-align: center;
+font-size: 12px;
+color: #b967ff;
+margin: 5px 0 0;
+}
+.theme-light .header-content .subtitle {
+color: #6a0dad;
+}
+.header-actions {
+display: flex;
+gap: 10px;
+}
+.lang-toggle, .theme-toggle {
+background: rgba(185, 103, 255, 0.3);
+border: 1px solid #b967ff;
+color: #e0d6ff;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+transition: all 0.3s;
+}
+.lang-toggle:hover, .theme-toggle:hover {
+background: rgba(185, 103, 255, 0.5);
+transform: rotate(30deg);
+}
+.theme-light .lang-toggle, .theme-light .theme-toggle {
+background: rgba(106, 13, 173, 0.3);
+border-color: #6a0dad;
+color: #555555;
+}
+.theme-light .lang-toggle:hover, .theme-light .theme-toggle:hover {
+background: rgba(106, 13, 173, 0.5);
+}
+/* Центрированный контент */
+.centered {
+max-width: 600px;
+margin: 40px auto;
+padding: 30px;
+position: relative;
+z-index: 10;
+}
+/* Блоки фич */
+.features {
+display: flex;
+flex-direction: column;
+gap: 15px;
+margin: 20px 0;
+}
+.feature {
+background: rgba(30, 15, 50, 0.5);
+padding: 15px;
+border-radius: 12px;
+border: 1px solid rgba(140, 80, 200, 0.3);
+text-align: center;
+transition: all 0.3s;
+cursor: pointer;
+position: relative;
+}
+.feature:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+}
+.theme-light .feature {
+background: rgba(200, 200, 255, 0.3);
+border: 1px solid rgba(140, 80, 200, 0.2);
+}
+.feature-icon {
+font-size: 28px;
+margin-bottom: 8px;
+color: #b967ff;
+transition: transform 0.3s;
+}
+.feature:hover .feature-icon {
+transform: scale(1.1);
+}
+.theme-light .feature-icon {
+color: #6a0dad;
+}
+.feature-title {
+font-size: 18px;
+margin-bottom: 8px;
+}
+.feature-text {
+font-size: 14px;
+color: #c0b6ff;
+line-height: 1.4;
+}
+.theme-light .feature-text {
+color: #555555;
+}
+/* Кнопки вкладок */
+.tabs {
+display: flex;
+justify-content: space-between;
+gap: 10px;
+margin: 20px 0;
+}
+.tab-btn {
 background: transparent;
-backdrop-filter: blur(10px);
-border-bottom: 1px solid rgba(140, 80, 200, 0.2);
+border: 2px solid #b967ff;
+color: #e0d6ff;
+padding: 8px 16px;
+border-radius: 20px;
+cursor: pointer;
+font-weight: bold;
+transition: all 0.3s;
+position: relative;
+overflow: hidden;
+width: 48%;
+text-align: center;
+}
+.theme-light .tab-btn {
+border-color: #6a0dad;
+color: #555555;
+}
+.tab-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, #ff57e0, transparent);
+}
+.theme-light .tab-btn::before {
+background: linear-gradient(90deg, transparent, #6a0dad, transparent);
+}
+.tab-btn:hover::before {
+left: 0;
+}
+.tab-btn.active {
+background: linear-gradient(90deg, #b967ff, #6a0dad);
+color: #ffffff;
+border-color: transparent;
+}
+.theme-light .tab-btn.active {
+background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+color: #ffffff;
+border-color: transparent;
+}
+/* Генератор — скрыт по умолчанию */
+.generator-block {
+display: none;
+margin: 20px 0;
+}
+.generator-block.active {
+display: block;
+}
+.output {
+width: 100%;
+padding: 12px;
+margin: 15px 0;
+background: rgba(30, 15, 50, 0.6);
+border: 1px solid #6a3a9a;
+border-radius: 8px;
+color: #f8f0ff;
+font-size: 18px;
+text-align: center;
+letter-spacing: 1px;
+outline: none;
+transition: all 0.3s;
+box-shadow: 0 0 10px rgba(138, 43, 226, 0.1);
+}
+.theme-light .output {
+background: rgba(240, 240, 255, 0.8);
+border-color: #a0a0d0;
+color: #333333;
+}
+.output:focus {
+box-shadow: 0 0 20px rgba(185, 103, 255, 0.4);
+border-color: #b967ff;
+}
+.theme-light .output:focus {
+box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+border-color: #6a0dad;
+}
+.btn {
+display: block;
+width: 100%;
+padding: 12px;
+background: linear-gradient(90deg, #ff57e0, #b967ff);
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+margin-top: 15px;
+transition: all 0.3s;
+position: relative;
+overflow: hidden;
+box-shadow: 0 5px 15px rgba(185, 103, 255, 0.25);
+}
+.theme-light .btn {
+background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+}
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(185, 103, 255, 0.5);
+}
+.theme-light .btn:hover {
+box-shadow: 0 8px 25px rgba(106, 13, 173, 0.5);
+}
+.btn::after {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+}
+.btn:hover::after {
+left: 0;
+}
+/* Кнопка "Поделиться" */
+.share-btn {
+display: block;
+width: 100%;
+padding: 12px;
+background: linear-gradient(90deg, #00f7ff, #00aaff);
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+margin-top: 15px;
+transition: all 0.3s;
+position: relative;
+overflow: hidden;
+box-shadow: 0 5px 15px rgba(0, 247, 255, 0.25);
+}
+.theme-light .share-btn {
+background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+}
+.share-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(0, 247, 255, 0.5);
+}
+.share-btn::after {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+}
+.share-btn:hover::after {
+left: 0;
+}
+.notification {
+position: fixed;
+bottom: 30px;
+right: 20px;
+background: linear-gradient(90deg, #6a0dad, #b967ff);
+color: white;
+padding: 10px 16px;
+border-radius: 8px;
+opacity: 0;
+transform: translateY(20px);
+transition: all 0.4s;
+z-index: 100;
+box-shadow: 0 0 15px rgba(185, 103, 255, 0.4);
+}
+.theme-light .notification {
+background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+}
+.notification.show {
+opacity: 1;
+transform: translateY(0);
+}
+.disclaimer {
+background: rgba(20, 10, 40, 0.5);
+padding: 10px;
+border-radius: 8px;
+margin: 20px 0;
+font-size: 12px;
+text-align: center;
+color: #b967ff;
+}
+.theme-light .disclaimer {
+background: rgba(200, 200, 255, 0.4);
+color: #555555;
+}
+/* Пасхалка — по центру, скрыта по умолчанию */
+.easter-egg {
+display: none;
+text-align: center;
+font-size: 14px;
+color: #ff57e0;
+margin: 20px 0;
+animation: flash 1s infinite;
+}
+@keyframes flash {
+0% { opacity: 1; }
+50% { opacity: 0.5; }
+100% { opacity: 1; }
+}
+/* === НОВЫЕ РАЗДЕЛЫ === */
+/* Раздел "Уникальные и безопасные" */
+.section-unique {
+width: 100%;
+margin: 40px 0;
+text-align: center;
+}
+.unique-container {
+background: rgba(240, 240, 255, 0.8);
+padding: 20px;
+border-radius: 16px;
+box-shadow: 0 0 30px rgba(106, 13, 173, 0.2);
+}
+.theme-light .unique-container {
+background: rgba(240, 240, 255, 0.9);
+box-shadow: 0 0 30px rgba(106, 13, 173, 0.1);
+}
+.unique-box {
+display: flex;
+align-items: center;
+gap: 10px;
+background: #100b30;
+padding: 15px;
+border-radius: 12px;
+color: #b967ff;
+}
+.theme-light .unique-box {
+background: #e0d6ff;
+color: #333333;
+}
+.theme-night-tokyo .unique-box {
+background: #100b30;
+color: #b967ff;
+}
+.unique-icon {
+font-size: 24px;
+color: white;
+}
+.theme-light .unique-icon {
+color: #333333;
+}
+.theme-night-tokyo .unique-icon {
+color: #b967ff;
+}
+.unique-text h2 {
+font-size: 20px;
+color: white;
+margin: 0;
+}
+.theme-light .unique-text h2 {
+color: #333333;
+}
+.theme-night-tokyo .unique-text h2 {
+color: #b967ff;
+}
+.unique-text p {
+font-size: 14px;
+color: white;
+margin: 5px 0 0;
+}
+.theme-light .unique-text p {
+color: #555555;
+}
+.theme-night-tokyo .unique-text p {
+color: #b967ff;
+}
+/* Раздел "Как это работает?" */
+.section-how-it-works {
+margin: 40px 0;
+text-align: center;
+}
+.section-how-it-works h3 {
+font-size: 20px;
+margin-bottom: 20px;
+color: #b967ff;
+}
+.theme-light .section-how-it-works h3 {
+color: #6a0dad;
+}
+.steps {
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+gap: 20px;
+}
+.step {
+background: rgba(30, 15, 50, 0.5);
+padding: 15px;
+border-radius: 12px;
+width: 150px;
+border: 1px solid rgba(140, 80, 200, 0.3);
+}
+.theme-light .step {
+background: rgba(200, 200, 255, 0.3);
+border: 1px solid rgba(140, 80, 200, 0.2);
+}
+.step-number {
+font-size: 24px;
+color: #b967ff;
+margin-bottom: 5px;
+}
+.theme-light .step-number {
+color: #6a0dad;
+}
+.step-text {
+font-size: 14px;
+color: #c0b6ff;
+}
+.theme-light .step-text {
+color: #555555;
+}
+/* Раздел "Почему выбирают нас?" */
+.section-benefits {
+margin: 40px 0;
+text-align: center;
+}
+.section-benefits h3 {
+font-size: 20px;
+margin-bottom: 20px;
+color: #b967ff;
+}
+.theme-light .section-benefits h3 {
+color: #6a0dad;
+}
+.benefits {
+display: flex;
+justify-content: space-around;
+flex-wrap: wrap;
+gap: 20px;
+}
+.benefit {
+background: rgba(30, 15, 50, 0.5);
+padding: 15px;
+border-radius: 12px;
+width: 150px;
+border: 1px solid rgba(140, 80, 200, 0.3);
+}
+.theme-light .benefit {
+background: rgba(200, 200, 255, 0.3);
+border: 1px solid rgba(140, 80, 200, 0.2);
+}
+.benefit-icon {
+font-size: 28px;
+margin-bottom: 8px;
+color: #b967ff;
+}
+.theme-light .benefit-icon {
+color: #6a0dad;
+}
+.benefit-title {
+font-size: 16px;
+margin-bottom: 5px;
+color: #b967ff;
+}
+.theme-light .benefit-title {
+color: #6a0dad;
+}
+.benefit-desc {
+font-size: 12px;
+color: #c0b6ff;
+}
+.theme-light .benefit-desc {
+color: #555555;
+}
+/* Раздел "Советы по безопасности" */
+.section-security-tips {
+margin: 40px 0;
+text-align: center;
+}
+.section-security-tips h3 {
+font-size: 20px;
+margin-bottom: 15px;
+color: #b967ff;
+}
+.theme-light .section-security-tips h3 {
+color: #6a0dad;
+}
+.section-security-tips ul {
+list-style: none;
+padding: 0;
+}
+.section-security-tips li {
+padding: 8px;
+margin: 5px 0;
+background: rgba(30, 15, 50, 0.3);
+border-radius: 8px;
+font-size: 14px;
+color: #c0b6ff;
+}
+.theme-light .section-security-tips li {
+background: rgba(200, 200, 255, 0.2);
+color: #555555;
+}
+/* Мобильная версия */
+@media (max-width: 600px) {
+.site-header {
+flex-direction: column;
+padding: 15px;
+}
+.header-content {
+margin-bottom: 10px;
+}
+.header-actions {
+width: 100%;
+justify-content: space-around;
+}
+.centered {
+margin: 10px 10px;
+padding: 20px;
+width: calc(100% - 20px);
+max-width: 100%;
+}
+h1 {
+font-size: 20px;
+}
+.feature-title {
+font-size: 16px;
+}
+.output {
+font-size: 16px;
+}
+.tabs {
+flex-direction: column;
+gap: 5px;
+}
+.tab-btn {
+padding: 8px 12px;
+font-size: 14px;
+width: 100%;
+}
+.btn {
+font-size: 14px;
+padding: 10px;
+}
+.share-btn {
+font-size: 14px;
+padding: 10px;
+}
+.features {
+gap: 10px;
+}
+.steps, .benefits {
+flex-direction: column;
+align-items: center;
+}
+.step, .benefit {
+width: 100%;
+max-width: 250px;
+}
+.section-unique {
+padding: 15px;
+}
+.unique-container {
+padding: 15px;
+}
+.unique-box {
+flex-direction: column;
+gap: 5px;
+padding: 10px;
+}
+.unique-icon {
+font-size: 20px;
+}
+.unique-text h2 {
+font-size: 18px;
+}
+.unique-text p {
+font-size: 12px;
+margin: 5px 0 0;
+}
+.section-how-it-works h3,
+.section-benefits h3 {
+font-size: 18px;
+}
+.step-number {
+font-size: 20px;
+}
+.step-text {
+font-size: 12px;
+}
+.benefit-title {
+font-size: 14px;
+}
+.benefit-desc {
+font-size: 10px;
+}
+.section-security-tips h3 {
+font-size: 18px;
+}
+.section-security-tips li {
+font-size: 12px;
+}
+}
+/* Светлая тема — Аниме-школа */
+.theme-light {
+background: linear-gradient(135deg, #f0f0ff, #e0e6ff, #f0f0ff);
+color: #333333;
+}
+.theme-light .subtitle {
+color: #6a0dad;
+}
+.theme-light .feature {
+background: rgba(200, 200, 255, 0.3);
+border: 1px solid rgba(140, 80, 200, 0.2);
+}
+.theme-light .feature-icon {
+color: #6a0dad;
+}
+.theme-light .feature-text {
+color: #555555;
+}
+.theme-light .output {
+background: rgba(240, 240, 255, 0.8);
+border-color: #a0a0d0;
+color: #333333;
+}
+.theme-light .output:focus {
+box-shadow: 0 0 20px rgba(106, 13, 173, 0.4);
+border-color: #6a0dad;
+}
+.theme-light .btn {
+background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+}
+.theme-light .btn:hover {
+box-shadow: 0 8px 25px rgba(106, 13, 173, 0.5);
+}
+.theme-light .notification {
+background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+}
+.theme-light .disclaimer {
+background: rgba(200, 200, 255, 0.4);
+color: #555555;
+}
+/* Делаем блок "Уникальные и безопасные" светлее в светлой теме */
+.theme-light .unique-box {
+background: #e0d6ff;
+color: #333333;
+}
+.theme-light .unique-text h2 {
+color: #333333;
+}
+.theme-light .unique-text p {
+color: #555555;
+}
+/* Темная тема — делаем блок "Уникальные и безопасные" как фон сайта */
+.theme-night-tokyo .unique-box {
+background: #100b30;
+color: #b967ff;
+}
+.theme-night-tokyo .unique-text h2 {
+color: #b967ff;
+}
+.theme-night-tokyo .unique-text p {
+color: #b967ff;
+}
+/* Подвал */
+footer {
+text-align: center;
+padding: 20px;
+color: #887dff;
+font-size: 12px;
+border-top: 1px solid rgba(140, 80, 200, 0.2);
+margin-top: 40px;
+}
+.theme-light footer {
+color: #555555;
 }
 
-    /* Делаем блок "Уникальные и безопасные" светлее в светлой теме */
-    .theme-light .unique-box {
-      background: #e0d6ff;
-      color: #333333;
-    }
+.header-content h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  color: #e0d6ff; /* Цвет как основной текст в тёмной теме */
+  letter-spacing: 0.5px;
+}
 
-    .theme-light .unique-text h2 {
-      color: #333333;
-    }
-
-    .theme-light .unique-text p {
-      color: #555555;
-    }
-
-    /* Темная тема — делаем блок "Уникальные и безопасные" как фон сайта */
-    .theme-night-tokyo .unique-box {
-      background: #100b30;
-      color: #b967ff;
-    }
-
-    .theme-night-tokyo .unique-text h2 {
-      color: #b967ff;
-    }
-
-    .theme-night-tokyo .unique-text p {
-      color: #b967ff;
-    }
-
-    /* Подвал */
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #887dff;
-      font-size: 12px;
-      border-top: 1px solid rgba(140, 80, 200, 0.2);
-      margin-top: 40px;
-    }
-
-    .theme-light footer {
-      color: #555555;
-    }
-  </style>
-
-  <script>
-    // === Переключение темы ===
-    let currentTheme = 'night-tokyo';
-
-    function toggleTheme() {
-      const body = document.body;
-      const themeToggle = document.querySelector('.theme-toggle');
-
-      if (currentTheme === 'night-tokyo') {
-        body.className = 'theme-light';
-        themeToggle.innerHTML = '☀️';
-        currentTheme = 'light';
-      } else {
-        body.className = 'theme-night-tokyo';
-        themeToggle.innerHTML = '🌙';
-        currentTheme = 'night-tokyo';
-      }
-    }
-
-    // === Смена языка ===
-    let currentLang = 'ru';
-
-    function toggleLang() {
-      const langToggle = document.querySelector('.lang-toggle');
-      const subtitle = document.querySelector('.subtitle');
-
-      if (currentLang === 'ru') {
-        langToggle.innerHTML = '🇬🇧';
-        currentLang = 'en';
-        document.querySelector('h1').textContent = 'Nickname & Password Generator';
-        subtitle.textContent = 'Create a unique nickname or reliable password in a second';
-        document.querySelectorAll('.feature-title')[0].textContent = 'Security';
-        document.querySelectorAll('.feature-text')[0].textContent = 'All data is generated locally. No one sees your passwords.';
-        document.querySelectorAll('.feature-title')[1].textContent = 'Cool Name';
-        document.querySelectorAll('.feature-text')[1].textContent = 'Nick for TikTok, Discord, Steam — in anime, hacker, cyberpunk style.';
-        document.querySelectorAll('.feature-title')[2].textContent = 'Instantly';
-        document.querySelectorAll('.feature-text')[2].textContent = 'Click — get. No waiting, no loading.';
-        document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Passwords';
-        document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Nicknames';
-        document.querySelector('#password-generator .btn').textContent = 'Generate secure password';
-        document.querySelector('#username-generator .btn').textContent = 'Invent cool nickname';
-        document.querySelector('.disclaimer').textContent = 'All data is processed exclusively in your browser. The project does not store or send your data.';
-        document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. All rights reserved.';
-        document.querySelector('#easter-egg').innerHTML = '🎮 Easter egg activated! You clicked "Nicknames" 5 times. Secret nick: <span id="secret-nick">_sakura_neko_</span>';
-        document.querySelector('#password-output').placeholder = 'Click "Generate"';
-        document.querySelector('#username-output').placeholder = 'Click "Invent nickname"';
-        document.querySelector('.share-btn').textContent = '↗️ Share';
-        document.querySelector('.section-how-it-works h3').textContent = 'How does it work?';
-        document.querySelectorAll('.step-text')[0].textContent = 'Choose type: password or nickname';
-        document.querySelectorAll('.step-text')[1].textContent = 'Click "Generate"';
-        document.querySelectorAll('.step-text')[2].textContent = 'Get a unique result';
-        document.querySelector('.section-benefits h3').textContent = 'Why choose us?';
-        document.querySelectorAll('.benefit-title')[0].textContent = 'Security';
-        document.querySelectorAll('.benefit-desc')[0].textContent = 'No servers — everything in your browser';
-        document.querySelectorAll('.benefit-title')[1].textContent = 'Instantly';
-        document.querySelectorAll('.benefit-desc')[1].textContent = 'Generation in 1 click';
-        document.querySelectorAll('.benefit-title')[2].textContent = 'Stylish';
-        document.querySelectorAll('.benefit-desc')[2].textContent = 'Anime, cyberpunk, hacker';
-        document.querySelector('.section-security-tips h3').textContent = 'Security Tips';
-        document.querySelectorAll('.section-security-tips li')[0].textContent = 'Do not use common words in passwords';
-        document.querySelectorAll('.section-security-tips li')[1].textContent = 'Change passwords every 3-6 months';
-        document.querySelectorAll('.section-security-tips li')[2].textContent = 'Do not use the same passwords for different services';
-        document.querySelector('.unique-text h2').textContent = 'Unique and secure';
-        document.querySelector('.unique-text p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
-      } else {
-        langToggle.innerHTML = '🇷🇺';
-        currentLang = 'ru';
-        document.querySelector('h1').textContent = 'Генератор ников и паролей';
-        subtitle.textContent = 'Создай уникальный ник или надёжный пароль за секунду';
-        document.querySelectorAll('.feature-title')[0].textContent = 'Безопасность';
-        document.querySelectorAll('.feature-text')[0].textContent = 'Все данные генерируются локально. Никто не видит твои пароли.';
-        document.querySelectorAll('.feature-title')[1].textContent = 'Крутое имя';
-        document.querySelectorAll('.feature-text')[1].textContent = 'Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.';
-        document.querySelectorAll('.feature-title')[2].textContent = 'Мгновенно';
-        document.querySelectorAll('.feature-text')[2].textContent = 'Нажал — получил. Без ожидания, без загрузки.';
-        document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Пароли';
-        document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Ники';
-        document.querySelector('#password-generator .btn').textContent = 'Сгенерировать надёжный пароль';
-        document.querySelector('#username-generator .btn').textContent = 'Придумать крутой ник';
-        document.querySelector('.disclaimer').textContent = 'Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.';
-        document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. Все права защищены.';
-        document.querySelector('#easter-egg').innerHTML = '🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>';
-        document.querySelector('#password-output').placeholder = 'Нажми \'Сгенерировать\'';
-        document.querySelector('#username-output').placeholder = 'Нажми \'Придумать ник\'';
-        document.querySelector('.share-btn').textContent = '↗️ Поделиться';
-        document.querySelector('.section-how-it-works h3').textContent = 'Как это работает?';
-        document.querySelectorAll('.step-text')[0].textContent = 'Выбери тип: пароль или ник';
-        document.querySelectorAll('.step-text')[1].textContent = 'Нажми "Сгенерировать"';
-        document.querySelectorAll('.step-text')[2].textContent = 'Получи уникальный результат';
-        document.querySelector('.section-benefits h3').textContent = 'Почему выбирают нас?';
-        document.querySelectorAll('.benefit-title')[0].textContent = 'Безопасность';
-        document.querySelectorAll('.benefit-desc')[0].textContent = 'Нет серверов — всё в твоём браузере';
-        document.querySelectorAll('.benefit-title')[1].textContent = 'Мгновенно';
-        document.querySelectorAll('.benefit-desc')[1].textContent = 'Генерация за 1 клик';
-        document.querySelectorAll('.benefit-title')[2].textContent = 'Стильно';
-        document.querySelectorAll('.benefit-desc')[2].textContent = 'Аниме, киберпанк, хакер';
-        document.querySelector('.section-security-tips h3').textContent = 'Советы по безопасности';
-        document.querySelectorAll('.section-security-tips li')[0].textContent = 'Не используй общие слова в паролях';
-        document.querySelectorAll('.section-security-tips li')[1].textContent = 'Меняй пароли каждые 3-6 месяцев';
-        document.querySelectorAll('.section-security-tips li')[2].textContent = 'Не используй одинаковые пароли для разных сервисов';
-        document.querySelector('.unique-text h2').textContent = 'Уникальные и безопасные';
-        document.querySelector('.unique-text p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
-      }
-    }
-
-    // === Логика переключения вкладок ===
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // Скрываем все генераторы
-        document.querySelectorAll('.generator-block').forEach(block => block.classList.remove('active'));
-
-        // Показываем нужный
-        const tab = btn.dataset.tab;
-        document.getElementById(tab + '-generator').classList.add('active');
-      });
-    });
-
-    // === Словари ===
-    const WORDS = {
-      nature: ['forest', 'ocean', 'river', 'mountain', 'cloud', 'storm', 'dawn', 'dusk', 'sky', 'earth', 'fire', 'ice', 'wind', 'thunder', 'light', 'shadow', 'moon', 'sun', 'star', 'comet', 'nebula', 'galaxy', 'aurora', 'tide', 'valley', 'peak'],
-      anime: ['sakura', 'neko', 'yuki', 'hana', 'tsuki', 'kawaii', 'otaku', 'senpai', 'bento', 'ramen', 'mochi', 'wasabi', 'soba', 'matcha', 'zen', 'dojo', 'chibi', 'ninja', 'samurai', 'kami', 'yokai', 'tengu', 'kitsune', 'tanuki', 'aoi', 'ume', 'fuji'],
-      cyber: ['cyber', 'neon', 'glitch', 'pixel', 'vector', 'quantum', 'neural', 'digital', 'analog', 'binary', 'data', 'cloud', 'node', 'flux', 'pulse', 'signal', 'void', 'ghost', 'echo', 'nova', 'synth', 'logic', 'matrix', 'cipher', 'proxy'],
-      myth: ['phoenix', 'dragon', 'kraken', 'unicorn', 'griffin', 'sphinx', 'mermaid', 'fae', 'oni', 'kami', 'yokai', 'tengu', 'kitsune', 'tanuki', 'leviathan', 'basilisk', 'hydra', 'pegasus', 'centaur', 'minotaur'],
-      tech: ['cipher', 'kernel', 'socket', 'lambda', 'hash', 'byte', 'bit', 'cache', 'proxy', 'server', 'client', 'logic', 'array', 'stack', 'heap', 'token', 'vault', 'shield', 'quantum', 'neural', 'api', 'bot', 'algo', 'syntax', 'debug'],
-      food: ['ramen', 'bento', 'mochi', 'sushi', 'matcha', 'dango', 'udon', 'tempura', 'wasabi', 'soy', 'rice', 'noodle', 'sake', 'tea', 'plum', 'mango', 'lychee', 'coconut', 'melon', 'berry', 'peach', 'cherry', 'citrus'],
-      time: ['midnight', 'dawn', 'dusk', 'noon', 'twilight', 'eternal', 'chrono', 'moment', 'second', 'hour', 'day', 'night', 'lunar', 'solar', 'epoch', 'aeon', 'season', 'winter'],
-      mood: ['silent', 'calm', 'fierce', 'wild', 'gentle', 'brave', 'wise', 'mystic', 'arcane', 'ancient', 'modern', 'future', 'retro', 'ethereal', 'vivid', 'serene', 'chaotic', 'luminous']
-    };
-
-    function secureRandomInt(min, max) {
-      const range = max - min + 1;
-      const bytes = new Uint32Array(1);
-      crypto.getRandomValues(bytes);
-      return min + (bytes[0] % range);
-    }
-
-    function getRandomWords(count, categories) {
-      const allWords = categories.flatMap(cat => WORDS[cat] || []);
-      const unique = [...new Set(allWords)];
-      for (let i = unique.length - 1; i > 0; i--) {
-        const j = secureRandomInt(0, i);
-        [unique[i], unique[j]] = [unique[j], unique[i]];
-      }
-      return unique.slice(0, count);
-    }
-
-    const PASSWORD_SEPARATORS = ['.', '-', '_', '•'];
-    const USERNAME_SEPARATORS = ['.', '-', '_'];
-
-    // === Генерация пароля ===
-    // Для отслеживания двойного клика
+/* Светлая тема — тёмный текст */
+.theme-light .header-content h1 {
+  color: #333333;
+}
+</style>
+<script>
+// === Переключение темы ===
+let currentTheme = 'night-tokyo';
+function toggleTheme() {
+const body = document.body;
+const themeToggle = document.querySelector('.theme-toggle');
+if (currentTheme === 'night-tokyo') {
+body.className = 'theme-light';
+themeToggle.innerHTML = '☀️';
+currentTheme = 'light';
+} else {
+body.className = 'theme-night-tokyo';
+themeToggle.innerHTML = '🌙';
+currentTheme = 'night-tokyo';
+}
+}
+// === Смена языка ===
+let currentLang = 'ru';
+function toggleLang() {
+const langToggle = document.querySelector('.lang-toggle');
+const subtitle = document.querySelector('.subtitle');
+document.querySelector('h1').textContent = 'Nickname & Password Generator';
+if (currentLang === 'ru') {
+langToggle.innerHTML = '🇬🇧';
+currentLang = 'en';
+// Убрано: document.querySelector('h1').textContent = 'Nickname & Password Generator';
+subtitle.textContent = 'Create a unique nickname or reliable password in a second';
+document.querySelectorAll('.feature-title')[0].textContent = 'Security';
+document.querySelectorAll('.feature-text')[0].textContent = 'All data is generated locally. No one sees your passwords.';
+document.querySelectorAll('.feature-title')[1].textContent = 'Cool Name';
+document.querySelectorAll('.feature-text')[1].textContent = 'Nick for TikTok, Discord, Steam — in anime, hacker, cyberpunk style.';
+document.querySelectorAll('.feature-title')[2].textContent = 'Instantly';
+document.querySelectorAll('.feature-text')[2].textContent = 'Click — get. No waiting, no loading.';
+document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Passwords';
+document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Nicknames';
+document.querySelector('#password-generator .btn').textContent = 'Generate secure password';
+document.querySelector('#username-generator .btn').textContent = 'Invent cool nickname';
+document.querySelector('.disclaimer').textContent = 'All data is processed exclusively in your browser. The project does not store or send your data.';
+document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. All rights reserved.';
+document.querySelector('#easter-egg').innerHTML = '🎮 Easter egg activated! You clicked "Nicknames" 5 times. Secret nick: <span id="secret-nick">_sakura_neko_</span>';
+document.querySelector('#password-output').placeholder = 'Click "Generate"';
+document.querySelector('#username-output').placeholder = 'Click "Invent nickname"';
+document.querySelector('.share-btn').textContent = '↗️ Share';
+document.querySelector('.section-how-it-works h3').textContent = 'How does it work?';
+document.querySelectorAll('.step-text')[0].textContent = 'Choose type: password or nickname';
+document.querySelectorAll('.step-text')[1].textContent = 'Click "Generate"';
+document.querySelectorAll('.step-text')[2].textContent = 'Get a unique result';
+document.querySelector('.section-benefits h3').textContent = 'Why choose us?';
+document.querySelectorAll('.benefit-title')[0].textContent = 'Security';
+document.querySelectorAll('.benefit-desc')[0].textContent = 'No servers — everything in your browser';
+document.querySelectorAll('.benefit-title')[1].textContent = 'Instantly';
+document.querySelectorAll('.benefit-desc')[1].textContent = 'Generation in 1 click';
+document.querySelectorAll('.benefit-title')[2].textContent = 'Stylish';
+document.querySelectorAll('.benefit-desc')[2].textContent = 'Anime, cyberpunk, hacker';
+document.querySelector('.section-security-tips h3').textContent = 'Security Tips';
+document.querySelectorAll('.section-security-tips li')[0].textContent = 'Do not use common words in passwords';
+document.querySelectorAll('.section-security-tips li')[1].textContent = 'Change passwords every 3-6 months';
+document.querySelectorAll('.section-security-tips li')[2].textContent = 'Do not use the same passwords for different services';
+document.querySelector('.unique-text h2').textContent = 'Unique and secure';
+document.querySelector('.unique-text p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
+} else {
+langToggle.innerHTML = '🇷🇺';
+currentLang = 'ru';
+// Убрано: document.querySelector('h1').textContent = 'Генератор ников и паролей';
+subtitle.textContent = 'Создай уникальный ник или надёжный пароль за секунду';
+document.querySelector('h1').textContent = 'Генератор ников и паролей';
+document.querySelectorAll('.feature-title')[0].textContent = 'Безопасность';
+document.querySelectorAll('.feature-text')[0].textContent = 'Все данные генерируются локально. Никто не видит твои пароли.';
+document.querySelectorAll('.feature-title')[1].textContent = 'Крутое имя';
+document.querySelectorAll('.feature-text')[1].textContent = 'Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.';
+document.querySelectorAll('.feature-title')[2].textContent = 'Мгновенно';
+document.querySelectorAll('.feature-text')[2].textContent = 'Нажал — получил. Без ожидания, без загрузки.';
+document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Пароли';
+document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Ники';
+document.querySelector('#password-generator .btn').textContent = 'Сгенерировать надёжный пароль';
+document.querySelector('#username-generator .btn').textContent = 'Придумать крутой ник';
+document.querySelector('.disclaimer').textContent = 'Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.';
+document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. Все права защищены.';
+document.querySelector('#easter-egg').innerHTML = '🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>';
+document.querySelector('#password-output').placeholder = 'Нажми \'Сгенерировать\'';
+document.querySelector('#username-output').placeholder = 'Нажми \'Придумать ник\'';
+document.querySelector('.share-btn').textContent = '↗️ Поделиться';
+document.querySelector('.section-how-it-works h3').textContent = 'Как это работает?';
+document.querySelectorAll('.step-text')[0].textContent = 'Выбери тип: пароль или ник';
+document.querySelectorAll('.step-text')[1].textContent = 'Нажми "Сгенерировать"';
+document.querySelectorAll('.step-text')[2].textContent = 'Получи уникальный результат';
+document.querySelector('.section-benefits h3').textContent = 'Почему выбирают нас?';
+document.querySelectorAll('.benefit-title')[0].textContent = 'Безопасность';
+document.querySelectorAll('.benefit-desc')[0].textContent = 'Нет серверов — всё в твоём браузере';
+document.querySelectorAll('.benefit-title')[1].textContent = 'Мгновенно';
+document.querySelectorAll('.benefit-desc')[1].textContent = 'Генерация за 1 клик';
+document.querySelectorAll('.benefit-title')[2].textContent = 'Стильно';
+document.querySelectorAll('.benefit-desc')[2].textContent = 'Аниме, киберпанк, хакер';
+document.querySelector('.section-security-tips h3').textContent = 'Советы по безопасности';
+document.querySelectorAll('.section-security-tips li')[0].textContent = 'Не используй общие слова в паролях';
+document.querySelectorAll('.section-security-tips li')[1].textContent = 'Меняй пароли каждые 3-6 месяцев';
+document.querySelectorAll('.section-security-tips li')[2].textContent = 'Не используй одинаковые пароли для разных сервисов';
+document.querySelector('.unique-text h2').textContent = 'Уникальные и безопасные';
+document.querySelector('.unique-text p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
+}
+}
+// === Логика переключения вкладок ===
+document.querySelectorAll('.tab-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+// Скрываем все генераторы
+document.querySelectorAll('.generator-block').forEach(block => block.classList.remove('active'));
+// Показываем нужный
+const tab = btn.dataset.tab;
+document.getElementById(tab + '-generator').classList.add('active');
+});
+});
+// === Словари ===
+const WORDS = {
+nature: ['forest', 'ocean', 'river', 'mountain', 'cloud', 'storm', 'dawn', 'dusk', 'sky', 'earth', 'fire', 'ice', 'wind', 'thunder', 'light', 'shadow', 'moon', 'sun', 'star', 'comet', 'nebula', 'galaxy', 'aurora', 'tide', 'valley', 'peak'],
+anime: ['sakura', 'neko', 'yuki', 'hana', 'tsuki', 'kawaii', 'otaku', 'senpai', 'bento', 'ramen', 'mochi', 'wasabi', 'soba', 'matcha', 'zen', 'dojo', 'chibi', 'ninja', 'samurai', 'kami', 'yokai', 'tengu', 'kitsune', 'tanuki', 'aoi', 'ume', 'fuji'],
+cyber: ['cyber', 'neon', 'glitch', 'pixel', 'vector', 'quantum', 'neural', 'digital', 'analog', 'binary', 'data', 'cloud', 'node', 'flux', 'pulse', 'signal', 'void', 'ghost', 'echo', 'nova', 'synth', 'logic', 'matrix', 'cipher', 'proxy'],
+myth: ['phoenix', 'dragon', 'kraken', 'unicorn', 'griffin', 'sphinx', 'mermaid', 'fae', 'oni', 'kami', 'yokai', 'tengu', 'kitsune', 'tanuki', 'leviathan', 'basilisk', 'hydra', 'pegasus', 'centaur', 'minotaur'],
+tech: ['cipher', 'kernel', 'socket', 'lambda', 'hash', 'byte', 'bit', 'cache', 'proxy', 'server', 'client', 'logic', 'array', 'stack', 'heap', 'token', 'vault', 'shield', 'quantum', 'neural', 'api', 'bot', 'algo', 'syntax', 'debug'],
+food: ['ramen', 'bento', 'mochi', 'sushi', 'matcha', 'dango', 'udon', 'tempura', 'wasabi', 'soy', 'rice', 'noodle', 'sake', 'tea', 'plum', 'mango', 'lychee', 'coconut', 'melon', 'berry', 'peach', 'cherry', 'citrus'],
+time: ['midnight', 'dawn', 'dusk', 'noon', 'twilight', 'eternal', 'chrono', 'moment', 'second', 'hour', 'day', 'night', 'lunar', 'solar', 'epoch', 'aeon', 'season', 'winter'],
+mood: ['silent', 'calm', 'fierce', 'wild', 'gentle', 'brave', 'wise', 'mystic', 'arcane', 'ancient', 'modern', 'future', 'retro', 'ethereal', 'vivid', 'serene', 'chaotic', 'luminous']
+};
+function secureRandomInt(min, max) {
+const range = max - min + 1;
+const bytes = new Uint32Array(1);
+crypto.getRandomValues(bytes);
+return min + (bytes[0] % range);
+}
+function getRandomWords(count, categories) {
+const allWords = categories.flatMap(cat => WORDS[cat] || []);
+const unique = [...new Set(allWords)];
+for (let i = unique.length - 1; i > 0; i--) {
+const j = secureRandomInt(0, i);
+[unique[i], unique[j]] = [unique[j], unique[i]];
+}
+return unique.slice(0, count);
+}
+const PASSWORD_SEPARATORS = ['.', '-', '_', '•'];
+const USERNAME_SEPARATORS = ['.', '-', '_'];
+// === Генерация пароля ===
+// Для отслеживания двойного клика
 let lastClickTime = 0;
 let isDoubleClicked = false;
-
 function generatePassword() {
 const now = Date.now();
 const doubleClickThreshold = 300; // 300 мс — время между кликами для двойного клика
-
 // Проверяем, был ли двойной клик
 if (now - lastClickTime < doubleClickThreshold) {
 isDoubleClicked = true;
 } else {
 isDoubleClicked = false;
 }
-
 lastClickTime = now;
-
 // Генерируем пароль
 const categories = ['nature', 'anime', 'cyber', 'myth', 'tech', 'food', 'time', 'mood'];
-
 // Если был двойной клик — генерируем более длинный пароль (4 слова + число)
 let words;
 if (isDoubleClicked) {
@@ -1263,12 +1059,10 @@ words = getRandomWords(4, categories); // 4 слова вместо 3
 } else {
 words = getRandomWords(3, categories); // Обычный режим
 }
-
 const num = secureRandomInt(10, 9999);
 const parts = Math.random() > 0.7 ? [num, ...words] : [...words, num];
 const sep = PASSWORD_SEPARATORS[secureRandomInt(0, PASSWORD_SEPARATORS.length - 1)];
 const result = parts.join(sep);
-
 // Анимация печати
 const output = document.getElementById('password-output');
 output.value = '';
@@ -1281,7 +1075,6 @@ i++;
 clearInterval(timer);
 }
 }, 30);
-
 // Если был двойной клик — показываем уведомление
 if (isDoubleClicked) {
 const notif = document.getElementById('notification');
@@ -1290,116 +1083,110 @@ notif.classList.add('show');
 setTimeout(() => notif.classList.remove('show'), 2000);
 }
 }
-
-    // === Генерация ника ===
-    function generateUsername() {
-      const prefixes = getRandomWords(2, ['cyber', 'anime', 'mood', 'time', 'nature']);
-      const suffixes = getRandomWords(2, ['myth', 'food', 'tech', 'anime', 'nature']);
-      const part1 = prefixes[0] || 'user';
-      const part2 = suffixes[0] || 'name';
-      const order = Math.random() > 0.5 ? [part1, part2] : [part2, part1];
-      const sep = USERNAME_SEPARATORS[secureRandomInt(0, USERNAME_SEPARATORS.length - 1)];
-      let nick = order.join(sep);
-      if (Math.random() > 0.5) nick += '.' + secureRandomInt(1, 999);
-      if (Math.random() > 0.75) {
-        const emojis = ['🌙', '🌸', '⚡', '🌌', '🎀', '🎮', '👾', '💫', '🔥', '❄️', '🐉', '🦊', '🍵', '🍣', '💮', '瓴'];
-        nick += ' ' + emojis[secureRandomInt(0, emojis.length - 1)];
-      }
-      if (nick.length > 28) {
-        nick = nick.substring(0, 28).trim();
-        if (['.', '-', '_', ' '].includes(nick.slice(-1))) nick = nick.slice(0, -1);
-      }
-
-      // Анимация печати
-      const output = document.getElementById('username-output');
-      output.value = '';
-      let i = 0;
-      const timer = setInterval(() => {
-        if (i < nick.length) {
-          output.value += nick.charAt(i);
-          i++;
-        } else {
-          clearInterval(timer);
-        }
-      }, 30);
-
-      // Пасхалка — если нажать 5 раз на "Ники"
-      if (currentLang === 'ru') {
-        if (!window.nickClickCount) window.nickClickCount = 0;
-        window.nickClickCount++;
-        if (window.nickClickCount >= 5) {
-          document.getElementById('easter-egg').style.display = 'block';
-          // Генерируем рандомный ник как обычный
-          const secretNick = generateSecretNick();
-          document.getElementById('secret-nick').textContent = secretNick;
-        }
-      } else {
-        if (!window.nickClickCount) window.nickClickCount = 0;
-        window.nickClickCount++;
-        if (window.nickClickCount >= 5) {
-          document.getElementById('easter-egg').style.display = 'block';
-          const secretNick = generateSecretNick();
-          document.getElementById('secret-nick').textContent = secretNick;
-        }
-      }
-    }
-
-    // === Генерация рандомного ника для пасхалки ===
-    function generateSecretNick() {
-      const prefixes = getRandomWords(2, ['cyber', 'anime', 'mood', 'time', 'nature']);
-      const suffixes = getRandomWords(2, ['myth', 'food', 'tech', 'anime', 'nature']);
-      const part1 = prefixes[0] || 'user';
-      const part2 = suffixes[0] || 'name';
-      const order = Math.random() > 0.5 ? [part1, part2] : [part2, part1];
-      const sep = USERNAME_SEPARATORS[secureRandomInt(0, USERNAME_SEPARATORS.length - 1)];
-      let nick = order.join(sep);
-      if (Math.random() > 0.5) nick += '.' + secureRandomInt(1, 999);
-      if (Math.random() > 0.75) {
-        const emojis = ['🌙', '🌸', '⚡', '🌌', '🎀', '🎮', '👾', '💫', '🔥', '❄️', '🐉', '🦊', '🍵', '🍣', '💮', '瓴'];
-        nick += ' ' + emojis[secureRandomInt(0, emojis.length - 1)];
-      }
-      if (nick.length > 28) {
-        nick = nick.substring(0, 28).trim();
-        if (['.', '-', '_', ' '].includes(nick.slice(-1))) nick = nick.slice(0, -1);
-      }
-      return nick;
-    }
-
-    // === Копирование ===
-    document.querySelectorAll('.output').forEach(input => {
-      input.addEventListener('click', () => {
-        if (!input.value) return;
-        navigator.clipboard.writeText(input.value).then(() => {
-          const sound = document.getElementById('copy-sound');
-          sound.currentTime = 0;
-          sound.play().catch(() => {});
-          const notif = document.getElementById('notification');
-          notif.classList.add('show');
-          setTimeout(() => notif.classList.remove('show'), 2000);
-        });
-      });
-    });
-
-    // === Поделиться ===
-    function shareSite() {
-      if (navigator.share) {
-        navigator.share({
-          title: 'Генератор ников и паролей',
-          text: 'Создай уникальный ник или надёжный пароль за секунду!',
-          url: window.location.href
-        });
-      } else {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          const notif = document.getElementById('notification');
-          notif.textContent = 'Ссылка скопирована!';
-          notif.classList.add('show');
-          setTimeout(() => {
-            notif.classList.remove('show');
-            notif.textContent = 'Скопировано!';
-          }, 2000);
-        });
-      }
-    }
-  </script>
+// === Генерация ника ===
+function generateUsername() {
+const prefixes = getRandomWords(2, ['cyber', 'anime', 'mood', 'time', 'nature']);
+const suffixes = getRandomWords(2, ['myth', 'food', 'tech', 'anime', 'nature']);
+const part1 = prefixes[0] || 'user';
+const part2 = suffixes[0] || 'name';
+const order = Math.random() > 0.5 ? [part1, part2] : [part2, part1];
+const sep = USERNAME_SEPARATORS[secureRandomInt(0, USERNAME_SEPARATORS.length - 1)];
+let nick = order.join(sep);
+if (Math.random() > 0.5) nick += '.' + secureRandomInt(1, 999);
+if (Math.random() > 0.75) {
+const emojis = ['🌙', '🌸', '⚡', '🌌', '🎀', '🎮', '👾', '💫', '🔥', '❄️', '🐉', '🦊', '🍵', '🍣', '💮', '瓴'];
+nick += ' ' + emojis[secureRandomInt(0, emojis.length - 1)];
+}
+if (nick.length > 28) {
+nick = nick.substring(0, 28).trim();
+if (['.', '-', '_', ' '].includes(nick.slice(-1))) nick = nick.slice(0, -1);
+}
+// Анимация печати
+const output = document.getElementById('username-output');
+output.value = '';
+let i = 0;
+const timer = setInterval(() => {
+if (i < nick.length) {
+output.value += nick.charAt(i);
+i++;
+} else {
+clearInterval(timer);
+}
+}, 30);
+// Пасхалка — если нажать 5 раз на "Ники"
+if (currentLang === 'ru') {
+if (!window.nickClickCount) window.nickClickCount = 0;
+window.nickClickCount++;
+if (window.nickClickCount >= 5) {
+document.getElementById('easter-egg').style.display = 'block';
+// Генерируем рандомный ник как обычный
+const secretNick = generateSecretNick();
+document.getElementById('secret-nick').textContent = secretNick;
+}
+} else {
+if (!window.nickClickCount) window.nickClickCount = 0;
+window.nickClickCount++;
+if (window.nickClickCount >= 5) {
+document.getElementById('easter-egg').style.display = 'block';
+const secretNick = generateSecretNick();
+document.getElementById('secret-nick').textContent = secretNick;
+}
+}
+}
+// === Генерация рандомного ника для пасхалки ===
+function generateSecretNick() {
+const prefixes = getRandomWords(2, ['cyber', 'anime', 'mood', 'time', 'nature']);
+const suffixes = getRandomWords(2, ['myth', 'food', 'tech', 'anime', 'nature']);
+const part1 = prefixes[0] || 'user';
+const part2 = suffixes[0] || 'name';
+const order = Math.random() > 0.5 ? [part1, part2] : [part2, part1];
+const sep = USERNAME_SEPARATORS[secureRandomInt(0, USERNAME_SEPARATORS.length - 1)];
+let nick = order.join(sep);
+if (Math.random() > 0.5) nick += '.' + secureRandomInt(1, 999);
+if (Math.random() > 0.75) {
+const emojis = ['🌙', '🌸', '⚡', '🌌', '🎀', '🎮', '👾', '💫', '🔥', '❄️', '🐉', '🦊', '🍵', '🍣', '💮', '瓴'];
+nick += ' ' + emojis[secureRandomInt(0, emojis.length - 1)];
+}
+if (nick.length > 28) {
+nick = nick.substring(0, 28).trim();
+if (['.', '-', '_', ' '].includes(nick.slice(-1))) nick = nick.slice(0, -1);
+}
+return nick;
+}
+// === Копирование ===
+document.querySelectorAll('.output').forEach(input => {
+input.addEventListener('click', () => {
+if (!input.value) return;
+navigator.clipboard.writeText(input.value).then(() => {
+const sound = document.getElementById('copy-sound');
+sound.currentTime = 0;
+sound.play().catch(() => {});
+const notif = document.getElementById('notification');
+notif.classList.add('show');
+setTimeout(() => notif.classList.remove('show'), 2000);
+});
+});
+});
+// === Поделиться ===
+function shareSite() {
+if (navigator.share) {
+navigator.share({
+title: 'Генератор ников и паролей',
+text: 'Создай уникальный ник или надёжный пароль за секунду!',
+url: window.location.href
+});
+} else {
+navigator.clipboard.writeText(window.location.href).then(() => {
+const notif = document.getElementById('notification');
+notif.textContent = 'Ссылка скопирована!';
+notif.classList.add('show');
+setTimeout(() => {
+notif.classList.remove('show');
+notif.textContent = 'Скопировано!';
+}, 2000);
+});
+}
+}
+</script>
 </body>
 </html>
