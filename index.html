@@ -9,10 +9,171 @@
   <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо, FirewallXiaoKitsune">
   
   <title>Генератор ников и паролей</title>
-  
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
   <!-- Шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
   
+</head>
+<body>
+
+  <!-- ШАПКА САЙТА -->
+  <header class="site-header">
+    <div class="header-content">
+      <h1>Генератор ников и паролей</h1>
+      <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
+    </div>
+    <div class="header-actions">
+      <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
+  </header>
+
+  <!-- Фоновые элементы -->
+  <div class="background-elements">
+    <script>
+      function createSakuraPetals() {
+        setInterval(() => {
+          if (Math.random() > 0.8) return;
+          const petal = document.createElement('div');
+          petal.className = 'sakura-petal';
+          petal.innerText = '🌸';
+          petal.style.left = Math.random() * 100 + 'vw';
+          petal.style.fontSize = (16 + Math.random() * 16) + 'px';
+          petal.style.opacity = 0.3 + Math.random() * 0.4;
+          document.body.appendChild(petal);
+          setTimeout(() => petal.remove(), 20000);
+        }, 1000);
+      }
+      createSakuraPetals();
+    </script>
+  </div>
+
+  <!-- Основной контент -->
+  <div class="centered">
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">Безопасность</div>
+        <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🎮</div>
+        <div class="feature-title">Крутое имя</div>
+        <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Мгновенно</div>
+        <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn" data-tab="password">🔑 Пароли</button>
+      <button class="tab-btn" data-tab="username">🎮 Ники</button>
+    </div>
+
+    <!-- Блок генератора паролей -->
+    <div id="password-generator" class="generator-block">
+      <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
+      <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
+      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
+    </div>
+
+    <!-- Блок генератора ников -->
+    <div id="username-generator" class="generator-block">
+      <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
+      <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
+      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
+    </div>
+
+    <div class="disclaimer">
+      Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
+    </div>
+
+    <!-- === НОВЫЕ РАЗДЕЛЫ === -->
+
+    <!-- Раздел с иллюстрацией -->
+    <div class="section-illustration">
+      <div class="illustration-content">
+        <h2>✨ Уникальные и безопасные</h2>
+        <p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
+      </div>
+    </div>
+
+    <!-- Раздел "Как это работает?" -->
+    <div class="section-how-it-works">
+      <h3>Как это работает?</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-text">Выбери тип: пароль или ник</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-text">Нажми "Сгенерировать"</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-text">Получи уникальный результат</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Раздел "Преимущества" -->
+    <div class="section-benefits">
+      <h3>Почему выбирают нас?</h3>
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">🔒</div>
+          <div class="benefit-title">Безопасность</div>
+          <div class="benefit-desc">Нет серверов — всё в твоём браузере</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">⚡</div>
+          <div class="benefit-title">Мгновенно</div>
+          <div class="benefit-desc">Генерация за 1 клик</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">🎮</div>
+          <div class="benefit-title">Стильно</div>
+          <div class="benefit-desc">Аниме, киберпанк, хакер</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Раздел "Советы по безопасности" -->
+    <div class="section-security-tips">
+      <h3>Советы по безопасности</h3>
+      <ul>
+        <li>Не используй общие слова в паролях</li>
+        <li>Меняй пароли каждые 3-6 месяцев</li>
+        <li>Не используй одинаковые пароли для разных сервисов</li>
+      </ul>
+    </div>
+
+    <div id="easter-egg" class="easter-egg">
+      🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>
+    </div>
+
+  </div>
+
+  <div id="notification" class="notification">Скопировано!</div>
+
+  <audio id="copy-sound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAA" type="audio/wav">
+  </audio>
+
+  <footer>
+    © 2026 — FirewallXiaoKitsune. Все права защищены.
+  </footer>
+
   <style>
     * {
       margin: 0;
@@ -57,7 +218,85 @@
       to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
-    /* Центрированный контент — без блока */
+    /* ШАПКА САЙТА */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: rgba(20, 10, 40, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(140, 80, 200, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content h1 {
+      text-align: center;
+      font-size: 20px;
+      background: linear-gradient(90deg, #ff57e0, #b967ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .theme-light .header-content h1 {
+      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
+      text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+      color: #333333 !important;
+    }
+
+    .header-content .subtitle {
+      text-align: center;
+      font-size: 12px;
+      color: #b967ff;
+      margin: 5px 0 0;
+    }
+
+    .theme-light .header-content .subtitle {
+      color: #6a0dad;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-toggle, .theme-toggle {
+      background: rgba(185, 103, 255, 0.3);
+      border: 1px solid #b967ff;
+      color: #e0d6ff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+
+    .lang-toggle:hover, .theme-toggle:hover {
+      background: rgba(185, 103, 255, 0.5);
+      transform: rotate(30deg);
+    }
+
+    .theme-light .lang-toggle, .theme-light .theme-toggle {
+      background: rgba(106, 13, 173, 0.3);
+      border-color: #6a0dad;
+      color: #555555;
+    }
+
+    .theme-light .lang-toggle:hover, .theme-light .theme-toggle:hover {
+      background: rgba(106, 13, 173, 0.5);
+    }
+
+    /* Центрированный контент */
     .centered {
       max-width: 600px;
       margin: 40px auto;
@@ -66,74 +305,7 @@
       z-index: 10;
     }
 
-    /* Логотип — твой, в левом верхнем углу */
-    .logo-container {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 100;
-      width: 80px;
-      height: 80px;
-      cursor: pointer;
-      animation: pulse 2s ease-in-out infinite;
-      border-radius: 50%;
-      border: 2px solid rgba(0, 247, 255, 0.5);
-      box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-      background: url('logo.png') no-repeat center;
-      background-size: cover;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .theme-light .logo-container {
-      border: 2px solid rgba(106, 13, 173, 0.5);
-      box-shadow: 0 0 20px rgba(106, 13, 173, 0.3);
-      background: url('logo.png') no-repeat center;
-      background-size: cover;
-    }
-
-    /* Заголовки */
-    h1 {
-      text-align: center;
-      font-size: 24px;
-      background: linear-gradient(90deg, #ff57e0, #b967ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
-      letter-spacing: 1px;
-      margin: 0 0 10px;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-      100% { transform: scale(1); }
-    }
-
-    .theme-light h1 {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-      text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
-      color: #333333 !important;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 14px;
-      color: #b967ff;
-      margin-bottom: 20px;
-    }
-
-    .theme-light .subtitle {
-      color: #6a0dad;
-    }
-
-    /* Блоки фич — как на скриншоте */
+    /* Блоки фич */
     .features {
       display: flex;
       flex-direction: column;
@@ -192,7 +364,7 @@
       color: #555555;
     }
 
-    /* Кнопки вкладок — фиксированной ширины */
+    /* Кнопки вкладок */
     .tabs {
       display: flex;
       justify-content: space-between;
@@ -337,7 +509,7 @@
       left: 0;
     }
 
-    /* Кнопка "Поделиться" — стилизована и переводится */
+    /* Кнопка "Поделиться" */
     .share-btn {
       display: block;
       width: 100%;
@@ -440,7 +612,7 @@
     .section-illustration {
       width: 100%;
       height: 200px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%230a051a;stop-opacity:1"/><stop offset="100%" style="stop-color:%236a0dad;stop-opacity:1"/></linearGradient></defs><rect width="800" height="200" fill="url(%23grad)"/><path d="M0,150 Q200,50 400,150 T800,150 L800,200 L0,200 Z" fill="rgba(0,247,255,0.1)"/><circle cx="100" cy="80" r="3" fill="%2300f7ff" opacity="0.5"/><circle cx="300" cy="60" r="2" fill="%23b967ff" opacity="0.5"/><circle cx="500" cy="90" r="4" fill="%2300f7ff" opacity="0.5"/><circle cx="700" cy="70" r="2" fill="%23b967ff" opacity="0.5"/></svg>') no-repeat center;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%230a051a;stop-opacity:1"/><stop offset="100%" style="stop-color:%236a0dad;stop-opacity:1"/></linearGradient></defs><rect width="800" height="200" fill="url(%23grad)"/><path d="M0,150 Q200,50 400,150 T800,150 L800,200 L0,200 Z" fill="rgba(0,247,255,0.1)"/><circle cx="100" cy="80" r="3" fill="%2300f7ff" opacity="0.5"/><circle cx="300" cy="60" r="2" fill="%23b967ff" opacity="0.5"/><circle cx="500" cy="90" r="4" fill="%2300f7ff" opacity="0.5"/><circle cx="700" cy="70" r="2" fill="%23b967ff" opacity="0.5"/></svg>') no-repeat center;
       background-size: cover;
       margin: 40px 0;
       display: flex;
@@ -453,7 +625,7 @@
     }
 
     .theme-light .section-illustration {
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f0f0ff;stop-opacity:1"/><stop offset="100%" style="stop-color:%236a0dad;stop-opacity:1"/></linearGradient></defs><rect width="800" height="200" fill="url(%23grad)"/><path d="M0,150 Q200,50 400,150 T800,150 L800,200 L0,200 Z" fill="rgba(106, 13, 173,0.1)"/><circle cx="100" cy="80" r="3" fill="%236a0dad" opacity="0.5"/><circle cx="300" cy="60" r="2" fill="%23b967ff" opacity="0.5"/><circle cx="500" cy="90" r="4" fill="%236a0dad" opacity="0.5"/><circle cx="700" cy="70" r="2" fill="%23b967ff" opacity="0.5"/></svg>') no-repeat center;
+      background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f0f0ff;stop-opacity:1"/><stop offset="100%" style="stop-color:%236a0dad;stop-opacity:1"/></linearGradient></defs><rect width="800" height="200" fill="url(%23grad)"/><path d="M0,150 Q200,50 400,150 T800,150 L800,200 L0,200 Z" fill="rgba(106, 13, 173,0.1)"/><circle cx="100" cy="80" r="3" fill="%236a0dad" opacity="0.5"/><circle cx="300" cy="60" r="2" fill="%23b967ff" opacity="0.5"/><circle cx="500" cy="90" r="4" fill="%236a0dad" opacity="0.5"/><circle cx="700" cy="70" r="2" fill="%23b967ff" opacity="0.5"/></svg>') no-repeat center;
       box-shadow: 0 0 30px rgba(106, 13, 173, 0.2);
     }
 
@@ -636,18 +808,25 @@
 
     /* Мобильная версия */
     @media (max-width: 600px) {
+      .site-header {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .header-content {
+        margin-bottom: 10px;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: space-around;
+      }
+
       .centered {
         margin: 10px 10px;
         padding: 20px;
         width: calc(100% - 20px);
         max-width: 100%;
-      }
-
-      .logo-container {
-        width: 60px;
-        height: 60px;
-        top: 5px;
-        left: 5px;
       }
 
       h1 {
@@ -695,6 +874,18 @@
       .step, .benefit {
         width: 100%;
         max-width: 250px;
+      }
+
+      .section-illustration {
+        height: 150px;
+      }
+
+      .illustration-content h2 {
+        font-size: 20px;
+      }
+
+      .illustration-content p {
+        font-size: 14px;
       }
     }
 
@@ -755,76 +946,6 @@
       color: #555555;
     }
 
-    /* Кнопка переключения темы */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(185, 103, 255, 0.3);
-      border: 1px solid #b967ff;
-      color: #e0d6ff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background: rgba(185, 103, 255, 0.5);
-      transform: rotate(30deg);
-    }
-
-    .theme-light .theme-toggle {
-      background: rgba(106, 13, 173, 0.3);
-      border-color: #6a0dad;
-      color: #555555;
-    }
-
-    .theme-light .theme-toggle:hover {
-      background: rgba(106, 13, 173, 0.5);
-    }
-
-    /* Кнопка смены языка */
-    .lang-toggle {
-      position: fixed;
-      top: 20px;
-      right: 70px;
-      background: rgba(185, 103, 255, 0.3);
-      border: 1px solid #b967ff;
-      color: #e0d6ff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: all 0.3s;
-    }
-
-    .lang-toggle:hover {
-      background: rgba(185, 103, 255, 0.5);
-      transform: rotate(30deg);
-    }
-
-    .theme-light .lang-toggle {
-      background: rgba(106, 13, 173, 0.3);
-      border-color: #6a0dad;
-      color: #555555;
-    }
-
-    .theme-light .lang-toggle:hover {
-      background: rgba(106, 13, 173, 0.5);
-    }
-
     /* Подвал */
     footer {
       text-align: center;
@@ -839,161 +960,6 @@
       color: #555555;
     }
   </style>
-</head>
-<body>
-
-  <!-- Фоновые элементы -->
-  <div class="background-elements">
-    <script>
-      function createSakuraPetals() {
-        setInterval(() => {
-          if (Math.random() > 0.8) return;
-          const petal = document.createElement('div');
-          petal.className = 'sakura-petal';
-          petal.innerText = '🌸';
-          petal.style.left = Math.random() * 100 + 'vw';
-          petal.style.fontSize = (16 + Math.random() * 16) + 'px';
-          petal.style.opacity = 0.3 + Math.random() * 0.4;
-          document.body.appendChild(petal);
-          setTimeout(() => petal.remove(), 20000);
-        }, 1000);
-      }
-      createSakuraPetals();
-    </script>
-  </div>
-
-  <!-- Логотип — твой, в левом верхнем углу -->
-  <div class="logo-container"></div>
-
-  <!-- Основной контент — на фоне, но центрирован -->
-  <div class="centered">
-
-    <!-- Кнопки смены темы и языка -->
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
-
-    <h1>Генератор ников и паролей</h1>
-    <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
-
-    <div class="features">
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <div class="feature-title">Безопасность</div>
-        <div class="feature-text">Все данные генерируются локально. Никто не видит твои пароли.</div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">🎮</div>
-        <div class="feature-title">Крутое имя</div>
-        <div class="feature-text">Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.</div>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <div class="feature-title">Мгновенно</div>
-        <div class="feature-text">Нажал — получил. Без ожидания, без загрузки.</div>
-      </div>
-    </div>
-
-    <div class="tabs">
-      <button class="tab-btn" data-tab="password">🔑 Пароли</button>
-      <button class="tab-btn" data-tab="username">🎮 Ники</button>
-    </div>
-
-    <!-- Блок генератора паролей -->
-    <div id="password-generator" class="generator-block">
-      <input type="text" id="password-output" class="output" readonly placeholder="Нажми 'Сгенерировать'"/>
-      <button class="btn" onclick="generatePassword()">Сгенерировать надёжный пароль</button>
-      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
-    </div>
-
-    <!-- Блок генератора ников -->
-    <div id="username-generator" class="generator-block">
-      <input type="text" id="username-output" class="output" readonly placeholder="Нажми 'Придумать ник'"/>
-      <button class="btn" onclick="generateUsername()">Придумать крутой ник</button>
-      <button class="share-btn" onclick="shareSite()">↗️ Поделиться</button>
-    </div>
-
-    <div class="disclaimer">
-      Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.
-    </div>
-
-    <!-- === НОВЫЕ РАЗДЕЛЫ === -->
-
-    <!-- Раздел с иллюстрацией -->
-    <div class="section-illustration">
-      <div class="illustration-content">
-        <h2>✨ Уникальные и безопасные</h2>
-        <p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
-      </div>
-    </div>
-
-    <!-- Раздел "Как это работает?" -->
-    <div class="section-how-it-works">
-      <h3>Как это работает?</h3>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <div class="step-text">Выбери тип: пароль или ник</div>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <div class="step-text">Нажми "Сгенерировать"</div>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <div class="step-text">Получи уникальный результат</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Раздел "Преимущества" -->
-    <div class="section-benefits">
-      <h3>Почему выбирают нас?</h3>
-      <div class="benefits">
-        <div class="benefit">
-          <div class="benefit-icon">🔒</div>
-          <div class="benefit-title">Безопасность</div>
-          <div class="benefit-desc">Нет серверов — всё в твоём браузере</div>
-        </div>
-        <div class="benefit">
-          <div class="benefit-icon">⚡</div>
-          <div class="benefit-title">Мгновенно</div>
-          <div class="benefit-desc">Генерация за 1 клик</div>
-        </div>
-        <div class="benefit">
-          <div class="benefit-icon">🎮</div>
-          <div class="benefit-title">Стильно</div>
-          <div class="benefit-desc">Аниме, киберпанк, хакер</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Раздел "Советы по безопасности" -->
-    <div class="section-security-tips">
-      <h3>Советы по безопасности</h3>
-      <ul>
-        <li>Не используй общие слова в паролях</li>
-        <li>Меняй пароли каждые 3-6 месяцев</li>
-        <li>Не используй одинаковые пароли для разных сервисов</li>
-      </ul>
-    </div>
-
-    <div id="easter-egg" class="easter-egg">
-      🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>
-    </div>
-
-  </div>
-
-  <div id="notification" class="notification">Скопировано!</div>
-
-  <audio id="copy-sound" preload="auto">
-    <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAA" type="audio/wav">
-  </audio>
-
-  <footer>
-    © 2026 — FirewallXiaoKitsune. Все права защищены.
-  </footer>
 
   <script>
     // === Переключение темы ===
@@ -1181,7 +1147,7 @@
       let nick = order.join(sep);
       if (Math.random() > 0.5) nick += '.' + secureRandomInt(1, 999);
       if (Math.random() > 0.75) {
-        const emojis = ['🌙', '🌸', '⚡', '🌌', '🎀', '🎮', '👾', '💫', '🔥', '❄️', '🐉', '🦊', '🍵', '🍣', '💮', '🎐'];
+        const emojis = ['🌙', '🌸', '⚡', '🌌', '🎀', '🎮', '👾', '💫', '🔥', '❄️', '🐉', '🦊', '🍵', '🍣', '💮', '瓴'];
         nick += ' ' + emojis[secureRandomInt(0, emojis.length - 1)];
       }
       if (nick.length > 28) {
