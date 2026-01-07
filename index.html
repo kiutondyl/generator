@@ -642,7 +642,13 @@
     }
 
     .theme-light .unique-box {
-      background: #6a0dad;
+      background: #e0d6ff;
+      color: #333333;
+    }
+
+    .theme-night-tokyo .unique-box {
+      background: #301540;
+      color: #e0d6ff;
     }
 
     .unique-icon {
@@ -651,7 +657,11 @@
     }
 
     .theme-light .unique-icon {
-      color: white;
+      color: #333333;
+    }
+
+    .theme-night-tokyo .unique-icon {
+      color: #e0d6ff;
     }
 
     .unique-text h2 {
@@ -660,10 +670,26 @@
       margin: 0;
     }
 
+    .theme-light .unique-text h2 {
+      color: #333333;
+    }
+
+    .theme-night-tokyo .unique-text h2 {
+      color: #e0d6ff;
+    }
+
     .unique-text p {
       font-size: 14px;
       color: white;
       margin: 5px 0 0;
+    }
+
+    .theme-light .unique-text p {
+      color: #555555;
+    }
+
+    .theme-night-tokyo .unique-text p {
+      color: #c0b6ff;
     }
 
     /* Раздел "Как это работает?" */
@@ -1003,6 +1029,41 @@
     .theme-light .disclaimer {
       background: rgba(200, 200, 255, 0.4);
       color: #555555;
+    }
+
+    /* Убираем фиолетовую полосу в шапке светлой темы */
+    .theme-light .site-header {
+      background: rgba(20, 10, 40, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(140, 80, 200, 0.2);
+    }
+
+    /* Делаем блок "Уникальные и безопасные" светлее в светлой теме */
+    .theme-light .unique-box {
+      background: #e0d6ff;
+      color: #333333;
+    }
+
+    .theme-light .unique-text h2 {
+      color: #333333;
+    }
+
+    .theme-light .unique-text p {
+      color: #555555;
+    }
+
+    /* Темная тема — делаем блок темнее */
+    .theme-night-tokyo .unique-box {
+      background: #301540;
+      color: #e0d6ff;
+    }
+
+    .theme-night-tokyo .unique-text h2 {
+      color: #e0d6ff;
+    }
+
+    .theme-night-tokyo .unique-text p {
+      color: #c0b6ff;
     }
 
     /* Подвал */
