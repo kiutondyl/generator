@@ -234,10 +234,15 @@
     }
 
     .header-content {
-      text-align: center;
-      flex: 1;
-      margin: 0 20px;
-    }
+text-align: center;
+/* Убираем flex: 1, чтобы ширина зависела от контента */
+/* Добавляем отступы по бокам */
+padding: 0 20px;
+/* Ограничиваем максимальную ширину, чтобы линия не тянулась на весь экран */
+max-width: 500px;
+/* Центрируем содержимое внутри этого контейнера */
+margin: 0 auto;
+}
 
     .header-content h1 {
       text-align: center;
@@ -1231,27 +1236,60 @@ border-bottom: 1px solid rgba(140, 80, 200, 0.2);
     const USERNAME_SEPARATORS = ['.', '-', '_'];
 
     // === Генерация пароля ===
-    function generatePassword() {
-      const categories = ['nature', 'anime', 'cyber', 'myth', 'tech', 'food', 'time', 'mood'];
-      const words = getRandomWords(3, categories);
-      const num = secureRandomInt(10, 9999);
-      const parts = Math.random() > 0.7 ? [num, ...words] : [...words, num];
-      const sep = PASSWORD_SEPARATORS[secureRandomInt(0, PASSWORD_SEPARATORS.length - 1)];
-      const result = parts.join(sep);
-      
-      // Анимация печати
-      const output = document.getElementById('password-output');
-      output.value = '';
-      let i = 0;
-      const timer = setInterval(() => {
-        if (i < result.length) {
-          output.value += result.charAt(i);
-          i++;
-        } else {
-          clearInterval(timer);
-        }
-      }, 30);
-    }
+    // Для отслеживания двойного клика
+let lastClickTime = 0;
+let isDoubleClicked = false;
+
+function generatePassword() {
+const now = Date.now();
+const doubleClickThreshold = 300; // 300 мс — время между кликами для двойного клика
+
+// Проверяем, был ли двойной клик
+if (now - lastClickTime < doubleClickThreshold) {
+isDoubleClicked = true;
+} else {
+isDoubleClicked = false;
+}
+
+lastClickTime = now;
+
+// Генерируем пароль
+const categories = ['nature', 'anime', 'cyber', 'myth', 'tech', 'food', 'time', 'mood'];
+
+// Если был двойной клик — генерируем более длинный пароль (4 слова + число)
+let words;
+if (isDoubleClicked) {
+words = getRandomWords(4, categories); // 4 слова вместо 3
+} else {
+words = getRandomWords(3, categories); // Обычный режим
+}
+
+const num = secureRandomInt(10, 9999);
+const parts = Math.random() > 0.7 ? [num, ...words] : [...words, num];
+const sep = PASSWORD_SEPARATORS[secureRandomInt(0, PASSWORD_SEPARATORS.length - 1)];
+const result = parts.join(sep);
+
+// Анимация печати
+const output = document.getElementById('password-output');
+output.value = '';
+let i = 0;
+const timer = setInterval(() => {
+if (i < result.length) {
+output.value += result.charAt(i);
+i++;
+} else {
+clearInterval(timer);
+}
+}, 30);
+
+// Если был двойной клик — показываем уведомление
+if (isDoubleClicked) {
+const notif = document.getElementById('notification');
+notif.textContent = 'Двойной клик! Более длинный пароль.';
+notif.classList.add('show');
+setTimeout(() => notif.classList.remove('show'), 2000);
+}
+}
 
     // === Генерация ника ===
     function generateUsername() {
