@@ -222,8 +222,8 @@
       to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
     }
 
-    /* ШАПКА САЙТА */
-    .site-header {
+    /* ШАПКА САЙТА — теперь не прилипает при прокрутке */
+      .site-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -231,9 +231,6 @@
       background: rgba(20, 10, 40, 0.7);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(140, 80, 200, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
 
     .header-content {
@@ -1032,11 +1029,11 @@
     }
 
     /* Убираем фиолетовую полосу в шапке светлой темы - делаем фон прозрачным */
-    .theme-light .site-header {
-      background: transparent;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(140, 80, 200, 0.2);
-    }
+.theme-light .site-header {
+background: transparent;
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(140, 80, 200, 0.2);
+}
 
     /* Делаем блок "Уникальные и безопасные" светлее в светлой теме */
     .theme-light .unique-box {
