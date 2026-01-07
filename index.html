@@ -8,20 +8,24 @@
 <meta name="keywords" content="генератор паролей, генератор ников, безопасный пароль, ник для тиктока, аниме ник, пароль сакура, генератор для подростков, ночной токио, храм кибердзюдо, FirewallXiaoKitsune">
 <title>Генератор ников и паролей</title>
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="logo.png">
-<!-- Шрифт -->
+<link rel="icon" type="image/png" href="logo.png"><!-- Шрифт -->
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
+<!-- БОКОВЫЕ ГРАДИЕНТЫ -->
+<div class="side-gradient left"></div>
+<div class="side-gradient right"></div>
 <!-- ШАПКА САЙТА -->
 <header class="site-header">
-<div class="header-content">
-<h1>Генератор ников и паролей</h1>
-<p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
+<div class="header-content-wrapper">
+  <div class="header-actions">
+  <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 </div>
-<div class="header-actions">
-<button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
-<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  <div class="header-content">
+    <h1>Генератор ников и паролей</h1>
+    <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
+  </div>
 </div>
 </header>
 <!-- Фоновые элементы -->
@@ -195,7 +199,7 @@ to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
 /* ШАПКА САЙТА — полностью прозрачная, без размытого фона */
 .site-header {
 display: flex;
-justify-content: space-between;
+justify-content: center; /* Центрируем содержимое */
 align-items: center;
 padding: 20px 30px;
 background: transparent;
@@ -205,7 +209,7 @@ border-bottom: none;
 text-align: center;
 padding: 0 20px;
 max-width: 500px;
-margin: 0 auto;
+margin: 0 auto; /* Центрируем */
 }
 .header-content .subtitle {
 text-align: center;
@@ -217,8 +221,11 @@ margin: 5px 0 0;
 color: #6a0dad;
 }
 .header-actions {
-display: flex;
-gap: 10px;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
 }
 .lang-toggle, .theme-toggle {
 background: rgba(185, 103, 255, 0.3);
@@ -248,11 +255,13 @@ background: rgba(106, 13, 173, 0.5);
 }
 /* Центрированный контент */
 .centered {
-max-width: 600px;
+width: 100%;
+max-width: 600px; /* Ограничиваем максимальную ширину */
 margin: 40px auto;
 padding: 30px;
 position: relative;
 z-index: 10;
+box-sizing: border-box;
 }
 /* Блоки фич */
 .features {
@@ -894,6 +903,88 @@ color: #555555;
 .theme-light .header-content h1 {
   color: #333333;
 }
+
+.theme-light .side-gradient.left {
+  background: linear-gradient(90deg, #e6d6ff, rgba(230, 214, 255, 0));
+}
+.theme-light .side-gradient.right {
+  background: linear-gradient(90deg, rgba(230, 214, 255, 0), #e6d6ff);
+}
+
+/* Иероглифы внутри боковых блоков */
+.side-gradient .kanji {
+  position: absolute;
+  font-size: 18px;
+  color: rgba(255, 180, 255, 0.7); /* Чуть ярче */
+  user-select: none;
+  pointer-events: none;
+  animation: fallKanji 10s linear infinite;
+  text-shadow: 0 0 3px rgba(255, 180, 255, 0.5); /* Лёгкое свечение */
+}
+
+@keyframes fallKanji {
+  from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+  to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+}
+
+/* В темной теме — ещё ярче */
+.theme-night-tokyo .side-gradient .kanji {
+  color: rgba(255, 180, 255, 0.9) !important;
+  text-shadow: 0 0 5px rgba(255, 180, 255, 0.7);
+}
+
+/* В светлой теме — чуть темнее, чтобы контрастировать */
+.theme-light .side-gradient .kanji {
+  color: rgba(106, 13, 173, 0.7);
+  text-shadow: 0 0 5px rgba(106, 13, 173, 0.4);
+}
+
+/* Боковые градиенты — теперь более контрастные */
+.side-gradient {
+  position: fixed;
+  top: 0;
+  width: 20vw;
+  height: 100vh;
+  z-index: -2; /* Под лепестками, но над фоном */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Темная тема — ярче и контрастнее */
+.side-gradient.left {
+  left: 0;
+  background: linear-gradient(90deg, #1a0a35, rgba(26, 10, 53, 0));
+}
+
+.side-gradient.right {
+  right: 0;
+  background: linear-gradient(90deg, rgba(26, 10, 53, 0), #1a0a35);
+}
+
+/* Светлая тема — не белый, а мягкий фиолетовый */
+.theme-light .side-gradient.left {
+  background: linear-gradient(90deg, #d8c7f7, rgba(216, 199, 247, 0));
+}
+
+.theme-light .side-gradient.right {
+  background: linear-gradient(90deg, rgba(216, 199, 247, 0), #d8c7f7);
+}
+
+.header-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.header-content {
+  text-align: center;
+  padding: 0 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
 </style>
 <script>
 // === Переключение темы ===
@@ -1187,6 +1278,48 @@ notif.textContent = 'Скопировано!';
 });
 }
 }
+
+// === Генерация сыпающихся иероглифов по бокам ===
+function createSideKanji() {
+  // Массив азиатских иероглифов (китайских, японских)
+  const kanji = [
+    '知', '識', '安', '全', '速', '度', '力', '量', '光', '影', '風', '雷', '火', '水', '土', '木', '金', '月', '日', '星',
+    '心', '魂', '夢', '幻', '真', '偽', '善', '悪', '美', '醜', '静', '動', '明', '暗', '空', '時', '間', '界', '界', '界',
+    '電', '脳', '網', '絡', '数', '字', '情', '報', '技', '術', '科', '学', '文', '化', '伝', '統', '未', '来', '現', '在',
+    '神', '魔', '妖', '鬼', '精', '霊', '狐', '狼', '龍', '鳳', '虎', '豹', '鶴', '鷹', '魚', '鳥', '虫', '草', '花', '木',
+    '山', '川', '海', '湖', '河', '溪', '谷', '峰', '嶺', '崖', '岩', '石', '砂', '泥', '雪', '霜', '雨', '雲', '霧', '虹',
+    '刀', '剣', '槍', '矛', '弓', '矢', '盾', '甲', '鎧', '兜', '扇', '筆', '墨', '紙', '硯', '琴', '棋', '書', '画', '舞',
+    '歌', '詩', '詞', '賦', '曲', '調', '節', '拍', '音', '楽', '声', '響', '振', '動', '波', '動', '流', '行', '時', '代',
+    '人', '民', '国', '家', '社', '会', '経', '済', '政', '治', '法', '律', '道', '徳', '信', '仰', '宗', '教', '哲', '学',
+    '歴', '史', '地', '理', '天', '文', '気', '象', '生', '物', '地', '球', '宇', '宙', '銀', '河', '星', '系', '惑', '星'
+  ];
+
+const leftSide = document.querySelector('.side-gradient.left');
+const rightSide = document.querySelector('.side-gradient.right');
+
+  // Функция для создания одного иероглифа
+  function createKanji(sideElement) {
+    const kanjiEl = document.createElement('div');
+    kanjiEl.className = 'kanji';
+    kanjiEl.innerText = kanji[Math.floor(Math.random() * kanji.length)];
+    kanjiEl.style.left = Math.random() * 100 + '%';
+    kanjiEl.style.fontSize = (14 + Math.random() * 10) + 'px';
+    kanjiEl.style.opacity = 0.3 + Math.random() * 0.4;
+    sideElement.appendChild(kanjiEl);
+
+    // Удаляем через 10 секунд
+    setTimeout(() => kanjiEl.remove(), 10000);
+  }
+
+  // Запускаем каждые 500 мс
+  setInterval(() => {
+    if (Math.random() > 0.7) createKanji(leftSide);
+    if (Math.random() > 0.7) createKanji(rightSide);
+  }, 500);
+}
+
+// Запускаем при загрузке страницы
+document.addEventListener('DOMContentLoaded', createSideKanji);
 </script>
 </body>
 </html>
