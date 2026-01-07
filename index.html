@@ -101,10 +101,14 @@
 
     <!-- Раздел "Уникальные и безопасные" -->
     <div class="section-unique">
-      <div class="unique-content">
-        <div class="unique-icon">✨</div>
-        <h2>Уникальные и безопасные</h2>
-        <p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
+      <div class="unique-container">
+        <div class="unique-box">
+          <div class="unique-icon">✨</div>
+          <div class="unique-text">
+            <h2>Уникальные и безопасные</h2>
+            <p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -233,33 +237,33 @@
       z-index: 100;
     }
 
+    .header-content {
+      text-align: center;
+      flex: 1;
+      margin: 0 20px;
+    }
+
     .header-content h1 {
       text-align: center;
       font-size: 20px;
-      background: linear-gradient(90deg, #ff57e0, #b967ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 10px rgba(185, 103, 255, 0.3);
+      color: #b967ff; /* Светло-фиолетовый */
       letter-spacing: 1px;
       margin: 0;
     }
 
     .theme-light .header-content h1 {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-      text-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
-      color: #333333 !important;
+      color: #6a0dad; /* В светлой теме — тёмно-фиолетовый */
     }
 
     .header-content .subtitle {
       text-align: center;
       font-size: 12px;
-      color: #b967ff;
+      color: #b967ff; /* Светло-фиолетовый */
       margin: 5px 0 0;
     }
 
     .theme-light .header-content .subtitle {
-      color: #6a0dad;
+      color: #6a0dad; /* В светлой теме — тёмно-фиолетовый */
     }
 
     .header-actions {
@@ -612,59 +616,51 @@
     /* Раздел "Уникальные и безопасные" */
     .section-unique {
       width: 100%;
-      background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
-      padding: 20px;
-      border-radius: 16px;
       margin: 40px 0;
       text-align: center;
-      color: #e0d6ff;
-      box-shadow: 0 0 30px rgba(106, 13, 173, 0.3);
     }
 
-    .theme-light .section-unique {
-      background: linear-gradient(135deg, #f0f0ff, #e0e6ff, #f0f0ff);
-      color: #333333;
+    .unique-container {
+      background: rgba(240, 240, 255, 0.8);
+      padding: 20px;
+      border-radius: 16px;
       box-shadow: 0 0 30px rgba(106, 13, 173, 0.2);
     }
 
-    .unique-content {
+    .theme-light .unique-container {
+      background: rgba(240, 240, 255, 0.9);
+      box-shadow: 0 0 30px rgba(106, 13, 173, 0.1);
+    }
+
+    .unique-box {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
+      background: #b967ff;
+      padding: 15px;
+      border-radius: 12px;
+      color: white;
+    }
+
+    .theme-light .unique-box {
+      background: #6a0dad;
     }
 
     .unique-icon {
       font-size: 24px;
-      color: #b967ff;
+      color: white;
     }
 
-    .theme-light .unique-icon {
-      color: #6a0dad;
-    }
-
-    .unique-content h2 {
+    .unique-text h2 {
       font-size: 20px;
-      background: linear-gradient(90deg, #ff57e0, #b967ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: white;
       margin: 0;
     }
 
-    .theme-light .unique-content h2 {
-      background: linear-gradient(90deg, #6a0dad, #4a0a8a);
-      color: #333333 !important;
-    }
-
-    .unique-content p {
+    .unique-text p {
       font-size: 14px;
-      color: #c0b6ff;
-      margin: 0 0 0 10px;
-    }
-
-    .theme-light .unique-content p {
-      color: #555555;
+      color: white;
+      margin: 5px 0 0;
     }
 
     /* Раздел "Как это работает?" */
@@ -896,20 +892,25 @@
         padding: 15px;
       }
 
-      .unique-content {
+      .unique-container {
+        padding: 15px;
+      }
+
+      .unique-box {
         flex-direction: column;
         gap: 5px;
+        padding: 10px;
       }
 
       .unique-icon {
         font-size: 20px;
       }
 
-      .unique-content h2 {
+      .unique-text h2 {
         font-size: 18px;
       }
 
-      .unique-content p {
+      .unique-text p {
         font-size: 12px;
         margin: 5px 0 0;
       }
@@ -1078,8 +1079,8 @@
         document.querySelectorAll('.section-security-tips li')[0].textContent = 'Do not use common words in passwords';
         document.querySelectorAll('.section-security-tips li')[1].textContent = 'Change passwords every 3-6 months';
         document.querySelectorAll('.section-security-tips li')[2].textContent = 'Do not use the same passwords for different services';
-        document.querySelector('.unique-content h2').textContent = 'Unique and secure';
-        document.querySelector('.unique-content p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
+        document.querySelector('.unique-text h2').textContent = 'Unique and secure';
+        document.querySelector('.unique-text p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
       } else {
         langToggle.innerHTML = '🇷🇺';
         currentLang = 'ru';
@@ -1116,8 +1117,8 @@
         document.querySelectorAll('.section-security-tips li')[0].textContent = 'Не используй общие слова в паролях';
         document.querySelectorAll('.section-security-tips li')[1].textContent = 'Меняй пароли каждые 3-6 месяцев';
         document.querySelectorAll('.section-security-tips li')[2].textContent = 'Не используй одинаковые пароли для разных сервисов';
-        document.querySelector('.unique-content h2').textContent = 'Уникальные и безопасные';
-        document.querySelector('.unique-content p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
+        document.querySelector('.unique-text h2').textContent = 'Уникальные и безопасные';
+        document.querySelector('.unique-text p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
       }
     }
 
