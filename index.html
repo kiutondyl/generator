@@ -11,7 +11,6 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
 <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
-<link rel="apple-touch-icon" sizes="180x180" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -993,17 +992,17 @@ color: #555555;
 // === Переключение темы ===
 let currentTheme = 'night-tokyo';
 function toggleTheme() {
-const body = document.body;
-const themeToggle = document.querySelector('.theme-toggle');
-if (currentTheme === 'night-tokyo') {
-body.className = 'theme-light';
-themeToggle.innerHTML = '☀️';
-currentTheme = 'light';
-} else {
-body.className = 'theme-night-tokyo';
-themeToggle.innerHTML = '🌙';
-currentTheme = 'night-tokyo';
-}
+  const body = document.body;
+  const themeToggle = document.querySelector('.theme-toggle');
+  if (currentTheme === 'night-tokyo') {
+    body.className = 'theme-light';
+    themeToggle.innerHTML = '☀️';
+    currentTheme = 'light';
+  } else {
+    body.className = 'theme-night-tokyo';
+    themeToggle.innerHTML = '🌙';
+    currentTheme = 'night-tokyo';
+  }
 }
 // === Смена языка ===
 let currentLang = 'ru';
