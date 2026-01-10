@@ -17,10 +17,10 @@
 <body>
 <!-- БОКОВЫЕ ГРАДИЕНТЫ -->
 <div class="side-gradient left"></div>
-<div class="side-gradient right"></div>\
+<div class="side-gradient right"></div>
 
 <div class="app"> <!-- ← НОВЫЙ КОНТЕЙНЕР -->
-КА САЙТА -->
+<!-- ШАПКА САЙТА -->
 <header class="site-header">
   <button class="lang-toggle mobile-top-left" onclick="toggleLang()">🇷🇺</button>
   <div class="header-content">
@@ -92,15 +92,11 @@ createSakuraPetals();
 <!-- === НОВЫЕ РАЗДЕЛЫ === -->
 <!-- Раздел "Уникальные и безопасные" -->
 <div class="section-unique">
-<div class="unique-container">
-<div class="unique-box">
-<div class="unique-icon">✨</div>
-<div class="unique-text">
-<h2>Уникальные и безопасные</h2>
-<p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
-</div>
-</div>
-</div>
+  <div class="unique-container">
+    <div class="unique-icon">✨</div>
+    <h2>Уникальные и безопасные</h2>
+    <p>Каждый ник и пароль создаются специально для тебя — моментально и надёжно.</p>
+  </div>
 </div>
 <!-- Раздел "Как это работает?" -->
 <div class="section-how-it-works">
@@ -557,24 +553,59 @@ width: 100%;
 margin: 40px 0;
 text-align: center;
 }
+
+/* Основной контейнер */
+.section-unique {
+width: 100%;
+margin: 40px 0;
+text-align: center;
+}
+
 .unique-container {
-background: rgba(240, 240, 255, 0.8);
+background: rgba(26, 10, 53, 0.2); /* Очень лёгкий тёмно-фиолетовый полупрозрачный фон */
 padding: 20px;
 border-radius: 16px;
-box-shadow: 0 0 30px rgba(106, 13, 173, 0.2);
+border: 1px solid rgba(185, 103, 255, 0.15); /* Едва заметная фиолетовая рамка */
+backdrop-filter: blur(4px); /* Лёгкое размытие фона (опционально) */
+box-shadow: 0 4px 12px rgba(106, 13, 173, 0.08);
 }
+
 .theme-light .unique-container {
-background: rgba(240, 240, 255, 0.9);
-box-shadow: 0 0 30px rgba(106, 13, 173, 0.1);
+background: rgba(216, 199, 247, 0.25);
+border: 1px solid rgba(106, 13, 173, 0.15);
+box-shadow: 0 4px 12px rgba(106, 13, 173, 0.05);
 }
-.unique-box {
-display: flex;
-align-items: center;
-gap: 10px;
-background: #100b30;
-padding: 15px;
-border-radius: 12px;
+
+.unique-container .unique-icon {
+font-size: 28px;
 color: #b967ff;
+margin-bottom: 12px;
+display: block;
+}
+
+.theme-light .unique-container .unique-icon {
+color: #6a0dad;
+}
+
+.unique-container h2 {
+font-size: 22px;
+margin: 0 0 10px;
+color: #e0d6ff;
+}
+
+.theme-light .unique-container h2 {
+color: #333333;
+}
+
+.unique-container p {
+font-size: 15px;
+color: #c0b6ff;
+margin: 0;
+line-height: 1.5;
+}
+
+.theme-light .unique-container p {
+color: #555555;
 }
 .theme-light .unique-box {
 background: #e0d6ff;
@@ -1005,21 +1036,24 @@ color: #555555;
   }
 }
 
+/* Добавьте это в конец вашего <style> */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0a051a, #0d0824, #100b30); /* Используем тот же градиент, что и .app */
+  color: #e0d6ff;
+  transition: background 0.5s;
+  overflow-x: hidden;
+}
+
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
-  color: #e0d6ff;
+  background: inherit; /* Наследуем фон от body */
+  color: inherit; /* Наследуем цвет от body */
   padding: 0 15px;
   box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background: transparent; /* ← важно! */
-  overflow-x: hidden;
 }
 
 /* Для светлой темы */
@@ -1103,8 +1137,8 @@ function toggleLang() {
     document.querySelectorAll('.section-security-tips li')[0].textContent = 'Do not use common words in passwords';
     document.querySelectorAll('.section-security-tips li')[1].textContent = 'Change passwords every 3-6 months';
     document.querySelectorAll('.section-security-tips li')[2].textContent = 'Do not use the same passwords for different services';
-    document.querySelector('.unique-text h2').textContent = 'Unique and secure';
-    document.querySelector('.unique-text p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
+    document.querySelector('.unique-container h2').textContent = 'Unique and secure';
+document.querySelector('.unique-container p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
   } else {
     langToggle.innerHTML = '🇷🇺';
     currentLang = 'ru';
@@ -1141,8 +1175,8 @@ function toggleLang() {
     document.querySelectorAll('.section-security-tips li')[0].textContent = 'Не используй общие слова в паролях';
     document.querySelectorAll('.section-security-tips li')[1].textContent = 'Меняй пароли каждые 3-6 месяцев';
     document.querySelectorAll('.section-security-tips li')[2].textContent = 'Не используй одинаковые пароли для разных сервисов';
-    document.querySelector('.unique-text h2').textContent = 'Уникальные и безопасные';
-    document.querySelector('.unique-text p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
+    document.querySelector('.unique-container h2').textContent = 'Уникальные и безопасные';
+document.querySelector('.unique-container p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
   }
 }
 
