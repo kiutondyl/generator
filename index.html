@@ -20,16 +20,12 @@
 <div class="side-gradient right"></div>
 <!-- ШАПКА САЙТА -->
 <header class="site-header">
-  <div class="header-content-wrapper">
-    <div class="header-content">
-      <h1>Генератор ников и паролей</h1>
-      <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
-    </div>
-    <div class="header-actions">
-      <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
-      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-    </div>
+  <button class="lang-toggle mobile-top-left" onclick="toggleLang()">🇷🇺</button>
+  <div class="header-content">
+    <h1>Генератор ников и паролей</h1>
+    <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
   </div>
+  <button class="theme-toggle mobile-top-right" onclick="toggleTheme()">🌙</button>
 </header>
 <!-- Фоновые элементы -->
 <div class="background-elements">
@@ -964,6 +960,28 @@ color: #555555;
 .theme-light .side-gradient .kanji {
   color: rgba(106, 13, 173, 0.7);
   text-shadow: 0 0 5px rgba(106, 13, 173, 0.4);
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 10px;
+    position: relative;
+  }
+  .mobile-top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  .mobile-top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .header-content {
+    margin-top: 40px; /* Отступ от кнопок */
+  }
 }
 </style>
 <script>
