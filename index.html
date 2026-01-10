@@ -981,6 +981,13 @@ function toggleTheme() {
     themeToggle.innerHTML = '🌙';
     currentTheme = 'night-tokyo';
   }
+
+  // Пересоздаём иероглифы, чтобы стили обновились
+  const leftSide = document.querySelector('.side-gradient.left');
+  const rightSide = document.querySelector('.side-gradient.right');
+  leftSide.innerHTML = '';
+  rightSide.innerHTML = '';
+  createSideKanji(); // Перезапускаем генерацию
 }
 
 // === Смена языка ===
