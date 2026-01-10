@@ -169,17 +169,21 @@ html {
 }
 
 .sakura-petal {
-  position: fixed; /* ← обязательно fixed */
+  position: absolute; /* ← было fixed, стало absolute */
   top: -50px;
+  left: 0;
   font-size: 24px;
   color: rgba(255, 180, 255, 0.6);
   user-select: none;
   pointer-events: none;
-  animation: fall 15s linear infinite;
-  transition: transform 0.3s ease-out;
+  animation: fall 15s linear forwards; /* ← добавьте forwards */
 }
+
 @keyframes fall {
-  to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+  to {
+    transform: translateY(3000px) rotate(360deg); /* ← фиксированная высота */
+    opacity: 0;
+  }
 }
 /* ШАПКА САЙТА */
 .site-header {
