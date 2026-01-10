@@ -32,18 +32,41 @@
 <!-- Фоновые элементы -->
 <div class="background-elements">
 <script>
+// === Список иероглифов (можно использовать тот же, что и для боков) ===
+const KANJI_FALL = [
+  '知', '識', '安', '全', '速', '度', '力', '量', '光', '影', '風', '雷', '火', '水', '夢', '幻', '心', '魂', '月', '星',
+  '電', '脳', '数', '字', '情', '報', '技', '術', '未', '来', '神', '魔', '龍', '鳳', '虎', '花', '山', '川', '海', '空'
+];
+
 function createSakuraPetals() {
-setInterval(() => {
-if (Math.random() > 0.8) return;
-const petal = document.createElement('div');
-petal.className = 'sakura-petal';
-petal.innerText = '🌸';
-petal.style.left = Math.random() * 100 + 'vw';
-petal.style.fontSize = (16 + Math.random() * 16) + 'px';
-petal.style.opacity = 0.3 + Math.random() * 0.4;
-document.body.appendChild(petal);
-setTimeout(() => petal.remove(), 20000);
-}, 1000);
+  setInterval(() => {
+    if (Math.random() > 0.85) return; // чуть реже, чем раньше
+
+    const petal = document.createElement('div');
+    petal.className = 'sakura-petal';
+
+    // Случайно выбираем: лепесток или иероглиф
+    if (Math.random() > 0.6) {
+      petal.innerText = '🌸'; // 40% — лепестки
+    } else {
+      petal.innerText = KANJI_FALL[Math.floor(Math.random() * KANJI_FALL.length)]; // 60% — иероглифы
+    }
+
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.fontSize = (16 + Math.random() * 16) + 'px';
+    petal.style.opacity = 0.3 + Math.random() * 0.4;
+
+    // Для иероглифов можно сделать цвет чуть темнее/насыщеннее
+    if (petal.innerText !== '🌸') {
+      petal.style.color = 'rgba(200, 150, 255, 0.7)';
+      petal.style.textShadow = '0 0 4px rgba(185, 103, 255, 0.5)';
+    }
+
+    document.body.appendChild(petal);
+    setTimeout(() => {
+      if (petal.parentNode) petal.remove();
+    }, 20000);
+  }, 800); // немного чаще, чтобы было живее
 }
 createSakuraPetals();
 </script>
@@ -185,25 +208,15 @@ html {
     overscroll-behavior-y: contain;
   }
 }
-/* Фоновые элементы */
-.background-elements {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: -1;
-pointer-events: none;
-}
+
 .sakura-petal {
-position: absolute;
-top: -50px;
-font-size: 24px;
-color: rgba(255, 180, 255, 0.6);
-user-select: none;
-pointer-events: none;
-z-index: 0;
-animation: fall 15s linear infinite;
+  position: fixed; /* ← ВАЖНО: fixed, а не absolute */
+  top: -50px;
+  font-size: 24px;
+  color: rgba(255, 180, 255, 0.6);
+  user-select: none;
+  pointer-events: none;
+  animation: fall 15s linear infinite;
 }
 @keyframes fall {
 from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
@@ -972,10 +985,12 @@ color: #555555;
   top: 0;
   width: 20vw;
   height: 100vh;
-  z-index: -2;
+  z-index: -1; /* ← БЫЛО -2, СТАЛО -1 */
   pointer-events: none;
   overflow: hidden;
 }
+
+
 .side-gradient.left {
   left: 0;
   background: linear-gradient(90deg, #1a0a35, rgba(26, 10, 53, 0));
@@ -1376,6 +1391,10 @@ function createSideKanji() {
   ];
   const leftSide = document.querySelector('.side-gradient.left');
   const rightSide = document.querySelector('.side-gradient.right');
+
+  // Защита от ошибок
+  if (!leftSide || !rightSide) return;
+
   function createKanji(sideElement) {
     const kanjiEl = document.createElement('div');
     kanjiEl.className = 'kanji';
@@ -1386,6 +1405,7 @@ function createSideKanji() {
     sideElement.appendChild(kanjiEl);
     setTimeout(() => kanjiEl.remove(), 10000);
   }
+
   setInterval(() => {
     if (Math.random() > 0.7) createKanji(leftSide);
     if (Math.random() > 0.7) createKanji(rightSide);
