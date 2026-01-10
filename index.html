@@ -982,6 +982,16 @@ function toggleTheme() {
     currentTheme = 'night-tokyo';
   }
 
+  // Хитрость: перерисовка иероглифов
+  const kanjiElements = document.querySelectorAll('.kanji');
+  kanjiElements.forEach(el => {
+    el.style.opacity = '0.01';
+    setTimeout(() => {
+      el.style.opacity = '';
+    }, 10);
+  });
+
+
   // Пересоздаём иероглифы, чтобы стили обновились
   const leftSide = document.querySelector('.side-gradient.left');
   const rightSide = document.querySelector('.side-gradient.right');
