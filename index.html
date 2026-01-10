@@ -11,6 +11,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
 <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+<!-- Шрифт -->
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -19,16 +20,16 @@
 <div class="side-gradient right"></div>
 <!-- ШАПКА САЙТА -->
 <header class="site-header">
-<div class="header-content-wrapper">
-  <div class="header-actions">
-  <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-</div>
-  <div class="header-content">
-    <h1>Генератор ников и паролей</h1>
-    <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
+  <div class="header-content-wrapper">
+    <div class="header-content">
+      <h1>Генератор ников и паролей</h1>
+      <p class="subtitle">Создай уникальный ник или надёжный пароль за секунду</p>
+    </div>
+    <div class="header-actions">
+      <button class="lang-toggle" onclick="toggleLang()">🇷🇺</button>
+      <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </div>
   </div>
-</div>
 </header>
 <!-- Фоновые элементы -->
 <div class="background-elements">
@@ -198,20 +199,29 @@ animation: fall 15s linear infinite;
 from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
 to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
 }
-/* ШАПКА САЙТА — полностью прозрачная, без размытого фона */
+/* ШАПКА САЙТА */
 .site-header {
 display: flex;
-justify-content: center; /* Центрируем содержимое */
+justify-content: center;
 align-items: center;
 padding: 20px 30px;
 background: transparent;
 border-bottom: none;
 }
+.header-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 30px;
+  box-sizing: border-box;
+  position: relative;
+}
 .header-content {
 text-align: center;
 padding: 0 20px;
 max-width: 500px;
-margin: 0 auto; /* Центрируем */
+margin: 0 auto;
 }
 .header-content .subtitle {
 text-align: center;
@@ -258,7 +268,7 @@ background: rgba(106, 13, 173, 0.5);
 /* Центрированный контент */
 .centered {
 width: 100%;
-max-width: 600px; /* Ограничиваем максимальную ширину */
+max-width: 600px;
 margin: 40px auto;
 padding: 30px;
 position: relative;
@@ -525,7 +535,6 @@ animation: flash 1s infinite;
 100% { opacity: 1; }
 }
 /* === НОВЫЕ РАЗДЕЛЫ === */
-/* Раздел "Уникальные и безопасные" */
 .section-unique {
 width: 100%;
 margin: 40px 0;
@@ -590,7 +599,6 @@ color: #555555;
 .theme-night-tokyo .unique-text p {
 color: #b967ff;
 }
-/* Раздел "Как это работает?" */
 .section-how-it-works {
 margin: 40px 0;
 text-align: center;
@@ -635,7 +643,6 @@ color: #c0b6ff;
 .theme-light .step-text {
 color: #555555;
 }
-/* Раздел "Почему выбирают нас?" */
 .section-benefits {
 margin: 40px 0;
 text-align: center;
@@ -688,7 +695,6 @@ color: #c0b6ff;
 .theme-light .benefit-desc {
 color: #555555;
 }
-/* Раздел "Советы по безопасности" */
 .section-security-tips {
 margin: 40px 0;
 text-align: center;
@@ -723,12 +729,21 @@ color: #555555;
 flex-direction: column;
 padding: 15px;
 }
+.header-content-wrapper {
+  flex-direction: column;
+  align-items: center;
+}
 .header-content {
-margin-bottom: 10px;
+margin-bottom: 15px;
+text-align: center;
 }
 .header-actions {
-width: 100%;
-justify-content: space-around;
+  position: static;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 0;
 }
 .centered {
 margin: 10px 10px;
@@ -817,7 +832,7 @@ font-size: 18px;
 font-size: 12px;
 }
 }
-/* Светлая тема — Аниме-школа */
+/* Светлая тема */
 .theme-light {
 background: linear-gradient(135deg, #f0f0ff, #e0e6ff, #f0f0ff);
 color: #333333;
@@ -857,7 +872,6 @@ background: linear-gradient(90deg, #6a0dad, #4a0a8a);
 background: rgba(200, 200, 255, 0.4);
 color: #555555;
 }
-/* Делаем блок "Уникальные и безопасные" светлее в светлой теме */
 .theme-light .unique-box {
 background: #e0d6ff;
 color: #333333;
@@ -868,7 +882,7 @@ color: #333333;
 .theme-light .unique-text p {
 color: #555555;
 }
-/* Темная тема — делаем блок "Уникальные и безопасные" как фон сайта */
+/* Темная тема */
 .theme-night-tokyo .unique-box {
 background: #100b30;
 color: #b967ff;
@@ -897,95 +911,59 @@ color: #555555;
   font-size: 24px;
   font-weight: bold;
   margin: 0 0 8px 0;
-  color: #e0d6ff; /* Цвет как основной текст в тёмной теме */
+  color: #e0d6ff;
   letter-spacing: 0.5px;
 }
-
-/* Светлая тема — тёмный текст */
 .theme-light .header-content h1 {
   color: #333333;
 }
 
-.theme-light .side-gradient.left {
-  background: linear-gradient(90deg, #e6d6ff, rgba(230, 214, 255, 0));
-}
-.theme-light .side-gradient.right {
-  background: linear-gradient(90deg, rgba(230, 214, 255, 0), #e6d6ff);
-}
-
-/* Иероглифы внутри боковых блоков */
-.side-gradient .kanji {
-  position: absolute;
-  font-size: 18px;
-  color: rgba(255, 180, 255, 0.7); /* Чуть ярче */
-  user-select: none;
-  pointer-events: none;
-  animation: fallKanji 10s linear infinite;
-  text-shadow: 0 0 3px rgba(255, 180, 255, 0.5); /* Лёгкое свечение */
-}
-
-@keyframes fallKanji {
-  from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
-  to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
-}
-
-/* В темной теме — ещё ярче */
-.theme-night-tokyo .side-gradient .kanji {
-  color: rgba(255, 180, 255, 0.9) !important;
-  text-shadow: 0 0 5px rgba(255, 180, 255, 0.7);
-}
-
-/* В светлой теме — чуть темнее, чтобы контрастировать */
-.theme-light .side-gradient .kanji {
-  color: rgba(106, 13, 173, 0.7);
-  text-shadow: 0 0 5px rgba(106, 13, 173, 0.4);
-}
-
-/* Боковые градиенты — теперь более контрастные */
+/* Боковые градиенты */
 .side-gradient {
   position: fixed;
   top: 0;
   width: 20vw;
   height: 100vh;
-  z-index: -2; /* Под лепестками, но над фоном */
+  z-index: -2;
   pointer-events: none;
   overflow: hidden;
 }
-
-/* Темная тема — ярче и контрастнее */
 .side-gradient.left {
   left: 0;
   background: linear-gradient(90deg, #1a0a35, rgba(26, 10, 53, 0));
 }
-
 .side-gradient.right {
   right: 0;
   background: linear-gradient(90deg, rgba(26, 10, 53, 0), #1a0a35);
 }
-
-/* Светлая тема — не белый, а мягкий фиолетовый */
 .theme-light .side-gradient.left {
   background: linear-gradient(90deg, #d8c7f7, rgba(216, 199, 247, 0));
 }
-
 .theme-light .side-gradient.right {
   background: linear-gradient(90deg, rgba(216, 199, 247, 0), #d8c7f7);
 }
 
-.header-content-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0 30px;
-  box-sizing: border-box;
+/* Иероглифы */
+.side-gradient .kanji {
+  position: absolute;
+  font-size: 18px;
+  color: rgba(255, 180, 255, 0.7);
+  user-select: none;
+  pointer-events: none;
+  animation: fallKanji 10s linear infinite;
+  text-shadow: 0 0 3px rgba(255, 180, 255, 0.5);
 }
-
-.header-content {
-  text-align: center;
-  padding: 0 20px;
-  max-width: 500px;
-  margin: 0 auto;
+@keyframes fallKanji {
+  from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+  to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+}
+.theme-night-tokyo .side-gradient .kanji {
+  color: rgba(255, 180, 255, 0.9) !important;
+  text-shadow: 0 0 5px rgba(255, 180, 255, 0.7);
+}
+.theme-light .side-gradient .kanji {
+  color: rgba(106, 13, 173, 0.7);
+  text-shadow: 0 0 5px rgba(106, 13, 173, 0.4);
 }
 </style>
 <script>
@@ -1004,104 +982,103 @@ function toggleTheme() {
     currentTheme = 'night-tokyo';
   }
 }
+
 // === Смена языка ===
 let currentLang = 'ru';
 function toggleLang() {
-const langToggle = document.querySelector('.lang-toggle');
-const subtitle = document.querySelector('.subtitle');
-document.querySelector('h1').textContent = 'Nickname & Password Generator';
-if (currentLang === 'ru') {
-langToggle.innerHTML = '🇬🇧';
-currentLang = 'en';
-// Убрано: document.querySelector('h1').textContent = 'Nickname & Password Generator';
-subtitle.textContent = 'Create a unique nickname or reliable password in a second';
-document.querySelectorAll('.feature-title')[0].textContent = 'Security';
-document.querySelectorAll('.feature-text')[0].textContent = 'All data is generated locally. No one sees your passwords.';
-document.querySelectorAll('.feature-title')[1].textContent = 'Cool Name';
-document.querySelectorAll('.feature-text')[1].textContent = 'Nick for TikTok, Discord, Steam — in anime, hacker, cyberpunk style.';
-document.querySelectorAll('.feature-title')[2].textContent = 'Instantly';
-document.querySelectorAll('.feature-text')[2].textContent = 'Click — get. No waiting, no loading.';
-document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Passwords';
-document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Nicknames';
-document.querySelector('#password-generator .btn').textContent = 'Generate secure password';
-document.querySelector('#username-generator .btn').textContent = 'Invent cool nickname';
-document.querySelector('.disclaimer').textContent = 'All data is processed exclusively in your browser. The project does not store or send your data.';
-document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. All rights reserved.';
-document.querySelector('#easter-egg').innerHTML = '🎮 Easter egg activated! You clicked "Nicknames" 5 times. Secret nick: <span id="secret-nick">_sakura_neko_</span>';
-document.querySelector('#password-output').placeholder = 'Click "Generate"';
-document.querySelector('#username-output').placeholder = 'Click "Invent nickname"';
-document.querySelector('.share-btn').textContent = '↗️ Share';
-document.querySelector('.section-how-it-works h3').textContent = 'How does it work?';
-document.querySelectorAll('.step-text')[0].textContent = 'Choose type: password or nickname';
-document.querySelectorAll('.step-text')[1].textContent = 'Click "Generate"';
-document.querySelectorAll('.step-text')[2].textContent = 'Get a unique result';
-document.querySelector('.section-benefits h3').textContent = 'Why choose us?';
-document.querySelectorAll('.benefit-title')[0].textContent = 'Security';
-document.querySelectorAll('.benefit-desc')[0].textContent = 'No servers — everything in your browser';
-document.querySelectorAll('.benefit-title')[1].textContent = 'Instantly';
-document.querySelectorAll('.benefit-desc')[1].textContent = 'Generation in 1 click';
-document.querySelectorAll('.benefit-title')[2].textContent = 'Stylish';
-document.querySelectorAll('.benefit-desc')[2].textContent = 'Anime, cyberpunk, hacker';
-document.querySelector('.section-security-tips h3').textContent = 'Security Tips';
-document.querySelectorAll('.section-security-tips li')[0].textContent = 'Do not use common words in passwords';
-document.querySelectorAll('.section-security-tips li')[1].textContent = 'Change passwords every 3-6 months';
-document.querySelectorAll('.section-security-tips li')[2].textContent = 'Do not use the same passwords for different services';
-document.querySelector('.unique-text h2').textContent = 'Unique and secure';
-document.querySelector('.unique-text p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
-} else {
-langToggle.innerHTML = '🇷🇺';
-currentLang = 'ru';
-// Убрано: document.querySelector('h1').textContent = 'Генератор ников и паролей';
-subtitle.textContent = 'Создай уникальный ник или надёжный пароль за секунду';
-document.querySelector('h1').textContent = 'Генератор ников и паролей';
-document.querySelectorAll('.feature-title')[0].textContent = 'Безопасность';
-document.querySelectorAll('.feature-text')[0].textContent = 'Все данные генерируются локально. Никто не видит твои пароли.';
-document.querySelectorAll('.feature-title')[1].textContent = 'Крутое имя';
-document.querySelectorAll('.feature-text')[1].textContent = 'Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.';
-document.querySelectorAll('.feature-title')[2].textContent = 'Мгновенно';
-document.querySelectorAll('.feature-text')[2].textContent = 'Нажал — получил. Без ожидания, без загрузки.';
-document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Пароли';
-document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Ники';
-document.querySelector('#password-generator .btn').textContent = 'Сгенерировать надёжный пароль';
-document.querySelector('#username-generator .btn').textContent = 'Придумать крутой ник';
-document.querySelector('.disclaimer').textContent = 'Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.';
-document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. Все права защищены.';
-document.querySelector('#easter-egg').innerHTML = '🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>';
-document.querySelector('#password-output').placeholder = 'Нажми \'Сгенерировать\'';
-document.querySelector('#username-output').placeholder = 'Нажми \'Придумать ник\'';
-document.querySelector('.share-btn').textContent = '↗️ Поделиться';
-document.querySelector('.section-how-it-works h3').textContent = 'Как это работает?';
-document.querySelectorAll('.step-text')[0].textContent = 'Выбери тип: пароль или ник';
-document.querySelectorAll('.step-text')[1].textContent = 'Нажми "Сгенерировать"';
-document.querySelectorAll('.step-text')[2].textContent = 'Получи уникальный результат';
-document.querySelector('.section-benefits h3').textContent = 'Почему выбирают нас?';
-document.querySelectorAll('.benefit-title')[0].textContent = 'Безопасность';
-document.querySelectorAll('.benefit-desc')[0].textContent = 'Нет серверов — всё в твоём браузере';
-document.querySelectorAll('.benefit-title')[1].textContent = 'Мгновенно';
-document.querySelectorAll('.benefit-desc')[1].textContent = 'Генерация за 1 клик';
-document.querySelectorAll('.benefit-title')[2].textContent = 'Стильно';
-document.querySelectorAll('.benefit-desc')[2].textContent = 'Аниме, киберпанк, хакер';
-document.querySelector('.section-security-tips h3').textContent = 'Советы по безопасности';
-document.querySelectorAll('.section-security-tips li')[0].textContent = 'Не используй общие слова в паролях';
-document.querySelectorAll('.section-security-tips li')[1].textContent = 'Меняй пароли каждые 3-6 месяцев';
-document.querySelectorAll('.section-security-tips li')[2].textContent = 'Не используй одинаковые пароли для разных сервисов';
-document.querySelector('.unique-text h2').textContent = 'Уникальные и безопасные';
-document.querySelector('.unique-text p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
+  const langToggle = document.querySelector('.lang-toggle');
+  const subtitle = document.querySelector('.subtitle');
+  if (currentLang === 'ru') {
+    langToggle.innerHTML = '🇬🇧';
+    currentLang = 'en';
+    document.querySelector('h1').textContent = 'Nickname & Password Generator';
+    subtitle.textContent = 'Create a unique nickname or reliable password in a second';
+    document.querySelectorAll('.feature-title')[0].textContent = 'Security';
+    document.querySelectorAll('.feature-text')[0].textContent = 'All data is generated locally. No one sees your passwords.';
+    document.querySelectorAll('.feature-title')[1].textContent = 'Cool Name';
+    document.querySelectorAll('.feature-text')[1].textContent = 'Nick for TikTok, Discord, Steam — in anime, hacker, cyberpunk style.';
+    document.querySelectorAll('.feature-title')[2].textContent = 'Instantly';
+    document.querySelectorAll('.feature-text')[2].textContent = 'Click — get. No waiting, no loading.';
+    document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Passwords';
+    document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Nicknames';
+    document.querySelector('#password-generator .btn').textContent = 'Generate secure password';
+    document.querySelector('#username-generator .btn').textContent = 'Invent cool nickname';
+    document.querySelector('.disclaimer').textContent = 'All data is processed exclusively in your browser. The project does not store or send your data.';
+    document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. All rights reserved.';
+    document.querySelector('#easter-egg').innerHTML = '🎮 Easter egg activated! You clicked "Nicknames" 5 times. Secret nick: <span id="secret-nick">_sakura_neko_</span>';
+    document.querySelector('#password-output').placeholder = 'Click "Generate"';
+    document.querySelector('#username-output').placeholder = 'Click "Invent nickname"';
+    document.querySelector('.share-btn').textContent = '↗️ Share';
+    document.querySelector('.section-how-it-works h3').textContent = 'How does it work?';
+    document.querySelectorAll('.step-text')[0].textContent = 'Choose type: password or nickname';
+    document.querySelectorAll('.step-text')[1].textContent = 'Click "Generate"';
+    document.querySelectorAll('.step-text')[2].textContent = 'Get a unique result';
+    document.querySelector('.section-benefits h3').textContent = 'Why choose us?';
+    document.querySelectorAll('.benefit-title')[0].textContent = 'Security';
+    document.querySelectorAll('.benefit-desc')[0].textContent = 'No servers — everything in your browser';
+    document.querySelectorAll('.benefit-title')[1].textContent = 'Instantly';
+    document.querySelectorAll('.benefit-desc')[1].textContent = 'Generation in 1 click';
+    document.querySelectorAll('.benefit-title')[2].textContent = 'Stylish';
+    document.querySelectorAll('.benefit-desc')[2].textContent = 'Anime, cyberpunk, hacker';
+    document.querySelector('.section-security-tips h3').textContent = 'Security Tips';
+    document.querySelectorAll('.section-security-tips li')[0].textContent = 'Do not use common words in passwords';
+    document.querySelectorAll('.section-security-tips li')[1].textContent = 'Change passwords every 3-6 months';
+    document.querySelectorAll('.section-security-tips li')[2].textContent = 'Do not use the same passwords for different services';
+    document.querySelector('.unique-text h2').textContent = 'Unique and secure';
+    document.querySelector('.unique-text p').textContent = 'Each nickname and password is created specifically for you — instantly and reliably.';
+  } else {
+    langToggle.innerHTML = '🇷🇺';
+    currentLang = 'ru';
+    document.querySelector('h1').textContent = 'Генератор ников и паролей';
+    subtitle.textContent = 'Создай уникальный ник или надёжный пароль за секунду';
+    document.querySelectorAll('.feature-title')[0].textContent = 'Безопасность';
+    document.querySelectorAll('.feature-text')[0].textContent = 'Все данные генерируются локально. Никто не видит твои пароли.';
+    document.querySelectorAll('.feature-title')[1].textContent = 'Крутое имя';
+    document.querySelectorAll('.feature-text')[1].textContent = 'Ник для TikTok, Discord, Steam — в стиле аниме, хакер, киберпанк.';
+    document.querySelectorAll('.feature-title')[2].textContent = 'Мгновенно';
+    document.querySelectorAll('.feature-text')[2].textContent = 'Нажал — получил. Без ожидания, без загрузки.';
+    document.querySelector('.tab-btn:nth-child(1)').textContent = '🔑 Пароли';
+    document.querySelector('.tab-btn:nth-child(2)').textContent = '🎮 Ники';
+    document.querySelector('#password-generator .btn').textContent = 'Сгенерировать надёжный пароль';
+    document.querySelector('#username-generator .btn').textContent = 'Придумать крутой ник';
+    document.querySelector('.disclaimer').textContent = 'Все данные обрабатываются исключительно в вашем браузере. Проект не хранит и не отправляет ваши данные.';
+    document.querySelector('footer').textContent = '© 2026 — FirewallXiaoKitsune. Все права защищены.';
+    document.querySelector('#easter-egg').innerHTML = '🎮 Пасхалка активирована! Ты нажал(а) на "Ники" 5 раз. Скрытый ник: <span id="secret-nick">_sakura_neko_</span>';
+    document.querySelector('#password-output').placeholder = 'Нажми \'Сгенерировать\'';
+    document.querySelector('#username-output').placeholder = 'Нажми \'Придумать ник\'';
+    document.querySelector('.share-btn').textContent = '↗️ Поделиться';
+    document.querySelector('.section-how-it-works h3').textContent = 'Как это работает?';
+    document.querySelectorAll('.step-text')[0].textContent = 'Выбери тип: пароль или ник';
+    document.querySelectorAll('.step-text')[1].textContent = 'Нажми "Сгенерировать"';
+    document.querySelectorAll('.step-text')[2].textContent = 'Получи уникальный результат';
+    document.querySelector('.section-benefits h3').textContent = 'Почему выбирают нас?';
+    document.querySelectorAll('.benefit-title')[0].textContent = 'Безопасность';
+    document.querySelectorAll('.benefit-desc')[0].textContent = 'Нет серверов — всё в твоём браузере';
+    document.querySelectorAll('.benefit-title')[1].textContent = 'Мгновенно';
+    document.querySelectorAll('.benefit-desc')[1].textContent = 'Генерация за 1 клик';
+    document.querySelectorAll('.benefit-title')[2].textContent = 'Стильно';
+    document.querySelectorAll('.benefit-desc')[2].textContent = 'Аниме, киберпанк, хакер';
+    document.querySelector('.section-security-tips h3').textContent = 'Советы по безопасности';
+    document.querySelectorAll('.section-security-tips li')[0].textContent = 'Не используй общие слова в паролях';
+    document.querySelectorAll('.section-security-tips li')[1].textContent = 'Меняй пароли каждые 3-6 месяцев';
+    document.querySelectorAll('.section-security-tips li')[2].textContent = 'Не используй одинаковые пароли для разных сервисов';
+    document.querySelector('.unique-text h2').textContent = 'Уникальные и безопасные';
+    document.querySelector('.unique-text p').textContent = 'Каждый ник и пароль создаются специально для тебя — моментально и надёжно.';
+  }
 }
-}
+
 // === Логика переключения вкладок ===
 document.querySelectorAll('.tab-btn').forEach(btn => {
-btn.addEventListener('click', () => {
-document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-btn.classList.add('active');
-// Скрываем все генераторы
-document.querySelectorAll('.generator-block').forEach(block => block.classList.remove('active'));
-// Показываем нужный
-const tab = btn.dataset.tab;
-document.getElementById(tab + '-generator').classList.add('active');
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.generator-block').forEach(block => block.classList.remove('active'));
+    const tab = btn.dataset.tab;
+    document.getElementById(tab + '-generator').classList.add('active');
+  });
 });
-});
-// === Словари ===
+
+// === Словари и генерация (оставлено без изменений) ===
 const WORDS = {
 nature: ['forest', 'ocean', 'river', 'mountain', 'cloud', 'storm', 'dawn', 'dusk', 'sky', 'earth', 'fire', 'ice', 'wind', 'thunder', 'light', 'shadow', 'moon', 'sun', 'star', 'comet', 'nebula', 'galaxy', 'aurora', 'tide', 'valley', 'peak'],
 anime: ['sakura', 'neko', 'yuki', 'hana', 'tsuki', 'kawaii', 'otaku', 'senpai', 'bento', 'ramen', 'mochi', 'wasabi', 'soba', 'matcha', 'zen', 'dojo', 'chibi', 'ninja', 'samurai', 'kami', 'yokai', 'tengu', 'kitsune', 'tanuki', 'aoi', 'ume', 'fuji'],
@@ -1130,33 +1107,28 @@ return unique.slice(0, count);
 const PASSWORD_SEPARATORS = ['.', '-', '_', '•'];
 const USERNAME_SEPARATORS = ['.', '-', '_'];
 // === Генерация пароля ===
-// Для отслеживания двойного клика
 let lastClickTime = 0;
 let isDoubleClicked = false;
 function generatePassword() {
 const now = Date.now();
-const doubleClickThreshold = 300; // 300 мс — время между кликами для двойного клика
-// Проверяем, был ли двойной клик
+const doubleClickThreshold = 300;
 if (now - lastClickTime < doubleClickThreshold) {
 isDoubleClicked = true;
 } else {
 isDoubleClicked = false;
 }
 lastClickTime = now;
-// Генерируем пароль
 const categories = ['nature', 'anime', 'cyber', 'myth', 'tech', 'food', 'time', 'mood'];
-// Если был двойной клик — генерируем более длинный пароль (4 слова + число)
 let words;
 if (isDoubleClicked) {
-words = getRandomWords(4, categories); // 4 слова вместо 3
+words = getRandomWords(4, categories);
 } else {
-words = getRandomWords(3, categories); // Обычный режим
+words = getRandomWords(3, categories);
 }
 const num = secureRandomInt(10, 9999);
 const parts = Math.random() > 0.7 ? [num, ...words] : [...words, num];
 const sep = PASSWORD_SEPARATORS[secureRandomInt(0, PASSWORD_SEPARATORS.length - 1)];
 const result = parts.join(sep);
-// Анимация печати
 const output = document.getElementById('password-output');
 output.value = '';
 let i = 0;
@@ -1168,7 +1140,6 @@ i++;
 clearInterval(timer);
 }
 }, 30);
-// Если был двойной клик — показываем уведомление
 if (isDoubleClicked) {
 const notif = document.getElementById('notification');
 notif.textContent = 'Двойной клик! Более длинный пароль.';
@@ -1194,7 +1165,6 @@ if (nick.length > 28) {
 nick = nick.substring(0, 28).trim();
 if (['.', '-', '_', ' '].includes(nick.slice(-1))) nick = nick.slice(0, -1);
 }
-// Анимация печати
 const output = document.getElementById('username-output');
 output.value = '';
 let i = 0;
@@ -1206,13 +1176,11 @@ i++;
 clearInterval(timer);
 }
 }, 30);
-// Пасхалка — если нажать 5 раз на "Ники"
 if (currentLang === 'ru') {
 if (!window.nickClickCount) window.nickClickCount = 0;
 window.nickClickCount++;
 if (window.nickClickCount >= 5) {
 document.getElementById('easter-egg').style.display = 'block';
-// Генерируем рандомный ник как обычный
 const secretNick = generateSecretNick();
 document.getElementById('secret-nick').textContent = secretNick;
 }
@@ -1226,7 +1194,6 @@ document.getElementById('secret-nick').textContent = secretNick;
 }
 }
 }
-// === Генерация рандомного ника для пасхалки ===
 function generateSecretNick() {
 const prefixes = getRandomWords(2, ['cyber', 'anime', 'mood', 'time', 'nature']);
 const suffixes = getRandomWords(2, ['myth', 'food', 'tech', 'anime', 'nature']);
@@ -1283,7 +1250,6 @@ notif.textContent = 'Скопировано!';
 
 // === Генерация сыпающихся иероглифов по бокам ===
 function createSideKanji() {
-  // Массив азиатских иероглифов (китайских, японских)
   const kanji = [
     '知', '識', '安', '全', '速', '度', '力', '量', '光', '影', '風', '雷', '火', '水', '土', '木', '金', '月', '日', '星',
     '心', '魂', '夢', '幻', '真', '偽', '善', '悪', '美', '醜', '静', '動', '明', '暗', '空', '時', '間', '界', '界', '界',
@@ -1295,11 +1261,8 @@ function createSideKanji() {
     '人', '民', '国', '家', '社', '会', '経', '済', '政', '治', '法', '律', '道', '徳', '信', '仰', '宗', '教', '哲', '学',
     '歴', '史', '地', '理', '天', '文', '気', '象', '生', '物', '地', '球', '宇', '宙', '銀', '河', '星', '系', '惑', '星'
   ];
-
-const leftSide = document.querySelector('.side-gradient.left');
-const rightSide = document.querySelector('.side-gradient.right');
-
-  // Функция для создания одного иероглифа
+  const leftSide = document.querySelector('.side-gradient.left');
+  const rightSide = document.querySelector('.side-gradient.right');
   function createKanji(sideElement) {
     const kanjiEl = document.createElement('div');
     kanjiEl.className = 'kanji';
@@ -1308,19 +1271,13 @@ const rightSide = document.querySelector('.side-gradient.right');
     kanjiEl.style.fontSize = (14 + Math.random() * 10) + 'px';
     kanjiEl.style.opacity = 0.3 + Math.random() * 0.4;
     sideElement.appendChild(kanjiEl);
-
-    // Удаляем через 10 секунд
     setTimeout(() => kanjiEl.remove(), 10000);
   }
-
-  // Запускаем каждые 500 мс
   setInterval(() => {
     if (Math.random() > 0.7) createKanji(leftSide);
     if (Math.random() > 0.7) createKanji(rightSide);
   }, 500);
 }
-
-// Запускаем при загрузке страницы
 document.addEventListener('DOMContentLoaded', createSideKanji);
 </script>
 </body>
