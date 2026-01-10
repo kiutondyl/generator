@@ -164,12 +164,14 @@ box-sizing: border-box;
 font-family: 'JetBrains Mono', monospace;
 }
 body {
-min-height: 100vh;
-overflow-x: hidden;
-position: relative;
-background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
-color: #e0d6ff;
-transition: background 0.5s;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #0a051a, #0d0824, #100b30);
+  background-attachment: fixed;
+  color: #e0d6ff;
+  transition: background 0.5s;
 }
 /* Фоновые элементы */
 .background-elements {
@@ -263,13 +265,13 @@ background: rgba(106, 13, 173, 0.5);
 }
 /* Центрированный контент */
 .centered {
-width: 100%;
-max-width: 600px;
-margin: 40px auto;
-padding: 30px;
-position: relative;
-z-index: 10;
-box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
 }
 /* Блоки фич */
 .features {
