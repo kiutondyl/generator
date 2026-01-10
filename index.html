@@ -29,48 +29,7 @@
   </div>
   <button class="theme-toggle mobile-top-right" onclick="toggleTheme()">🌙</button>
 </header>
-<!-- Фоновые элементы -->
-<div class="background-elements">
-<script>
-// === Список иероглифов (можно использовать тот же, что и для боков) ===
-const KANJI_FALL = [
-  '知', '識', '安', '全', '速', '度', '力', '量', '光', '影', '風', '雷', '火', '水', '夢', '幻', '心', '魂', '月', '星',
-  '電', '脳', '数', '字', '情', '報', '技', '術', '未', '来', '神', '魔', '龍', '鳳', '虎', '花', '山', '川', '海', '空'
-];
 
-function createSakuraPetals() {
-  setInterval(() => {
-    if (Math.random() > 0.85) return; // чуть реже, чем раньше
-
-    const petal = document.createElement('div');
-    petal.className = 'sakura-petal';
-
-    // Случайно выбираем: лепесток или иероглиф
-    if (Math.random() > 0.6) {
-      petal.innerText = '🌸'; // 40% — лепестки
-    } else {
-      petal.innerText = KANJI_FALL[Math.floor(Math.random() * KANJI_FALL.length)]; // 60% — иероглифы
-    }
-
-    petal.style.left = Math.random() * 100 + 'vw';
-    petal.style.fontSize = (16 + Math.random() * 16) + 'px';
-    petal.style.opacity = 0.3 + Math.random() * 0.4;
-
-    // Для иероглифов можно сделать цвет чуть темнее/насыщеннее
-    if (petal.innerText !== '🌸') {
-      petal.style.color = 'rgba(200, 150, 255, 0.7)';
-      petal.style.textShadow = '0 0 4px rgba(185, 103, 255, 0.5)';
-    }
-
-    document.body.appendChild(petal);
-    setTimeout(() => {
-      if (petal.parentNode) petal.remove();
-    }, 20000);
-  }, 800); // немного чаще, чтобы было живее
-}
-createSakuraPetals();
-</script>
-</div>
 <!-- Основной контент -->
 <div class="centered">
 <div class="features">
@@ -210,17 +169,17 @@ html {
 }
 
 .sakura-petal {
-  position: fixed; /* ← ВАЖНО: fixed, а не absolute */
+  position: fixed; /* ← обязательно fixed */
   top: -50px;
   font-size: 24px;
   color: rgba(255, 180, 255, 0.6);
   user-select: none;
   pointer-events: none;
   animation: fall 15s linear infinite;
+  transition: transform 0.3s ease-out;
 }
 @keyframes fall {
-from { transform: translateY(-50px) rotate(0deg); opacity: 0; }
-to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+  to { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
 }
 /* ШАПКА САЙТА */
 .site-header {
@@ -1412,6 +1371,88 @@ function createSideKanji() {
   }, 500);
 }
 document.addEventListener('DOMContentLoaded', createSideKanji);
+
+// === Интерактивные лепестки: отталкивание от курсора ===
+document.addEventListener('mousemove', (e) => {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+
+  sakuraPetals.forEach(petal => {
+    if (!petal.isConnected) return; // пропускаем удалённые
+
+    const rect = petal.getBoundingClientRect();
+    const petalX = rect.left + rect.width / 2;
+    const petalY = rect.top + rect.height / 2;
+
+    const dx = mouseX - petalX;
+    const dy = mouseY - petalY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    // Если курсор близко (менее 150px)
+    if (distance < 150) {
+      const force = (150 - distance) / 150; // сила от 0 до 1
+      const angle = Math.atan2(dy, dx);
+      const moveX = Math.cos(angle) * force * 30; // максимум 30px
+      const moveY = Math.sin(angle) * force * 30;
+
+      petal.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    } else {
+      petal.style.transform = 'translate(0, 0)';
+    }
+  });
+});
+
+// Запуск анимаций
+createSakuraPetals();
+createSideKanji(); // если вы снова захотите иероглифы по бокам
+
+// === Интерактивные лепестки сакуры ===
+let sakuraPetals = [];
+
+function createSakuraPetals() {
+  setInterval(() => {
+    if (Math.random() > 0.85) return;
+    const petal = document.createElement('div');
+    petal.className = 'sakura-petal';
+    petal.innerText = '🌸';
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.fontSize = (16 + Math.random() * 16) + 'px';
+    petal.style.opacity = 0.3 + Math.random() * 0.4;
+    document.body.appendChild(petal);
+    sakuraPetals.push(petal);
+    setTimeout(() => {
+      petal.remove();
+      sakuraPetals = sakuraPetals.filter(p => p !== petal);
+    }, 20000);
+  }, 800);
+}
+
+// Обработчик движения мыши
+document.addEventListener('mousemove', (e) => {
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  sakuraPetals.forEach(petal => {
+    if (!petal.isConnected) return;
+    const rect = petal.getBoundingClientRect();
+    const petalX = rect.left + rect.width / 2;
+    const petalY = rect.top + rect.height / 2;
+    const dx = mouseX - petalX;
+    const dy = mouseY - petalY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < 150) {
+      const force = (150 - distance) / 150;
+      const angle = Math.atan2(dy, dx);
+      const moveX = Math.cos(angle) * force * 30;
+      const moveY = Math.sin(angle) * force * 30;
+      petal.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    } else {
+      petal.style.transform = 'translate(0, 0)';
+    }
+  });
+});
+
+// Запуск
+createSakuraPetals();
 </script>
 </body>
 </html>
